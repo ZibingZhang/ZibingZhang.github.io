@@ -48,12 +48,12 @@ addOtherMeets([
 
 /* =========================================== */
 
-function addRowToSection(sectionId) {
+function addRowToSection(sectionId, rowLabel) {
   function newHeatInput() {
     const heat = document.createElement('input');
     heat.className = 'meet-section-heats-input';
     heat.spellcheck = 'false';
-    heat.value = 'H?L?';
+    heat.value = rowLabel || 'H?L?';
     return heat;
   }
 
@@ -88,12 +88,52 @@ function subtractRowFromSection(sectionId) {
 }
 
 function resetAgeSection(sectionId) {
+  const resetRowNumber = 6;
+  const defaultRowLabels = [
+    'H1L3',
+    'H1L5',
+    'H1L1',
+    'H2L3',
+    'H2L5',
+    'H2L1'
+  ];
+
   const heatSections = document.querySelectorAll(`#${sectionId} .meet-section-heats`);
   heatSections.forEach(heatSection => {
+    if (heatSection.childElementCount > resetRowNumber) {
+      while (heatSection.childElementCount > resetRowNumber) {
+        subtractRowFromSection(sectionId);
+      }
+    } else if (heatSection.childElementCount < resetRowNumber) {
+      while (heatSection.childElementCount < resetRowNumber) {
+        addRowToSection(sectionId);
+      }
+    }
+
+    let index = 0;
+    heatSection.childNodes.forEach(row => {
+      if (row.nodeType === 1) {
+        row.value = defaultRowLabels[index++];
+      }
+    });
   });
 
   const swimmerSections = document.querySelectorAll(`#${sectionId} .meet-section-swimmers`);
   swimmerSections.forEach(swimmerSection => {
+    if (swimmerSection.childElementCount > resetRowNumber) {
+      while (swimmerSection.childElementCount > resetRowNumber) {
+        subtractRowFromSection(sectionId);
+      }
+    } else if (swimmerSection.childElementCount < resetRowNumber) {
+      while (swimmerSection.childElementCount < resetRowNumber) {
+        addRowToSection(sectionId);
+      }
+    }
+  });
+
+  const swimmerInputs = document.querySelectorAll(`#${sectionId} .meet-section-swimmers input`);
+  swimmerInputs.forEach(input => {
+    input.value = '';
   });
 }
 
