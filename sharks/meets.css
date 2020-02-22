@@ -302,12 +302,6 @@ body {
 
 /* =========================================== */
 
-.header-card-filler {
-  flex-grow: 1;
-}
-
-/* =========================================== */
-
 .header-card-button {
   width: max-content;
   height: 100%;
