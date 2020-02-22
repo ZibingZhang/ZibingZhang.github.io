@@ -87,6 +87,16 @@ function subtractRowFromSection(sectionId) {
   });
 }
 
+function resetAgeSection(sectionId) {
+  const heatSections = document.querySelectorAll(`#${sectionId} .meet-section-heats`);
+  heatSections.forEach(heatSection => {
+  });
+
+  const swimmerSections = document.querySelectorAll(`#${sectionId} .meet-section-swimmers`);
+  swimmerSections.forEach(swimmerSection => {
+  });
+}
+
 function listenSectionButton(sectionId, buttonClass, onClickFunction) {
   document.querySelector(`#${sectionId} .${buttonClass}`).onclick = onClickFunction;
 }
@@ -94,6 +104,7 @@ function listenSectionButton(sectionId, buttonClass, onClickFunction) {
 function linkAllButtonsAgeSection(sectionId) {
   listenSectionButton(sectionId, 'add-row', () => addRowToSection(sectionId));
   listenSectionButton(sectionId, 'sub-row', () => subtractRowFromSection(sectionId));
+  listenSectionButton(sectionId, 'reset', () => resetAgeSection(sectionId));
 }
 
 [
