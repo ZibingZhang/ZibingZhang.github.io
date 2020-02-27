@@ -1,4 +1,11 @@
-function createLeftSidebarSectionItem(text, onClickFunction) {
+import constants from './constants.mjs';
+
+import {
+  isoToDict,
+  numberToMonth
+} from './util.mjs';
+
+function createLeftSidebarSectionItem(text, id, onClickFunction) {
   const itemElement = document.createElement('div');
   itemElement.className = 'left-sidebar-section-item';
 
@@ -6,7 +13,12 @@ function createLeftSidebarSectionItem(text, onClickFunction) {
   textElement.className = 'left-sidebar-section-item-text';
   textElement.innerHTML = text;
 
+  const itemId = document.createElement('div');
+  itemId.className = 'position-absolute visibility-hidden id';
+  itemId.innerHTML = id;
+
   itemElement.appendChild(textElement);
+  itemElement.appendChild(itemId);
   itemElement.onclick = onClickFunction;
 
   return itemElement;
@@ -15,36 +27,44 @@ function createLeftSidebarSectionItem(text, onClickFunction) {
 function addDualMeets(meets) {
   const dualMeets = document.getElementById('left-sidebar-section-dual-meets');
   meets.forEach(meet => {
-    dualMeets.appendChild(createLeftSidebarSectionItem(meet[0], meet[1]))
+    dualMeets.appendChild(createLeftSidebarSectionItem(meet.name, meet.id, meet.onclick))
   });
 }
 
 function addOtherMeets(meets) {
   const dualMeets = document.getElementById('left-sidebar-section-other-meets');
   meets.forEach(meet => {
-    dualMeets.appendChild(createLeftSidebarSectionItem(meet[0], meet[1]))
+    dualMeets.appendChild(createLeftSidebarSectionItem(meet.name, meet.id, meet.onclick))
   });
 }
 
-addDualMeets([
-  ['Canton', ],
-  ['Millis', ],
-  ['Newton', ],
-  ['Natick', ],
-  ['Framingham', ],
-  ['Westwood', ],
-  ['Walpole', ],
-  ['Dedham', ],
-  ['Norwood', ],
-  ['Medfield', ],
-  ['Sherborn', ]
-]);
+function loadLeftSideBar(meetsBasicInfo) {
+  let dualMeets = [];
+  meetsBasicInfo.dualMeets.forEach(meet => {
+    dualMeets.push({name: meet.name, id: meet.id, onclick: ''});
+  });
+  let otherMeets = [];
+  meetsBasicInfo.otherMeets.forEach(meet => {
+    otherMeets.push({name: meet.name, id: meet.id, onclick: ''})
+  });
 
-addOtherMeets([
-  ['Mile Swim', ],
-  ['B Regionals', ],
-  ['A Regionals', ]
-]);
+  addDualMeets(dualMeets);
+  addOtherMeets(otherMeets);
+}
+
+async function loadInitialData() {
+  let meetsBasicInfo = (await axios.get(`${constants.BASE_URL}/meet/all/basic-info`)).data
+  loadLeftSideBar(meetsBasicInfo);
+
+  let firstMeet = meetsBasicInfo.dualMeets[0];
+  document.querySelector('.header-card .header-card-section .town .header-card-label-text').innerHTML = firstMeet.name;
+  let date = isoToDict(firstMeet.date);
+  document.querySelector('.header-card .header-card-section .date .header-card-label-text').innerHTML = `${numberToMonth(date.month)}  ${date.day}`;
+  document.querySelector('.header-card .header-card-section .home-or-away .header-card-label-text').innerHTML = firstMeet.is_home ? 'Home' : 'Away';
+  console.log(firstMeet);
+}
+
+loadInitialData();
 
 /* =========================================== */
 

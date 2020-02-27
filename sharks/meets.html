@@ -9,7 +9,7 @@
 	<!-- Author -->
 	<meta name='author' content='Zibing Zhang'>
 	<!-- Description -->
-	<meta name='description' content='Meets of the Season'>
+	<meta name='description' content='Meets'>
 	<!-- Keywords -->
 	<meta name='keywords' content=''>
 	<!-- Character Set -->
@@ -22,21 +22,22 @@
   <link href="https://fonts.googleapis.com/css?family=Chivo:300,400|Overpass|Space+Mono&display=swap" rel="stylesheet">
 
 	<!-- CSS -->
-  <link rel='stylesheet' href='meets.css'>
+  <link rel='stylesheet' href='css/meets.css'>
   
   <!-- JS -->
-  <script type='text/javascript' src='meets.js' defer></script>
+  <script type='text/javascript' src='vendors/axios/axios.min.js' defer></script>
+  <script type='module' src='js/meets.mjs' defer></script>
 </head>
 
 <body>
   <header id='header' class='shadow no-select'>
-    <div class='header-option'>
+    <div class='header-option home'>
       <div class='header-option-text'>Home</div>
     </div>
-    <div class='header-option'>
+    <div class='header-option meets'>
       <div class='header-option-text'>Meets</div>
     </div>
-    <div class='header-option'>
+    <div class='header-option qualifications'>
       <div class='header-option-text'>Qualifications</div>
     </div>
   </header>
@@ -63,23 +64,23 @@
     <div class='card-container'>
       <div class='header-card no-select'>
         <div class='header-card-section shadow'>
-          <div class='header-card-option'>
-            <div class='header-card-option-text'>
-              Framingham
-            </div>
+          <div class='header-card-label town'>
+            <div class='header-card-label-text'></div>
           </div>
 
-          <div class='header-card-option'>
-            <div class='header-card-option-text'>
-              July 14
-            </div>
+          <div class='header-card-label date'>
+            <div class='header-card-label-text'></div>
           </div>
 
-          <div class='header-card-option'>
-            <div class='header-card-option-text'>
-              Away
-            </div>
+          <div class='header-card-label home-or-away'>
+            <div class='header-card-label-text'></div>
           </div>
+        </div>
+
+        <div class='header-card-section-filler'></div>
+
+        <div class='header-card-section shadow authentication-token'>
+          <input placeholder='AUTH TOKEN'>
         </div>
       </div>
 
