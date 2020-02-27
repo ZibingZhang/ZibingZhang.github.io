@@ -5,6 +5,13 @@ import {
   numberToMonth
 } from './util.mjs';
 
+function setHeaderCardMeetInfo(town, date, location) {
+  // location is home/away OR town
+  document.querySelector('.header-card .header-card-section .town .header-card-label-text').innerHTML = town;
+  document.querySelector('.header-card .header-card-section .date .header-card-label-text').innerHTML = date;
+  document.querySelector('.header-card .header-card-section .home-or-away .header-card-label-text').innerHTML = location;
+}
+
 function createLeftSidebarSectionItem(text, id, onClickFunction) {
   const itemElement = document.createElement('div');
   itemElement.className = 'left-sidebar-section-item';
@@ -41,11 +48,33 @@ function addOtherMeets(meets) {
 function loadLeftSideBar(meetsBasicInfo) {
   let dualMeets = [];
   meetsBasicInfo.dualMeets.forEach(meet => {
-    dualMeets.push({name: meet.name, id: meet.id, onclick: ''});
+    let date = isoToDict(meet.date);
+    dualMeets.push({
+      name: meet.name, 
+      id: meet.id, 
+      onclick: () => {
+        setHeaderCardMeetInfo(
+          meet.name, 
+          `${numberToMonth(date.month)}  ${date.day}`, 
+          meet.is_home ? 'Home' : 'Away'
+        );
+      }
+    });
   });
   let otherMeets = [];
   meetsBasicInfo.otherMeets.forEach(meet => {
-    otherMeets.push({name: meet.name, id: meet.id, onclick: ''})
+    let date = isoToDict(meet.date);
+    otherMeets.push({
+      name: meet.name, 
+      id: meet.id, 
+      onclick: () => {
+        setHeaderCardMeetInfo(
+          meet.name, 
+          `${numberToMonth(date.month)}  ${date.day}`, 
+          meet.location
+        );
+      }
+    });
   });
 
   addDualMeets(dualMeets);
@@ -57,11 +86,12 @@ async function loadInitialData() {
   loadLeftSideBar(meetsBasicInfo);
 
   let firstMeet = meetsBasicInfo.dualMeets[0];
-  document.querySelector('.header-card .header-card-section .town .header-card-label-text').innerHTML = firstMeet.name;
   let date = isoToDict(firstMeet.date);
-  document.querySelector('.header-card .header-card-section .date .header-card-label-text').innerHTML = `${numberToMonth(date.month)}  ${date.day}`;
-  document.querySelector('.header-card .header-card-section .home-or-away .header-card-label-text').innerHTML = firstMeet.is_home ? 'Home' : 'Away';
-  console.log(firstMeet);
+  setHeaderCardMeetInfo(
+    firstMeet.name, 
+    `${numberToMonth(date.month)}  ${date.day}`, 
+    firstMeet.is_home ? 'Home' : 'Away'
+  );
 }
 
 loadInitialData();
