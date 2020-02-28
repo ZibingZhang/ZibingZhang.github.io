@@ -460,6 +460,14 @@ body {
 #section-15-over > .meet-section-header:hover .meet-section-header-button { visibility: visible; }
 #section-free-relay > .meet-section-header:hover .meet-section-header-button { visibility: visible; }
 
+#section-medley-relay > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+#section-8-under > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+#section-9-10 > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+#section-11-12 > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+#section-13-14 > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+#section-15-over > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+#section-free-relay > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
+
 /* =========================================== */
 
 .meet-section-body {
@@ -471,14 +479,7 @@ body {
 .meet-section-body-half {
   min-height: 100px;
   min-width: 25em;
-  padding-left: var(--heat-spacing);
-  flex-grow: 1;
-  flex-basis: 0;
-  display: flex;
-  /* flex-wrap: wrap; */
-}
-
-.meet-section-two-strokes {
+  /* padding-left: var(--heat-spacing); */
   flex-grow: 1;
   flex-basis: 0;
   display: flex;
@@ -493,6 +494,11 @@ body {
   
   display: flex;
   flex-direction: column;
+}
+
+.meet-section-one-stroke-header {
+  min-height: 1.25em;
+  max-height: 1.25em;
 }
 
 .meet-section-one-stroke-body {
@@ -517,23 +523,31 @@ body {
   box-shadow: 0px 0px 2px black inset;
 }
 
-.meet-section-one-stroke .no-edit:hover {
-  box-shadow: unset;
-}
-
-.meet-section-one-stroke .no-edit:focus {
-  outline: unset;
-  box-shadow: unset;
+.meet-section-one-stroke-rest {
+  position: relative;
+  flex-grow: 1;
+  /* left: calc(-1 * var(--heat-spacing));
+  width: calc(100% + var(--heat-spacing)); */
+  background-color: var(--card-background);
 }
 
 /* =========================================== */
 
 .meet-section-heats {
-  margin-left: calc(-1 * var(--heat-spacing));
+  /* margin-left: calc(-1 * var(--heat-spacing)); */
+  margin-top: 1.25em;
   width: var(--heat-spacing);
   display: flex;
   flex-direction: column;
   background-color: var(--card-background);
+}
+
+.meet-section-heats input {
+  font-family: 'Space Mono', monospace;
+  font-size: small;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.2em;
 }
 
 /* =========================================== */
@@ -547,14 +561,6 @@ body {
 }
 
 .meet-section-swimmers > input {
-  background-color: var(--card-background);
-}
-
-.meet-section-one-stroke-rest {
-  position: relative;
-  flex-grow: 1;
-  left: calc(-1 * var(--heat-spacing));
-  width: calc(100% + var(--heat-spacing));
   background-color: var(--card-background);
 }
 
