@@ -486,6 +486,15 @@ body {
   /* flex-wrap: wrap; */
 }
 
+.meet-section-heats {
+  /* margin-left: calc(-1 * var(--heat-spacing)); */
+  margin-top: 1.25em;
+  width: var(--heat-spacing);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-background);
+}
+
 /* =========================================== */
 
 .meet-section-one-stroke {
@@ -506,23 +515,6 @@ body {
   display: flex;
 }
 
-.meet-section-one-stroke input {
-  font-family: 'Space Mono', monospace;
-  font-size: small;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.2em;
-}
-
-.meet-section-one-stroke input:hover {
-  box-shadow: 0px 0px 2px black inset;
-}
-
-.meet-section-one-stroke input:focus {
-  outline: unset;
-  box-shadow: 0px 0px 2px black inset;
-}
-
 .meet-section-one-stroke-rest {
   position: relative;
   flex-grow: 1;
@@ -533,21 +525,30 @@ body {
 
 /* =========================================== */
 
-.meet-section-heats {
-  /* margin-left: calc(-1 * var(--heat-spacing)); */
-  margin-top: 1.25em;
-  width: var(--heat-spacing);
-  display: flex;
-  flex-direction: column;
-  background-color: var(--card-background);
-}
-
-.meet-section-heats input {
+.meet-section-body input {
   font-family: 'Space Mono', monospace;
   font-size: small;
   width: 100%;
   box-sizing: border-box;
   padding: 0.2em;
+}
+
+.meet-section-body input:hover {
+  box-shadow: 0px 0px 2px black inset;
+}
+
+.meet-section-body input:focus {
+  outline: unset;
+  box-shadow: 0px 0px 2px black inset;
+}
+
+.relay .meet-section-heats > input:hover {
+  box-shadow: unset;
+}
+
+.relay .meet-section-heats > input:focus {
+  outline: none;
+  box-shadow: unset;
 }
 
 /* =========================================== */
