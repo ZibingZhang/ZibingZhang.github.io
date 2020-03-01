@@ -320,10 +320,9 @@ body {
 
 /* =========================================== */
 
-/* .header-card-button {
+.header-card-button {
   width: max-content;
   height: 100%;
-  margin-right: 2em;
   padding: 0em 1em;
   display: flex;
   align-items: center;
@@ -351,7 +350,7 @@ body {
 
 .header-card-button:active > .header-card-button-text {
   color: white;
-} */
+}
 
 /* =========================================== */
 
@@ -523,6 +522,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   padding: 0.2em;
+  border: lightgray solid 0.5px;
 }
 
 .meet-section-body input:hover {
