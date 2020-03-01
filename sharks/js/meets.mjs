@@ -47,12 +47,12 @@ function addDualMeets(meets) {
   });
 }
 
-function addOtherMeets(meets) {
-  const dualMeets = document.getElementById('left-sidebar-section-other-meets');
-  meets.forEach(meet => {
-    dualMeets.appendChild(createLeftSidebarSectionItem(meet.name, meet.id, meet.onclick))
-  });
-}
+// function addOtherMeets(meets) {
+//   const dualMeets = document.getElementById('left-sidebar-section-other-meets');
+//   meets.forEach(meet => {
+//     dualMeets.appendChild(createLeftSidebarSectionItem(meet.name, meet.id, meet.onclick))
+//   });
+// }
 
 function loadLeftSideBar(meetsBasicInfo) {
   let dualMeets = [];
@@ -61,37 +61,37 @@ function loadLeftSideBar(meetsBasicInfo) {
     dualMeets.push({
       name: meet.name, 
       id: meet.id, 
-      onclick: () => {
+      onclick: async () => {
+        if (state.isDisplayingMeetInfo) await getAndSetMeetInfo(meet.id);
         setHeaderCardMeetInfo(
           meet.id,
           meet.name, 
           `${numberToMonth(date.month)}  ${date.day}`, 
           meet.is_home ? 'Home' : 'Away'
         );
-        if (state.isDisplayingMeetInfo) getAndSetMeetInfo(meet.id);
       }
     });
   });
-  let otherMeets = [];
-  meetsBasicInfo.otherMeets.forEach(meet => {
-    let date = isoToDict(meet.date);
-    otherMeets.push({
-      name: meet.name, 
-      id: meet.id, 
-      onclick: () => {
-        setHeaderCardMeetInfo(
-          meet.id,
-          meet.name, 
-          `${numberToMonth(date.month)}  ${date.day}`, 
-          meet.location
-        );
-        if (state.isDisplayingMeetInfo) getAndSetMeetInfo(meet.id);
-      }
-    });
-  });
+  // let otherMeets = [];
+  // meetsBasicInfo.otherMeets.forEach(meet => {
+  //   let date = isoToDict(meet.date);
+  //   otherMeets.push({
+  //     name: meet.name, 
+  //     id: meet.id, 
+  //     onclick: () => {
+  //       setHeaderCardMeetInfo(
+  //         meet.id,
+  //         meet.name, 
+  //         `${numberToMonth(date.month)}  ${date.day}`, 
+  //         meet.location
+  //       );
+  //       if (state.isDisplayingMeetInfo) getAndSetMeetInfo(meet.id);
+  //     }
+  //   });
+  // });
 
   addDualMeets(dualMeets);
-  addOtherMeets(otherMeets);
+  // addOtherMeets(otherMeets);
 }
 
 async function loadInitialData() {
@@ -114,38 +114,59 @@ loadInitialData();
 
 function setMeetInfo(data) {
   clearAllSections();
-  console.log(data);
+
+  [
+    {class: 'section-8-under', name: '8-under'},
+    {class: 'section-9-10', name: '9-10'},
+    {class: 'section-11-12', name: '11-12'},
+    {class: 'section-13-14', name: '13-14'},
+    {class: 'section-15-over', name: '15-over'}
+  ].forEach(section => { 
+    setSectionData(section.class, data.sections[section.name], true, true);
+  });
+
+  [
+    {class: 'section-medley-relay', name: 'medley-relay'},
+    {class: 'section-free-relay', name: 'free-relay'}
+  ].forEach(section => {
+    setSectionData(section.class, data.sections[section.name], false, false);
+  });
 }
 
 function clearMeetInfo() {
   clearAllSections();
 }
 
-function getMeetInfo(id) {
-  axios.get(`${BASE_URL}/meet/meet-data/id/${id}`, { headers: { authentication: state.authenticationToken } }).then(r => {
-    state.isDisplayingMeetInfo = true;
+async function getMeetInfo(id) {
+  await axios.get(`${BASE_URL}/meet/meet-data/id/${id}`, { headers: { authentication: state.authenticationToken } }).then(r => {
     state.currentMeetInitialState = r.data;
     setMeetInfo(r.data);
   }).catch(e => {
-    state.isDisplayingMeetInfo = false;
     clearMeetInfo();
   });
 }
 
-function getAndSetMeetInfo(id) {
-  getMeetInfo(id);
+async function getAndSetMeetInfo(id) {
+  await getMeetInfo(id);
 }
 
 /* =========================================== */
 
 function listenAuthTokenInput() {
-  let authTokenInput = document.querySelector('.authentication-token input');
+  let authTokenInput = document.querySelector('#authentication-token-input input');
   authTokenInput.onkeypress = e => { if (e.keyCode === 13) { document.activeElement.blur(); } };  // lose focus
   authTokenInput.addEventListener('focusout', () => { 
     state.authenticationToken = authTokenInput.value;
-    if (state.isDisplayingMeetInfo === false) {
-      getAndSetMeetInfo(getCurrentMeetId());
-    }
+    axios.get(`${BASE_URL}/meet/can-view`, { headers: { authentication: state.authenticationToken } }).then(r => {
+      if (state.isDisplayingMeetInfo === false) {
+        getAndSetMeetInfo(getCurrentMeetId());
+        state.isDisplayingMeetInfo = true;
+
+        const saveButton = document.querySelector('#save-button');
+        saveButton.className = saveButton.className.replace('visibility-hidden', '');
+        document.querySelector('#authentication-token-input').className += ' visibility-hidden position-absolute';
+      }
+    });
   });
 }
 
@@ -157,7 +178,7 @@ function addRowToSection(sectionId) {
   function newHeatInput() {
     const heat = document.createElement('input');
     heat.className = 'meet-section-heats-input';
-    heat.spellcheck = 'false';
+    heat.spellcheck = false;
     heat.value = 'H?L?';
     return heat;
   }
@@ -165,7 +186,7 @@ function addRowToSection(sectionId) {
   function newSwimmerInput() {
     const swimmer = document.createElement('input');
     swimmer.className = 'meet-section-swimmers-input';
-    swimmer.spellcheck = 'false';
+    swimmer.spellcheck = false;
     return swimmer;
   }
 
@@ -246,19 +267,24 @@ function linkAllButtonsAgeSection(sectionId) {
 
 /* =========================================== */
 
-function getArrayOfSection(sectionId, includeHeats) {
+function getColumns(sectionId, includeHeatColumns) {
   let columns = []
-  if (includeHeats === true) columns.push(document.querySelector(`#${sectionId} .background-girls .meet-section-heats`));
+  if (includeHeatColumns === true) columns.push(document.querySelector(`#${sectionId} .background-girls .meet-section-heats`));
   columns.push(document.querySelector(`#${sectionId} .background-girls .butterfly .meet-section-swimmers`));
   columns.push(document.querySelector(`#${sectionId} .background-girls .freestyle .meet-section-swimmers`));
   columns.push(document.querySelector(`#${sectionId} .background-girls .breastroke .meet-section-swimmers`));
   columns.push(document.querySelector(`#${sectionId} .background-girls .backstroke .meet-section-swimmers`));
-  if (includeHeats === true) columns.push(document.querySelector(`#${sectionId} .background-boys .meet-section-heats`));
+  if (includeHeatColumns === true) columns.push(document.querySelector(`#${sectionId} .background-boys .meet-section-heats`));
   columns.push(document.querySelector(`#${sectionId} .background-boys .butterfly .meet-section-swimmers`));
   columns.push(document.querySelector(`#${sectionId} .background-boys .freestyle .meet-section-swimmers`));
   columns.push(document.querySelector(`#${sectionId} .background-boys .breastroke .meet-section-swimmers`));
   columns.push(document.querySelector(`#${sectionId} .background-boys .backstroke .meet-section-swimmers`));
-  
+  return columns;
+}
+
+function getSectionData(sectionId, includeHeats) {
+  let columns = getColumns(sectionId, includeHeats);
+
   let dataByColumn = [];
   columns.forEach(column => {
     let columnData = []
@@ -281,5 +307,33 @@ function getArrayOfSection(sectionId, includeHeats) {
     dataByRow.push(row);
   }
 
-  return dataByRow
+  return dataByRow;
+}
+
+function setSectionData(sectionId, data, heatsIncluded, shouldAppend) {
+  let columns = getColumns(sectionId, heatsIncluded);
+  const numRows = data.length;
+  const numColumns = columns.length;
+
+  if (shouldAppend) {
+    for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
+      for (let columnIndex = 0; columnIndex < numColumns; columnIndex++) {
+        const input = document.createElement('input');
+        input.className = 'meet-section-swimmers-input';
+        if (heatsIncluded && (columnIndex === 0 || columnIndex === 4)) input.className += ' no-edit';
+        input.spellcheck = false;
+        input.value = data[rowIndex][columnIndex];
+        columns[columnIndex].appendChild(input);
+      }
+    }
+  } else {
+    for (let columnIndex = 0; columnIndex < numColumns; columnIndex++) {
+      let rowIndex = 0;
+      columns[columnIndex].childNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          node.value = data[rowIndex++][columnIndex];
+        }
+      });
+    }
+  }
 }
