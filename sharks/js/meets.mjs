@@ -225,56 +225,6 @@ function clearAllSections() {
   ].forEach(sectionId => clearRelaySection(sectionId));
 }
 
-function resetAgeSection(sectionId) {
-  const resetRowNumber = 6;
-  const defaultRowLabels = [
-    'H1L3',
-    'H1L5',
-    'H1L1',
-    'H2L3',
-    'H2L5',
-    'H2L1'
-  ];
-
-  const heatSections = document.querySelectorAll(`#${sectionId} .meet-section-heats`);
-  heatSections.forEach(heatSection => {
-    if (heatSection.childElementCount > resetRowNumber) {
-      while (heatSection.childElementCount > resetRowNumber) {
-        subtractRowFromSection(sectionId);
-      }
-    } else if (heatSection.childElementCount < resetRowNumber) {
-      while (heatSection.childElementCount < resetRowNumber) {
-        addRowToSection(sectionId);
-      }
-    }
-
-    let index = 0;
-    heatSection.childNodes.forEach(row => {
-      if (row.nodeType === 1) {
-        row.value = defaultRowLabels[index++];
-      }
-    });
-  });
-
-  const swimmerSections = document.querySelectorAll(`#${sectionId} .meet-section-swimmers`);
-  swimmerSections.forEach(swimmerSection => {
-    if (swimmerSection.childElementCount > resetRowNumber) {
-      while (swimmerSection.childElementCount > resetRowNumber) {
-        subtractRowFromSection(sectionId);
-      }
-    } else if (swimmerSection.childElementCount < resetRowNumber) {
-      while (swimmerSection.childElementCount < resetRowNumber) {
-        addRowToSection(sectionId);
-      }
-    }
-  });
-
-  const swimmerInputs = document.querySelectorAll(`#${sectionId} .meet-section-swimmers input`);
-  swimmerInputs.forEach(input => {
-    input.value = '';
-  });
-}
-
 function listenSectionButton(sectionId, buttonClass, onClickFunction) {
   document.querySelector(`#${sectionId} .${buttonClass}`).onclick = onClickFunction;
 }
@@ -282,7 +232,6 @@ function listenSectionButton(sectionId, buttonClass, onClickFunction) {
 function linkAllButtonsAgeSection(sectionId) {
   listenSectionButton(sectionId, 'add-row', () => addRowToSection(sectionId));
   listenSectionButton(sectionId, 'sub-row', () => subtractRowFromSection(sectionId));
-  // listenSectionButton(sectionId, 'reset', () => resetAgeSection(sectionId));
 }
 
 [

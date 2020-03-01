@@ -460,14 +460,6 @@ body {
 #section-15-over > .meet-section-header:hover .meet-section-header-button { visibility: visible; }
 #section-free-relay > .meet-section-header:hover .meet-section-header-button { visibility: visible; }
 
-#section-medley-relay > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-#section-8-under > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-#section-9-10 > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-#section-11-12 > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-#section-13-14 > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-#section-15-over > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-#section-free-relay > .meet-section-header > .meet-section-header-button-container > .reset { visibility: hidden; }
-
 /* =========================================== */
 
 .meet-section-body {
