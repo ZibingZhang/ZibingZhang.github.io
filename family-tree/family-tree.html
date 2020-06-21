@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' >
+<head>
+	<style type='text/css' media='screen'>
+		* { margin: 0; padding: 0; white-space: nowrap; }
+
+		.tree ul {
+			padding-top: 20px; position: relative;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		.tree li {
+			display: inline-block; text-align: center;
+			vertical-align: top;
+			list-style-type: none;
+			position: relative;
+			padding: 20px 5px 0 5px;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		/* Connectors between generations. */
+		.tree li::before, .tree li::after{
+			content: '';
+			position: absolute; top: 0; right: 50%;
+			border-top: 1px solid #ccc;
+			width: 50%; height: 45px;
+			z-index: -1;
+		}
+
+		.tree li::after{
+			right: auto; left: 50%;
+			border-left: 1px solid #ccc;
+		}
+
+		/*We need to remove left-right connectors from elements without 
+		any siblings*/
+		.tree li:only-child::after, .tree li:only-child::before {
+			display: none;
+		}
+
+		/* Remove space from the top of single children. */
+		.tree li:only-child{ padding-top: 0;}
+
+		/* Remove left connector from first child and right connector from last child. */
+		.tree li:first-child::before, .tree li:last-child::after{
+			border: 0 none;
+		}
+
+		/* Adding back the vertical connector to the last nodes. */
+		.tree li:last-child::before{
+			border-right: 1px solid #ccc;
+			border-radius: 0 5px 0 0;
+			
+			-webkit-transform: translateX(1px);
+			-moz-transform: translateX(1px);
+			transform: translateX(1px);
+			
+			-webkit-border-radius: 0 5px 0 0;
+			-moz-border-radius: 0 5px 0 0;
+			border-radius: 0 5px 0 0;
+		}
+
+		.tree li:first-child::after{
+			border-radius: 5px 0 0 0;
+			-webkit-border-radius: 5px 0 0 0;
+			-moz-border-radius: 5px 0 0 0;
+		}
+
+		/* Downward connectors from parents. */
+		.tree ul ul::before{
+			content: '';
+			position: absolute; top: -13px; left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0; height: 33px;
+			z-index: -1;
+		}
+
+		.tree ul ul.extended::before{
+			content: '';
+			position: absolute; top: -13px; left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0; height: 48px;
+			z-index: -1;
+		}
+
+		/* Formatting for cell. */
+		.tree li a {
+			vertical-align: top;
+			border: 1px solid #ccc;
+			padding: 5px 10px;
+			text-decoration: none;
+			color: #666;
+			font-family: arial, verdana, tahoma;
+			font-size: 14px;
+			display: inline-block;
+			background: white;
+			width: 75px;
+	
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+	
+			-webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s;
+		}
+
+		/* Married parents. */
+		.tree li a+a {
+			margin-left: 20px;
+			position: relative;
+		}
+
+		/* Connector between married parents. */
+		.tree li a+a::before {
+			content: '';
+			position: absolute;
+			border-top: 1px solid #ccc;
+			top: 14px; left: -25px; 
+			width: 25px;
+		}
+
+		/* Hover Effects */
+		/* Darken text. */
+		.tree li a:hover, .tree li a:hover~ul li a {
+			color: #000; border: 1px solid #94a0b4;
+		}
+
+		/* Male background color. */
+		.tree li a.male:hover, .tree li a:hover~ul a.male {
+			background: #c8e4f8; 
+		}
+
+		/* Female background color. */
+		.tree li a.female:hover, .tree li a:hover~ul a.female {
+			background: #ffc7ce; 
+		}
+
+		/* Deceased background color. */
+		.tree li a.male.deceased:hover, .tree li a:hover~ul a.male.deceased {
+			background: #a4b4be;
+		}
+
+		.tree li a.female.deceased:hover, .tree li a:hover~ul a.female.deceased {
+			background: #b1979a;
+		}
+	</style>
+</head>
+<body>
+	<div class='tree'>
+		<ul>
+			<li>
+				<a href='#' class='male'>章守道</a>
+				<a href='#' class='female'>叶菊花</a>
+				<ul class='extended'>
+					<li>
+						<a href='#' class='male'>章绥忠</a>
+						<a href='#' class='female'>徐瑞香</a>
+						<ul>
+							<li>
+								<a href='#' class='male'>朱家隽</a>
+								<a href='#' class='female'>章芸芝</a>
+								<ul>
+									<li>
+										<a href='#' class='male'>张涌展</a>
+										<a href='#' class='female'>朱萍</a>
+										<ul>
+											<a href='#' class='female'>张婧琼</a>
+										</ul>
+									</li
+									><li>
+										<a href='#' class='male'>范在博</a>
+										<a href='#' class='female'>朱娟</a>
+										<ul class='extended'>
+											<a href='#' class='male'>范立舜</a>
+											<a href='#' class='female'>王文思</a>
+										</ul>
+									</li>
+								</ul>
+							</li
+							><li>
+								<a href='#' class='male'>章成德</a>
+								<a href='#' class='female'>陈殿夷</a>
+								<ul>
+									<li>
+										<a href='#' class='male'>马海文</a>
+										<a href='#' class='female'>章音</a>
+										<ul>
+											<a href='#' class='male'>马竞骁</a>
+										</ul>
+									</li
+									><li>
+										<a href='#' class='male'>章宁</a>
+										<a href='#' class='female'>李玫</a>
+										<ul>
+											<li>
+												<a href='#' class='male'>章子冰</a>
+											</li
+											><li>
+												<a href='#' class='female'>章子凌</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li
+							><li>
+								<a href='#' class='male'>章燧德</a>
+								<a href='#' class='female deceased'>陈万灵</a>
+								<ul class='extended'>
+									<li>
+										<a href='#' class='male'>王炜</a>
+										<a href='#' class='female'>章蔚</a>
+										<ul>
+											<a href='#' class='female'>王蕴博</a>
+										</ul>
+									</li>
+								</ul>
+							</li
+							><li>
+								<a href='#' class='male'>章厚德</a>
+								<a href='#' class='female'>刘梅</a>
+								<ul class='extended'>
+									<li>
+										<a href='#' class='male'>章震</a>
+										<a href='#' class='female'>罗晴</a>
+										<ul>
+											<a href='#' class='female'>章子怡</a>
+										</ul>
+									</li>
+								</ul>
+							</li
+							><li>
+								<a href='#' class='male'>章骏德</a>
+								<a href='#' class='female'>刘玲珍</a>
+								<ul class='extended'>
+									<li>
+										<a href='#' class='male'>章欣</a>
+										<a href='#' class='female'>黄海云</a>
+										<ul>
+											<a href='#' class='female'>章子楠</a>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
+
+<!-- zhangjingqiong 章婧琼
+fanlishun 范立舜
+wangwensi 王文思
+majingxiao 马竞骁
+wangyunbo 王蕴博
+zhangziyi 章子怡
+zhangzinan 章子楠
+zhupin 朱萍
+zhangyongzhan 张涌展
+zhujuan 朱娟
+fanzaibo 范在博
+zhangwei 章蔚
+wangwei 王炜
+zhangzhen 章震
+luoqing 罗晴
+zhangxin 章欣
+huanghaiyun 黄海云
+zhangyunzhi 章芸芝
+zhujiajun 朱家隽
+zhangchengde 章成德
+chendianyi 陈殿夷
+zhangsuide 章燧德
+chenwanling 陈万灵 （D）
+zhanghoude 章厚德
+liumei 刘梅
+zhangjunde 章骏德
+liulingzhen 刘玲珍
+zhangsuizhong 章绥忠
+xuruixiang 徐瑞香
+zhangshoudao 章守道
+yejuhua 叶菊花 -->
+
+
+
