@@ -698,10 +698,24 @@
 			treeElement.appendChild(newlineTextNode());
 
 			generateElements(parentElement, tree);
+
+			window.history.replaceState(null, null, `?id=${id}`);
 		}
 
 		window.addEventListener('DOMContentLoaded', () => {
-			updatePage(20);
+			const url = window.location.href;
+
+			try {
+				const args = url.split(/\?(.*)/)[1];
+				const match = args.match(/^id\=(?<id>\d+)[#]?$/);
+				const groups = match.groups;
+				const id = parseInt(groups.id);
+				const initialPerson = getPerson(id);
+				if (!initialPerson) throw 'Person with ID not found.';
+				updatePage(initialPerson.id)
+			} catch (e) {
+				updatePage(20);
+			}
 		});
 	</script>
 </head>
