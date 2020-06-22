@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<!-- Credit to http://thecodeplayer.com/experiments/css3-family-tree-multiple-parents.html for the starter code. -->
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' >
 <head>
-	<!-- Credit to http://thecodeplayer.com/experiments/css3-family-tree-multiple-parents.html for the starter code. -->
 	<style type='text/css' media='screen'>
 		* { margin: 0; padding: 0; white-space: nowrap; }
 
@@ -129,166 +129,404 @@
 
 		/* Hover Effects */
 		/* Darken text. */
-		.tree li a:hover, .tree li a:hover~ul li a {
+		/* .tree li a:hover, .tree li a:hover~ul a */
+		.tree li a, .tree li a~ul a {
 			color: #000; border: 1px solid #94a0b4;
 		}
 
 		/* Male background color. */
-		.tree li a.male:hover, .tree li a:hover~ul a.male {
+		/* .tree li a.male:hover, .tree li a:hover~ul a.male */
+		.tree li a.male, .tree li a~ul a.male {
 			background: #c8e4f8; 
 		}
 
 		/* Female background color. */
-		.tree li a.female:hover, .tree li a:hover~ul a.female {
+		/* .tree li a.female:hover, .tree li a:hover~ul a.female */
+		.tree li a.female, .tree li a~ul a.female {
 			background: #ffc7ce; 
 		}
 
-		/* Deceased background color. */
-		.tree li a.male.deceased:hover, .tree li a:hover~ul a.male.deceased {
+		/* Deceased background colors. */
+		/* .tree li a.male.deceased:hover, .tree li a:hover~ul a.male.deceased */
+		.tree li a.male.deceased, .tree li a~ul a.male.deceased {
 			background: #a4b4be;
 		}
 
-		.tree li a.female.deceased:hover, .tree li a:hover~ul a.female.deceased {
+		/* .tree li a.female.deceased:hover, .tree li a:hover~ul a.female.deceased */
+		.tree li a.female.deceased, .tree li a~ul a.female.deceased {
 			background: #b1979a;
 		}
 	</style>
+
+	<script>
+		const people = [
+			{
+				id: 0,
+				sex: 'male',
+				name: '章守道',
+				spouseId: 1,
+				childrenIds: [2]
+			},
+			{
+				id: 1,
+				sex: 'female',
+				name: '叶菊花',
+				spouseId: 0
+			},
+			{
+				id: 2,
+				sex: 'male',
+				name: '章绥忠',
+				spouseId: 3,
+				fathersId: 0,
+				childrenIds: [5, 13, 22, 27, 32]
+			},
+			{
+				id: 3,
+				sex: 'female',
+				name: '徐瑞香',
+				spouseId: 2
+			},
+			{
+				id: 4,
+				sex: 'male',
+				name: '朱家隽',
+				spouseId: 5,
+				childrenIds: [7, 10]
+			},
+			{
+				id: 5,
+				sex: 'female',
+				name: '章芸芝',
+				spouseId: 4,
+				fathersId: 2
+			},
+			{
+				id: 6,
+				sex: 'male',
+				name: '张涌展',
+				spouseId: 7,
+				childrenIds: [8]
+			},
+			{
+				id: 7,
+				sex: 'female',
+				name: '朱萍',
+				spouseId: 6,
+				fathersId: 4
+			},
+			{
+				id: 8,
+				sex: 'female',
+				name: '张婧琼',
+				fathersId: 6
+			},
+			{
+				id: 9,
+				sex: 'male',
+				name: '范在博',
+				spouseId: 10,
+				childrenIds: [11]
+			},
+			{
+				id: 10,
+				sex: 'female',
+				name: '朱娟',
+				spouseId: 9,
+				fathersId: 4
+			},
+			{
+				id: 11,
+				sex: 'male',
+				name: '范立舜',
+				spouseId: 12,
+				fathersId: 9
+			},
+			{
+				id: 12,
+				sex: 'female',
+				name: '王文思',
+				spouseId: 11
+			},
+			{
+				id: 13,
+				sex: 'male',
+				name: '章成德',
+				spouseId: 14,
+				fathersId: 2,
+				childrenIds: [16, 18]
+			},
+			{
+				id: 14,
+				sex: 'female',
+				name: '陈殿夷',
+				spouseId: 13
+			},
+			{
+				id: 15,
+				sex: 'male',
+				name: '马海文',
+				spouseId: 16,
+				childrenIds: [17]
+			},
+			{
+				id: 16,
+				sex: 'female',
+				name: '章音',
+				spouseId: 15,
+				fathersId: 13
+			},
+			{
+				id: 17,
+				sex: 'male',
+				name: '马竞骁',
+				fathersId: 15
+			},
+			{
+				id: 18,
+				sex: 'male',
+				name: '章宁',
+				spouseId: 19,
+				fathersId: 13,
+				childrenIds: [20, 21]
+			},
+			{
+				id: 19,
+				sex: 'female',
+				name: '李玫',
+				spouseId: 18
+			},
+			{
+				id: 20,
+				sex: 'male',
+				name: '章子冰',
+				fathersId: 18
+			},
+			{
+				id: 21,
+				sex: 'female',
+				name: '章子凌',
+				fathersId: 18
+			},
+			{
+				id: 22,
+				sex: 'male',
+				name: '章燧德',
+				spouseId: 23,
+				fathersId: 2,
+				childrenIds: [25]
+			},
+			{
+				id: 23,
+				sex: 'female',
+				name: '陈万灵',
+				deceased: true,
+				spouseId: 22
+			},
+			{
+				id: 24,
+				sex: 'male',
+				name: '王炜',
+				spouseId: 25,
+				childrenIds: [26]
+			},
+			{
+				id: 25,
+				sex: 'female',
+				name: '章蔚',
+				spouseId: 24,
+				fathersId: 22
+			},
+			{
+				id: 26,
+				sex: 'female',
+				name: '王蕴博',
+				fathersId: 24
+			},
+			{
+				id: 27,
+				sex: 'male',
+				name: '章厚德',
+				spouseId: 28,
+				fathersId: 2,
+				childrenIds: [29]
+			},
+			{
+				id: 28,
+				sex: 'female',
+				name: '刘梅',
+				spouseId: 27
+			},
+			{
+				id: 29,
+				sex: 'male',
+				name: '章震',
+				spouseId: 30,
+				fathersId: 27,
+				childrenIds: [31]
+			},
+			{
+				id: 30,
+				sex: 'female',
+				name: '罗晴',
+				spouseId: 29
+			},
+			{
+				id: 31,
+				sex: 'female',
+				name: '章子怡',
+				fathersIds: 29
+			},
+			{
+				id: 32,
+				sex: 'male',
+				name: '章骏德',
+				spouseId: 33,
+				fathersId: 2,
+				childrenIds: [34]
+			},
+			{
+				id: 33,
+				sex: 'female',
+				name: '刘玲珍',
+				spouseId: 32
+			},
+			{
+				id: 34,
+				sex: 'male',
+				name: '章欣',
+				spouseId: 35,
+				fathersId: 32,
+				childrenIds: [36]
+			},
+			{
+				id: 35,
+				sex: 'female',
+				name: '黄海云',
+				spouseId: 34
+			},
+			{
+				id: 36,
+				sex: 'female',
+				name: '章子楠',
+				fathersId: 34
+			}
+		];
+
+		function getPerson(id) {
+			for (const person of people) {
+				if (person.id === id) {
+					return person;
+				}
+			}
+		}
+
+		function getRoot(id) {
+			const person = getPerson(id);
+			const fathersId = person.fathersId;
+			if (fathersId === undefined) {
+				return person;
+			} else {
+				return getRoot(fathersId)
+			}
+		}
+
+		function generateTree(root) {
+			const spouseId = root.spouseId;
+			let childrenIds;
+
+			const node = { people: [], children: [] };
+			
+			if (!spouseId) {
+				node.people.push(root);
+			} else {
+				const spouse = getPerson(spouseId);
+
+				if (root.sex === 'male') {
+					node.people.push(root);
+					node.people.push(getPerson(spouseId));
+					childrenIds = root.childrenIds;
+				} else {
+					node.people.push(getPerson(spouseId));
+					node.people.push(root);
+					childrenIds = spouse.childrenIds;
+				}
+			}
+
+			if (childrenIds) {
+				for (const childId of childrenIds) {
+					const child = getPerson(childId);
+					const childNode = generateTree(child);
+					node.children.push(childNode);
+				}
+			}
+
+			return node;
+		}
+
+		const newlineTextNode = () => document.createTextNode('\n');
+
+		function generateElements(parentElement, node) {
+			const listElement = document.createElement('li');
+
+			parentElement.appendChild(listElement);
+
+			for (const person of node.people) {
+				const element = document.createElement('a');
+
+				let elementClass = '';
+				elementClass += person.sex;
+				if (element.deceased) elementClass += ' deceased';
+
+				element.setAttribute('href', '#');
+				element.setAttribute('class', elementClass);
+				element.onclick = () => updatePage(person.id);
+				element.innerHTML = person.name;
+				
+				listElement.appendChild(newlineTextNode());
+				listElement.appendChild(element);
+			}
+
+			if (node.children.length > 0) {
+				listElement.appendChild(newlineTextNode());
+				const childrenListElement = document.createElement('ul');
+
+				if (node.children.length === 1) {
+					childrenListElement.setAttribute('class', 'extended');
+				}
+
+				listElement.appendChild(childrenListElement);
+				for (const child of node.children) {
+					generateElements(childrenListElement, child);
+				}
+				listElement.appendChild(newlineTextNode());
+			}
+		}
+
+		function updatePage(id) {
+			const root = getRoot(id);
+			const tree = generateTree(root);
+			
+			const treeElement = document.getElementsByClassName('tree')[0];
+			while (treeElement.childNodes.length > 0) {
+				treeElement.removeChild(treeElement.firstChild);
+			}
+
+			const parentElement = document.createElement('ul');
+
+			treeElement.appendChild(newlineTextNode());
+			treeElement.appendChild(parentElement);
+			treeElement.appendChild(newlineTextNode());
+
+			generateElements(parentElement, tree);
+		}
+
+		window.addEventListener('DOMContentLoaded', () => {
+			updatePage(20);
+		});
+	</script>
 </head>
 <body>
-	<div class='tree'>
-		<ul>
-			<li>
-				<a href='#' class='male'>章守道</a>
-				<a href='#' class='female'>叶菊花</a>
-				<ul class='extended'>
-					<li>
-						<a href='#' class='male'>章绥忠</a>
-						<a href='#' class='female'>徐瑞香</a>
-						<ul>
-							<li>
-								<a href='#' class='male'>朱家隽</a>
-								<a href='#' class='female'>章芸芝</a>
-								<ul>
-									<li>
-										<a href='#' class='male'>张涌展</a>
-										<a href='#' class='female'>朱萍</a>
-										<ul>
-											<a href='#' class='female'>张婧琼</a>
-										</ul>
-									</li
-									><li>
-										<a href='#' class='male'>范在博</a>
-										<a href='#' class='female'>朱娟</a>
-										<ul class='extended'>
-											<a href='#' class='male'>范立舜</a>
-											<a href='#' class='female'>王文思</a>
-										</ul>
-									</li>
-								</ul>
-							</li
-							><li>
-								<a href='#' class='male'>章成德</a>
-								<a href='#' class='female'>陈殿夷</a>
-								<ul>
-									<li>
-										<a href='#' class='male'>马海文</a>
-										<a href='#' class='female'>章音</a>
-										<ul>
-											<a href='#' class='male'>马竞骁</a>
-										</ul>
-									</li
-									><li>
-										<a href='#' class='male'>章宁</a>
-										<a href='#' class='female'>李玫</a>
-										<ul>
-											<li>
-												<a href='#' class='male'>章子冰</a>
-											</li
-											><li>
-												<a href='#' class='female'>章子凌</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li
-							><li>
-								<a href='#' class='male'>章燧德</a>
-								<a href='#' class='female deceased'>陈万灵</a>
-								<ul class='extended'>
-									<li>
-										<a href='#' class='male'>王炜</a>
-										<a href='#' class='female'>章蔚</a>
-										<ul>
-											<a href='#' class='female'>王蕴博</a>
-										</ul>
-									</li>
-								</ul>
-							</li
-							><li>
-								<a href='#' class='male'>章厚德</a>
-								<a href='#' class='female'>刘梅</a>
-								<ul class='extended'>
-									<li>
-										<a href='#' class='male'>章震</a>
-										<a href='#' class='female'>罗晴</a>
-										<ul>
-											<a href='#' class='female'>章子怡</a>
-										</ul>
-									</li>
-								</ul>
-							</li
-							><li>
-								<a href='#' class='male'>章骏德</a>
-								<a href='#' class='female'>刘玲珍</a>
-								<ul class='extended'>
-									<li>
-										<a href='#' class='male'>章欣</a>
-										<a href='#' class='female'>黄海云</a>
-										<ul>
-											<a href='#' class='female'>章子楠</a>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+	<div class='tree'></div>
 </body>
 </html>
-
-<!-- zhangjingqiong 章婧琼
-fanlishun 范立舜
-wangwensi 王文思
-majingxiao 马竞骁
-wangyunbo 王蕴博
-zhangziyi 章子怡
-zhangzinan 章子楠
-zhupin 朱萍
-zhangyongzhan 张涌展
-zhujuan 朱娟
-fanzaibo 范在博
-zhangwei 章蔚
-wangwei 王炜
-zhangzhen 章震
-luoqing 罗晴
-zhangxin 章欣
-huanghaiyun 黄海云
-zhangyunzhi 章芸芝
-zhujiajun 朱家隽
-zhangchengde 章成德
-chendianyi 陈殿夷
-zhangsuide 章燧德
-chenwanling 陈万灵 （D）
-zhanghoude 章厚德
-liumei 刘梅
-zhangjunde 章骏德
-liulingzhen 刘玲珍
-zhangsuizhong 章绥忠
-xuruixiang 徐瑞香
-zhangshoudao 章守道
-yejuhua 叶菊花 -->
-
-
-
