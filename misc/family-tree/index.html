@@ -30,7 +30,7 @@
 			content: '';
 			position: absolute; top: 0; right: 50%;
 			border-top: 1px solid #ccc;
-			width: 50%; height: 45px;
+			width: 50%; height: 35px;
 			z-index: -1;
 		}
 
@@ -39,14 +39,10 @@
 			border-left: 1px solid #ccc;
 		}
 
-		/*We need to remove left-right connectors from elements without 
-		any siblings*/
+		/* Remove left-right connectors from elements without any siblings. */
 		.tree li:only-child::after, .tree li:only-child::before {
 			display: none;
 		}
-
-		/* Remove space from the top of single children. */
-		.tree li:only-child{ padding-top: 0;}
 
 		/* Remove left connector from first child and right connector from last child. */
 		.tree li:first-child::before, .tree li:last-child::after{
@@ -86,7 +82,7 @@
 			content: '';
 			position: absolute; top: -13px; left: 50%;
 			border-left: 1px solid #ccc;
-			width: 0; height: 48px;
+			width: 0; height: 68px;
 			z-index: -1;
 		}
 
@@ -124,7 +120,7 @@
 			position: absolute;
 			border-top: 1px solid #ccc;
 			top: 14px; left: -25px; 
-			width: 25px;
+			width: 24px;
 		}
 
 		/* Hover Effects */
@@ -164,20 +160,20 @@
 				id: 0,
 				sex: 'male',
 				name: '章守道',
-				spouseId: 1,
+				spousesId: 1,
 				childrenIds: [2]
 			},
 			{
 				id: 1,
 				sex: 'female',
 				name: '叶菊花',
-				spouseId: 0
+				spousesId: 0
 			},
 			{
 				id: 2,
 				sex: 'male',
 				name: '章绥忠',
-				spouseId: 3,
+				spousesId: 3,
 				fathersId: 0,
 				childrenIds: [5, 13, 22, 27, 32]
 			},
@@ -185,34 +181,34 @@
 				id: 3,
 				sex: 'female',
 				name: '徐瑞香',
-				spouseId: 2
+				spousesId: 2
 			},
 			{
 				id: 4,
 				sex: 'male',
 				name: '朱家隽',
-				spouseId: 5,
+				spousesId: 5,
 				childrenIds: [7, 10]
 			},
 			{
 				id: 5,
 				sex: 'female',
 				name: '章芸芝',
-				spouseId: 4,
+				spousesId: 4,
 				fathersId: 2
 			},
 			{
 				id: 6,
 				sex: 'male',
 				name: '张涌展',
-				spouseId: 7,
+				spousesId: 7,
 				childrenIds: [8]
 			},
 			{
 				id: 7,
 				sex: 'female',
 				name: '朱萍',
-				spouseId: 6,
+				spousesId: 6,
 				fathersId: 4
 			},
 			{
@@ -225,34 +221,34 @@
 				id: 9,
 				sex: 'male',
 				name: '范在博',
-				spouseId: 10,
+				spousesId: 10,
 				childrenIds: [11]
 			},
 			{
 				id: 10,
 				sex: 'female',
 				name: '朱娟',
-				spouseId: 9,
+				spousesId: 9,
 				fathersId: 4
 			},
 			{
 				id: 11,
 				sex: 'male',
 				name: '范立舜',
-				spouseId: 12,
+				spousesId: 12,
 				fathersId: 9
 			},
 			{
 				id: 12,
 				sex: 'female',
 				name: '王文思',
-				spouseId: 11
+				spousesId: 11
 			},
 			{
 				id: 13,
 				sex: 'male',
 				name: '章成德',
-				spouseId: 14,
+				spousesId: 14,
 				fathersId: 2,
 				childrenIds: [16, 18]
 			},
@@ -260,33 +256,33 @@
 				id: 14,
 				sex: 'female',
 				name: '陈殿夷',
-				spouseId: 13
+				spousesId: 13
 			},
 			{
 				id: 15,
 				sex: 'male',
 				name: '马海文',
-				spouseId: 16,
+				spousesId: 16,
 				childrenIds: [17]
 			},
 			{
 				id: 16,
 				sex: 'female',
 				name: '章音',
-				spouseId: 15,
+				spousesId: 15,
 				fathersId: 13
 			},
 			{
 				id: 17,
 				sex: 'male',
-				name: '马竞骁',
+				name: '马竟骁',
 				fathersId: 15
 			},
 			{
 				id: 18,
 				sex: 'male',
 				name: '章宁',
-				spouseId: 19,
+				spousesId: 19,
 				fathersId: 13,
 				childrenIds: [20, 21]
 			},
@@ -294,7 +290,8 @@
 				id: 19,
 				sex: 'female',
 				name: '李玫',
-				spouseId: 18
+				spousesId: 18,
+				fathersId: 37
 			},
 			{
 				id: 20,
@@ -312,7 +309,7 @@
 				id: 22,
 				sex: 'male',
 				name: '章燧德',
-				spouseId: 23,
+				spousesId: 23,
 				fathersId: 2,
 				childrenIds: [25]
 			},
@@ -321,20 +318,20 @@
 				sex: 'female',
 				name: '陈万灵',
 				deceased: true,
-				spouseId: 22
+				spousesId: 22
 			},
 			{
 				id: 24,
 				sex: 'male',
 				name: '王炜',
-				spouseId: 25,
+				spousesId: 25,
 				childrenIds: [26]
 			},
 			{
 				id: 25,
 				sex: 'female',
 				name: '章蔚',
-				spouseId: 24,
+				spousesId: 24,
 				fathersId: 22
 			},
 			{
@@ -347,7 +344,7 @@
 				id: 27,
 				sex: 'male',
 				name: '章厚德',
-				spouseId: 28,
+				spousesId: 28,
 				fathersId: 2,
 				childrenIds: [29]
 			},
@@ -355,13 +352,13 @@
 				id: 28,
 				sex: 'female',
 				name: '刘梅',
-				spouseId: 27
+				spousesId: 27
 			},
 			{
 				id: 29,
 				sex: 'male',
 				name: '章震',
-				spouseId: 30,
+				spousesId: 30,
 				fathersId: 27,
 				childrenIds: [31]
 			},
@@ -369,19 +366,19 @@
 				id: 30,
 				sex: 'female',
 				name: '罗晴',
-				spouseId: 29
+				spousesId: 29
 			},
 			{
 				id: 31,
 				sex: 'female',
 				name: '章子怡',
-				fathersIds: 29
+				fathersId: 29
 			},
 			{
 				id: 32,
 				sex: 'male',
 				name: '章骏德',
-				spouseId: 33,
+				spousesId: 33,
 				fathersId: 2,
 				childrenIds: [34]
 			},
@@ -389,13 +386,13 @@
 				id: 33,
 				sex: 'female',
 				name: '刘玲珍',
-				spouseId: 32
+				spousesId: 32
 			},
 			{
 				id: 34,
 				sex: 'male',
 				name: '章欣',
-				spouseId: 35,
+				spousesId: 35,
 				fathersId: 32,
 				childrenIds: [36]
 			},
@@ -403,14 +400,187 @@
 				id: 35,
 				sex: 'female',
 				name: '黄海云',
-				spouseId: 34
+				spousesId: 34
 			},
 			{
 				id: 36,
 				sex: 'female',
 				name: '章子楠',
 				fathersId: 34
-			}
+			},
+			{
+				id: 37,
+				sex: 'male',
+				name: '赵培勋',
+				spousesId: 38,
+				childrenIds: [40, 42, 19]
+			},
+			{
+				id: 38,
+				sex: 'female',
+				name: '李玉兰',
+				spousesId: 37,
+				fathersId: 45
+			},
+			{
+				id: 39,
+				sex: 'male',
+				name: '孙纯国',
+				spousesId: 40,
+				childrenIds: [41]
+			},
+			{
+				id: 40,
+				sex: 'female',
+				name: '李娟',
+				spousesId: 39,
+				fathersId: 37
+			},
+			{
+				id: 41,
+				sex: 'female',
+				name: '孙文馨',
+				fathersId: 39
+			},
+			{
+				id: 42,
+				sex: 'male',
+				name: '赵希同',
+				spousesId: 43,
+				fathersId: 37,
+				childrenIds: [44]
+			},
+			{
+				id: 43,
+				sex: 'female',
+				name: '董滔',
+				spousesId: 42
+			},
+			{
+				id: 44,
+				sex: 'male',
+				name: '赵欣平',
+				fathersId: 42
+			},
+			{
+				id: 45,
+				sex: 'male',
+				name: '李？？',
+				spousesId: 46,
+				childrenIds: [38, 48, 54]
+			},
+			{
+				id: 46,
+				sex: 'female',
+				name: '？？？',
+				spousesId: 45
+			},
+			{
+				id: 47,
+				sex: 'male',
+				name: '张？？',
+				spousesId: 48,
+				childrenIds: [49]
+			},
+			{
+				id: 48,
+				sex: 'female',
+				name: '李波',
+				spousesId: 47,
+				fathersId: 45
+			},
+			{
+				id: 49,
+				sex: 'male',
+				name: '张金宁',
+				spousesId: 50,
+				fathersId: 47,
+				childrenIds: [51, 52]
+			},
+			{
+				id: 50,
+				sex: 'female',
+				name: '？？？',
+				spousesId: 49,
+			},
+			{
+				id: 51,
+				sex: 'female',
+				name: '张？？',
+				fathersId: 49
+			},
+			{
+				id: 52,
+				sex: 'female',
+				name: '张？？',
+				fathersId: 49
+			},
+			{
+				id: 53,
+				sex: 'male',
+				name: '王？？',
+				spousesId: 54,
+				childrenIds: [56, 59]
+			},
+			{
+				id: 54,
+				sex: 'female',
+				name: '李？？',
+				spousesId: 53,
+				fathersId: 45
+			},
+			{
+				id: 55,
+				sex: 'male',
+				name: '？？？',
+				spousesId: 56,
+				childrenIds: [57, 58]
+			},
+			{
+				id: 56,
+				sex: 'female',
+				name: '王卫华',
+				spousesId: 55,
+				fathersId: 53
+			},
+			{
+				id: 57,
+				sex: '',
+				name: '？？？',
+				fathersId: 55
+			},
+			{
+				id: 58,
+				sex: '',
+				name: '？？？',
+				fathersId: 55
+			},
+			{
+				id: 59,
+				sex: 'male',
+				name: '王卫东',
+				spousesId: 60,
+				fathersId: 53,
+				childrenIds: [61, 62]
+			},
+			{
+				id: 60,
+				sex: 'female',
+				name: '？？？',
+				spousesId: 59
+			},
+			{
+				id: 61,
+				sex: '',
+				name: '？？？',
+				fathersId: 59
+			},
+			{
+				id: 62,
+				sex: '',
+				name: '？？？',
+				fathersId: 59
+			},
 		];
 
 		function getPerson(id) {
@@ -425,29 +595,34 @@
 			const person = getPerson(id);
 			const fathersId = person.fathersId;
 			if (fathersId === undefined) {
-				return person;
+				if (person.sex === 'female') {
+					const spouse = getPerson(person.spousesId);
+					return spouse;
+				} else {
+					return person;
+				}
 			} else {
 				return getRoot(fathersId)
 			}
 		}
 
 		function generateTree(root) {
-			const spouseId = root.spouseId;
+			const spousesId = root.spousesId;
 			let childrenIds;
 
 			const node = { people: [], children: [] };
 			
-			if (!spouseId) {
+			if (!spousesId) {
 				node.people.push(root);
 			} else {
-				const spouse = getPerson(spouseId);
+				const spouse = getPerson(spousesId);
 
 				if (root.sex === 'male') {
 					node.people.push(root);
-					node.people.push(getPerson(spouseId));
+					node.people.push(getPerson(spousesId));
 					childrenIds = root.childrenIds;
 				} else {
-					node.people.push(getPerson(spouseId));
+					node.people.push(getPerson(spousesId));
 					node.people.push(root);
 					childrenIds = spouse.childrenIds;
 				}
@@ -476,7 +651,7 @@
 
 				let elementClass = '';
 				elementClass += person.sex;
-				if (element.deceased) elementClass += ' deceased';
+				if (person.deceased) elementClass += ' deceased';
 
 				element.setAttribute('href', '#');
 				element.setAttribute('class', elementClass);
