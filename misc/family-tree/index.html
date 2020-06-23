@@ -760,7 +760,7 @@
 					node.appendChild(generateFamilyTree)
 					/* =================================================== */
 
-					node.classList.add(person.sex);
+					if (person.sex) node.classList.add(person.sex);
 					if (person.deceased) node.classList.add('deceased');
 					
 					node.appendChild(textNode(person.name));
