@@ -541,7 +541,7 @@
 			{
 				id: 44,
 				sex: 'male',
-				name: '赵欣平',
+				name: '赵洵平',
 				fathersId: 42,
 				yob: 1998,
 				lob: '山东青岛'
@@ -737,52 +737,53 @@
 			parentElement.appendChild(listElement);
 
 			for (const person of node.people) {
-				if (person.display !== false) {
-					const node = document.createElement('div');
-					
-					/* =================================================== */
-					const popup = document.createElement('div');
-					popup.classList.add('popup');
-					let shownFirstLine = false;
-					if (person.yob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生年：${person.yob}`)); }
-					if (person.lob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生地：${person.lob}`)); }
-					if (person.funFact !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`趣事：${person.funFact}`)); }
-					node.appendChild(popup);
+				if (person.display === false) continue;
+				const node = document.createElement('div');
+				
+				/* =================================================== */
+				const popup = document.createElement('div');
+				popup.classList.add('popup');
+				let shownFirstLine = false;
+				if (person.yob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生年：${person.yob}`)); }
+				if (person.lob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生地：${person.lob}`)); }
+				if (person.funFact !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`趣事：${person.funFact}`)); }
+				node.appendChild(popup);
 
-					const popupToggleBackground = document.createElement('button');
-					popupToggleBackground.classList.add('popup-toggle-background');
-					popupToggleBackground.onclick = () => {
-						console.log(person.id);
+				const popupToggleBackground = document.createElement('button');
+				popupToggleBackground.classList.add('popup-toggle-background');
+				popupToggleBackground.onclick = () => {
+					console.log(person.id);
 
-						if (popup.dataset.show === 'true') {
-							popup.dataset.show = 'false';
-						} else {
-							if (visiblePopup) visiblePopup.dataset.show = 'false';
-							popup.dataset.show = 'true';
-							visiblePopup = popup;
-						}
-					};
-					node.appendChild(popupToggleBackground);
-
+					if (popup.dataset.show === 'true') {
+						popup.dataset.show = 'false';
+					} else {
+						if (visiblePopup) visiblePopup.dataset.show = 'false';
+						popup.dataset.show = 'true';
+						visiblePopup = popup;
+					}
+				};
+				node.appendChild(popupToggleBackground);
+				
+				if (shownFirstLine) {
 					const popupToggle = document.createElement('div');
 					popupToggle.classList.add('popup-toggle');
 					node.appendChild(popupToggle);
-
-					const generateFamilyTree = document.createElement('a');
-					generateFamilyTree.classList.add('generate-family-tree');
-					generateFamilyTree.setAttribute('href', '#');
-					generateFamilyTree.onclick = () => updatePage(person.id);
-					node.appendChild(generateFamilyTree)
-					/* =================================================== */
-
-					if (person.sex) node.classList.add(person.sex);
-					if (person.deceased) node.classList.add('deceased');
-					
-					node.appendChild(textNode(person.name));
-
-					listElement.appendChild(newlineTextNode());
-					listElement.appendChild(node);
 				}
+
+				const generateFamilyTree = document.createElement('a');
+				generateFamilyTree.classList.add('generate-family-tree');
+				generateFamilyTree.setAttribute('href', '#');
+				generateFamilyTree.onclick = () => updatePage(person.id);
+				node.appendChild(generateFamilyTree)
+				/* =================================================== */
+
+				if (person.sex) node.classList.add(person.sex);
+				if (person.deceased) node.classList.add('deceased');
+				
+				node.appendChild(textNode(person.name));
+
+				listElement.appendChild(newlineTextNode());
+				listElement.appendChild(node);
 			}
 
 			if (node.children.length > 0) {
