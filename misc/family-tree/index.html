@@ -166,10 +166,10 @@
 			all: unset;
 			position: absolute;
 			pointer-events: none;
-			top: 9px; left: 5px;
-			height: 10px; width: 10px;
-			background-color: black;
-			border-radius: 5px;
+			top: 11px; left: 5px;
+			height: 6px; width: 6px;
+			background-color: rgba(0, 0, 0, 0.3);
+			border-radius: 3px;
 		}
 
 		.tree li div .popup {
@@ -178,9 +178,10 @@
 			visibility: hidden;
 			position: absolute;
 			top: 30px; left: 0px;
-			height: min-content; width: 95px;
-			min-height: 10px;
-			padding: 5px 0;
+			height: min-content; width: min-content;
+			min-height: 10px; min-width: 85px;
+			padding: 5px;
+			text-align: left;
 			background-color: #ececec;
 		}
 
@@ -234,7 +235,8 @@
 				sex: 'male',
 				name: '朱家隽',
 				spousesId: 5,
-				childrenIds: [7, 10]
+				childrenIds: [7, 10],
+				display: false
 			},
 			{
 				id: 5,
@@ -296,13 +298,17 @@
 				name: '章成德',
 				spousesId: 14,
 				fathersId: 2,
-				childrenIds: [16, 18]
+				childrenIds: [16, 18],
+				yob: 1940,
+				lob: '浙江上虞'
 			},
 			{
 				id: 14,
 				sex: 'female',
 				name: '陈殿夷',
-				spousesId: 13
+				spousesId: 13,
+				yob: 1939,
+				lob: '江苏海门'
 			},
 			{
 				id: 15,
@@ -316,13 +322,16 @@
 				sex: 'female',
 				name: '章音',
 				spousesId: 15,
-				fathersId: 13
+				fathersId: 13,
+				yob: 1966,
+				lob: '上海'
 			},
 			{
 				id: 17,
 				sex: 'male',
 				name: '马竟骁',
-				fathersId: 15
+				fathersId: 15,
+				lob: '山东青岛'
 			},
 			{
 				id: 18,
@@ -330,26 +339,34 @@
 				name: '章宁',
 				spousesId: 19,
 				fathersId: 13,
-				childrenIds: [20, 21]
+				childrenIds: [20, 21],
+				yob: 1970,
+				lob: '上海'
 			},
 			{
 				id: 19,
 				sex: 'female',
 				name: '李玫',
 				spousesId: 18,
-				fathersId: 37
+				fathersId: 37,
+				yob: 1971,
+				lob: '山东青岛'
 			},
 			{
 				id: 20,
 				sex: 'male',
 				name: '章子冰',
-				fathersId: 18
+				fathersId: 18,
+				yob: 1999,
+				lob: '山东青岛'
 			},
 			{
 				id: 21,
 				sex: 'female',
 				name: '章子凌',
-				fathersId: 18
+				fathersId: 18,
+				yob: 2002,
+				lob: '美国麻州'
 			},
 			{
 				id: 22,
@@ -378,13 +395,17 @@
 				sex: 'female',
 				name: '章蔚',
 				spousesId: 24,
-				fathersId: 22
+				fathersId: 22,
+				yob: 1971,
+				lob: '上海',
+				funFact: ''
 			},
 			{
 				id: 26,
 				sex: 'female',
 				name: '王蕴博',
-				fathersId: 24
+				fathersId: 24,
+				lob: '上海'
 			},
 			{
 				id: 27,
@@ -418,7 +439,8 @@
 				id: 31,
 				sex: 'female',
 				name: '章子怡',
-				fathersId: 29
+				fathersId: 29,
+				lob: '上海'
 			},
 			{
 				id: 32,
@@ -452,7 +474,8 @@
 				id: 36,
 				sex: 'female',
 				name: '章子楠',
-				fathersId: 34
+				fathersId: 34,
+				lob: '上海'
 			},
 			{
 				id: 37,
@@ -699,51 +722,52 @@
 			parentElement.appendChild(listElement);
 
 			for (const person of node.people) {
-				const node = document.createElement('div');
-				
-				/* =================================================== */
-				const popup = document.createElement('div');
-				popup.classList.add('popup');
-				
-				let shownFirstLine = false;
-				
-				if (person.yob) { if (shownFirstLine) popup.appendChild(brElement()); popup.appendChild(textNode(person.yob)); }
-				if (person.lob) { if (shownFirstLine) popup.appendChild(brElement()); popup.appendChild(textNode(person.lob)); }
-				node.appendChild(popup);
+				if (person.display !== false) {
+					const node = document.createElement('div');
+					
+					/* =================================================== */
+					const popup = document.createElement('div');
+					popup.classList.add('popup');
+					let shownFirstLine = false;
+					if (person.yob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生年：${person.yob}`)); }
+					if (person.lob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生地：${person.lob}`)); }
+					if (person.funFact !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`趣事：${person.funFact}`)); }
+					node.appendChild(popup);
 
-				const popupToggleBackground = document.createElement('button');
-				popupToggleBackground.classList.add('popup-toggle-background');
-				popupToggleBackground.onclick = () => {
-					// console.log(person.id);
+					const popupToggleBackground = document.createElement('button');
+					popupToggleBackground.classList.add('popup-toggle-background');
+					popupToggleBackground.onclick = () => {
+						console.log(person.id);
 
-					if (popup.dataset.show === 'true') {
-						popup.dataset.show = 'false';
-					} else {
-						if (visiblePopup) visiblePopup.dataset.show = 'false';
-						popup.dataset.show = 'true';
-						visiblePopup = popup;
-					}
-				};
-				node.appendChild(popupToggleBackground);
+						if (popup.dataset.show === 'true') {
+							popup.dataset.show = 'false';
+						} else {
+							if (visiblePopup) visiblePopup.dataset.show = 'false';
+							popup.dataset.show = 'true';
+							visiblePopup = popup;
+						}
+					};
+					node.appendChild(popupToggleBackground);
 
-				const popupToggle = document.createElement('div');
-				popupToggle.classList.add('popup-toggle');
-				node.appendChild(popupToggle);
+					const popupToggle = document.createElement('div');
+					popupToggle.classList.add('popup-toggle');
+					node.appendChild(popupToggle);
 
-				const generateFamilyTree = document.createElement('a');
-				generateFamilyTree.classList.add('generate-family-tree');
-				generateFamilyTree.setAttribute('href', '#');
-				generateFamilyTree.onclick = () => updatePage(person.id);
-				node.appendChild(generateFamilyTree)
-				/* =================================================== */
+					const generateFamilyTree = document.createElement('a');
+					generateFamilyTree.classList.add('generate-family-tree');
+					generateFamilyTree.setAttribute('href', '#');
+					generateFamilyTree.onclick = () => updatePage(person.id);
+					node.appendChild(generateFamilyTree)
+					/* =================================================== */
 
-				node.classList.add(person.sex);
-				if (person.deceased) node.classList.add('deceased');
-				
-				node.appendChild(textNode(person.name));
+					node.classList.add(person.sex);
+					if (person.deceased) node.classList.add('deceased');
+					
+					node.appendChild(textNode(person.name));
 
-				listElement.appendChild(newlineTextNode());
-				listElement.appendChild(node);
+					listElement.appendChild(newlineTextNode());
+					listElement.appendChild(node);
+				}
 			}
 
 			if (node.children.length > 0) {
