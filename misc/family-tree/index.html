@@ -549,29 +549,37 @@
 			{
 				id: 45,
 				sex: 'male',
-				name: '李？？',
+				name: '李美鋆',
 				spousesId: 46,
-				childrenIds: [38, 48, 54]
+				childrenIds: [38, 48, 54],
+				yob: 1923,
+				lob: '山东诸城'
 			},
 			{
 				id: 46,
 				sex: 'female',
-				name: '？？？',
-				spousesId: 45
+				name: '李瑞英',
+				spousesId: 45,
+				yob: 1916,
+				lob: '山东诸城'
 			},
 			{
 				id: 47,
 				sex: 'male',
 				name: '张培智',
 				spousesId: 48,
-				childrenIds: [49]
+				childrenIds: [49],
+				yob: 1946,
+				lob: '山东文登'
 			},
 			{
 				id: 48,
 				sex: 'female',
 				name: '李波',
 				spousesId: 47,
-				fathersId: 45
+				fathersId: 45,
+				yob: 1952,
+				lob: '山东青岛'
 			},
 			{
 				id: 49,
@@ -579,65 +587,83 @@
 				name: '张金宁',
 				spousesId: 50,
 				fathersId: 47,
-				childrenIds: [51, 52]
+				childrenIds: [51, 52],
+				yob: 1979,
+				lob: '宁夏石炭井'
 			},
 			{
 				id: 50,
 				sex: 'female',
 				name: '赵燕',
 				spousesId: 49,
+				yob: 1985,
+				lob: '山东齐河'
 			},
 			{
 				id: 51,
 				sex: 'female',
 				name: '张可欣',
-				fathersId: 49
+				fathersId: 49,
+				yob: 2009,
+				lob: '山东齐河'
 			},
 			{
 				id: 52,
 				sex: 'female',
 				name: '张子萱',
-				fathersId: 49
+				fathersId: 49,
+				yob: 2015,
+				lob: '山东齐河'
 			},
 			{
 				id: 53,
 				sex: 'male',
 				name: '张洪亮',
 				spousesId: 54,
-				childrenIds: [56, 59]
+				childrenIds: [56, 59],
+				yob: 1954,
+				lob: '山东诸城'
 			},
 			{
 				id: 54,
 				sex: 'female',
 				name: '李玉芬',
 				spousesId: 53,
-				fathersId: 45
+				fathersId: 45,
+				yob: 1955,
+				lob: '山东诸城'
 			},
 			{
 				id: 55,
 				sex: 'male',
 				name: '？？？',
 				spousesId: 56,
-				childrenIds: [57, 58]
+				childrenIds: [57, 58],
+				display: false
 			},
 			{
 				id: 56,
 				sex: 'female',
 				name: '张卫华',
 				spousesId: 55,
-				fathersId: 53
+				fathersId: 53,
+				yob: 1977,
+				lob: '山东诸城'
 			},
 			{
 				id: 57,
 				sex: '',
 				name: '？？？',
-				fathersId: 55
+				fathersId: 55,
+				display: false
 			},
 			{
 				id: 58,
-				sex: '',
-				name: '？？？',
-				fathersId: 55
+				sex: 'male',
+				name: '刘忠锐',
+				fathersId: 55,
+				yob: 2002,
+				lob: '江苏连云港'
 			},
 			{
 				id: 59,
@@ -645,27 +671,35 @@
 				name: '张卫东',
 				spousesId: 60,
 				fathersId: 53,
-				childrenIds: [61, 62]
+				childrenIds: [61, 62],
+				yob: 1980,
+				lob: '山东诸城'
 			},
 			{
 				id: 60,
 				sex: 'female',
 				name: '王金霞',
-				spousesId: 59
+				spousesId: 59,
+				yob: 1984,
+				lob: '山东沂南'
 			},
 			{
 				id: 61,
-				sex: '',
-				name: '？？？',
+				sex: 'female',
+				name: '张佳倩',
 				nickname: '倩倩',
-				fathersId: 59
+				fathersId: 59,
+				yob: 2006,
+				lob: '山东诸城'
 			},
 			{
 				id: 62,
-				sex: '',
-				name: '？？？',
+				sex: 'male',
+				name: '张俊博',
 				nickname: '俊博',
-				fathersId: 59
+				fathersId: 59,
+				yob: 2017,
+				lob: '山东青岛'
 			},
 		];
 
@@ -732,12 +766,18 @@
 		let visiblePopup;
 
 		function generateElements(parentElement, node) {
-			const listElement = document.createElement('li');
-
-			parentElement.appendChild(listElement);
+			let listElement;
+			let generatedListElement = false;
 
 			for (const person of node.people) {
 				if (person.display === false) continue;
+
+				if (!generatedListElement) {
+					listElement = document.createElement('li');
+					parentElement.appendChild(listElement);
+					generatedListElement = true;
+				}
+
 				const node = document.createElement('div');
 				
 				/* =================================================== */
@@ -786,11 +826,17 @@
 				listElement.appendChild(node);
 			}
 
+			displayedChildNodesCount = node.children.filter(child => { 
+				return child.people.filter(person => { 
+					return person.display !== false 
+					}).length > 0 
+				}).length;
+
 			if (node.children.length > 0) {
 				listElement.appendChild(newlineTextNode());
 				const childrenListElement = document.createElement('ul');
 
-				if (node.children.length === 1) {
+				if (displayedChildNodesCount === 1) {
 					childrenListElement.classList.add('extended');
 				}
 
