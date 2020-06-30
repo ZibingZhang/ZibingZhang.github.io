@@ -481,7 +481,8 @@
 				id: 37,
 				sex: 'male',
 				name: '赵培勋',
-				spousesId: 38,
+				spousesId: 38, // second marriage
+				fathersId: 63,
 				childrenIds: [40, 42, 19],
 				yob: 1937,
 				lob: '山东莱阳'
@@ -490,7 +491,7 @@
 				id: 38,
 				sex: 'female',
 				name: '李玉兰',
-				spousesId: 37,
+				spousesId: 37, // second marriage
 				fathersId: 45,
 				yob: 1944,
 				lob: '山东诸城'
@@ -550,17 +551,21 @@
 				id: 45,
 				sex: 'male',
 				name: '李美鋆',
+				deceased: true,
 				spousesId: 46,
 				childrenIds: [38, 48, 54],
-				yob: 1923,
+				yob: 1924,
+				shuxiang: '鼠',
 				lob: '山东诸城'
 			},
 			{
 				id: 46,
 				sex: 'female',
+				deceased: true,
 				name: '李瑞英',
 				spousesId: 45,
 				yob: 1916,
+				shuxiang: '龙',
 				lob: '山东诸城'
 			},
 			{
@@ -631,7 +636,7 @@
 				spousesId: 53,
 				fathersId: 45,
 				yob: 1955,
-				lob: '山东诸城'
+				lob: '山东青岛'
 			},
 			{
 				id: 55,
@@ -700,6 +705,55 @@
 				fathersId: 59,
 				yob: 2017,
 				lob: '山东青岛'
+			},
+			{
+				id: 63,
+				sex: 'male',
+				name: '赵焕章',
+				spousesId: 64,
+				childrenIds: [65, 66, 67, 37, 68],
+				_yob: 1918,
+				_lob: '山东莱阳'
+			},
+			{
+				id: 64,
+				sex: 'female',
+				name: '赵韩氏', // second character questionable
+				spousesId: 63,
+				_yob: 1921,
+				_lob: '山东莱阳'
+			},
+			{
+				id: 65,
+				sex: 'male',
+				name: '赵培耀',
+				fathersId: 63,
+				yob: 1925,
+				lob: '山东莱阳'
+			},
+			{
+				id: 66,
+				sex: 'male',
+				name: '赵培才',
+				fathersId: 63,
+				yob: 1928,
+				lob: '山东莱阳'
+			},
+			{
+				id: 67,
+				sex: 'female',
+				name: '赵瑞芝',
+				fathersId: 63,
+				yob: 1934,
+				lob: '山东莱阳'
+			},
+			{
+				id: 68,
+				sex: 'female',
+				name: '赵瑞华',
+				fathersId: 63,
+				yob: 1940,
+				lob: '山东莱阳'
 			},
 		];
 
