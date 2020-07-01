@@ -112,7 +112,10 @@
           const tds = tr.getElementsByTagName('td');
           for (const td of tds) {
             text = td.innerHTML;
-            if (text.toUpperCase().indexOf(searchValue) > -1) trDisplay = ''; break;
+            if (text.toUpperCase().indexOf(searchValue) > -1) {
+              trDisplay = ''; 
+              break;
+            }
           }
           tr.style.display = trDisplay;
         }
