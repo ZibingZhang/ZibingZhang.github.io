@@ -25,6 +25,7 @@ h1 {
 
 hr {
   width: 100%;
+  color: #E5EAF5;
 }
 
 a:link, a:visited {
@@ -74,7 +75,7 @@ a:link, a:visited {
   color: #FFB6C1;
 }
 
-#email {
+.email {
   color: #CCFFCC;
 }
 
