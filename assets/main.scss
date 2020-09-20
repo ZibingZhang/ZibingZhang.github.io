@@ -3,3 +3,18 @@
 ---
 
 @import "minima";
+
+hr {
+  color: #E5EAF5;
+  background-color: #E5EAF5;
+  border-color: #E5EAF5;
+  border: 1px solid;
+}
+
+details > *:not(summary){
+  margin-left: 1em;
+}
+
+.site-header > .wrapper > a {
+  font-weight: 400;
+}
