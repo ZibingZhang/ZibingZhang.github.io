@@ -22,9 +22,23 @@
 	<link href='https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap' rel='stylesheet'> 
 
 	<!-- CSS -->
-	<link rel='stylesheet' href='assets/css/dark.css'>
+  <link rel='stylesheet' href='assets/css/dark.css'>
+  {% if page.css %}
+    {% for stylesheet in page.css %}
+      <link rel='stylesheet' href='/assets/css/{{ stylesheet }}.css'>
+    {% endfor %}
+  {% endif %}
+  
+  <!-- JS -->
+  {% if page.js %}
+    {% for script in page.js %}
+      <script type='text/javascript' src='/assets/js/{{ script }}.js'></script>
+    {% endfor %}
+  {% endif %}
 </head>
 
 <body>
-  {{ content }}
+  <div class='page-container'>
+    {{ content }}
+  </div>
 </body>

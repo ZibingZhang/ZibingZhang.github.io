@@ -62,21 +62,7 @@ a:link, a:visited {
 
 /** **/
 
-.home-page-container {
+.page-container {
   height: calc(100% - 2px);
   border: 1px solid #494D5F;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-}
-
-.home-page-container > h1 {
-  margin: 0;
-}
-
-.home-page-container > .links {
-  display: flex;
-  justify-content: space-around;
 }
