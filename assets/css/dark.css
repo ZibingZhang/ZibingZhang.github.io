@@ -44,6 +44,24 @@ a:link, a:visited {
 
 /** **/
 
+.purple {
+  color: #D0BDF4;
+}
+
+.blue {
+  color: #A0D2EB;
+}
+
+.pink {
+  color: #FFB6C1;
+}
+
+.green {
+  color: #CCFFCC;
+}
+
+/** **/
+
 .home-page-container {
   height: calc(100% - 2px);
   border: 1px solid #494D5F;
@@ -62,21 +80,3 @@ a:link, a:visited {
   display: flex;
   justify-content: space-around;
 }
-
-#resume {
-  color: #D0BDF4;
-}
-
-#linkedin {
-  color: #A0D2EB;
-}
-
-#github {
-  color: #FFB6C1;
-}
-
-.email {
-  color: #CCFFCC;
-}
-
-/** **/
