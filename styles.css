@@ -23,6 +23,10 @@ h1 {
   font-size: 44pt;
 }
 
+hr {
+  width: 100%;
+}
+
 a:link, a:visited {
   text-decoration: none;
 }
@@ -67,8 +71,11 @@ a:link, a:visited {
 }
 
 #github {
-  /* color: #f08080; */
   color: #FFB6C1;
+}
+
+#email {
+  color: #CCFFCC;
 }
 
 /** **/
