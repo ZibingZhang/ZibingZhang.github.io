@@ -1,0 +1,43 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: auto;
+  max-width: 600px;
+
+  color: #F5F5F5;
+  background-color: #494D5F;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 48pt;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-large {
+  font-size: 18pt;
+}
+
+/** **/
+
+.home-page-container > .links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-page-container > .links > a:link, .home-page-container > .links > a:visited {
+  color: unset;
+  text-decoration: none;
+}
