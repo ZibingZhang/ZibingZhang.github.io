@@ -37,6 +37,10 @@ personal_pages:
   - personal/index.html
   - personal/food.html
 
+# Build settings
+plugins:
+  - jekyll-feed
+
 # Exclude from Processing
 exclude:
   - .sass-cache/
