@@ -6,7 +6,7 @@ body {
   margin: auto;
   max-width: 600px;
 
-  color: #F5F5F5;
+  color: #E5EAF5;
   background-color: #494D5F;
 
   font-family: 'Nunito', sans-serif;
@@ -21,6 +21,12 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 48pt;
 }
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+/** **/
 
 .text-center {
   text-align: center;
@@ -37,7 +43,17 @@ h1 {
   justify-content: space-around;
 }
 
-.home-page-container > .links > a:link, .home-page-container > .links > a:visited {
-  color: unset;
-  text-decoration: none;
+#resume {
+  color: #D0BDF4;
 }
+
+#linkedin {
+  color: #A0D2EB;
+}
+
+#github {
+  /* color: #f08080; */
+  color: #FFB6C1;
+}
+
+/** **/
