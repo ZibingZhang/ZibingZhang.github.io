@@ -4,41 +4,110 @@ personal_page: True
 title: Books, Movies, & Shows
 books:
   to_read:
-    - Stories of Your Life and Others by Ted Chiang
-    - Name of the Wind by Patrick Rothfuss
-    - The Hitchhiker's Guide to the Galexy by Douglas Adam
-    - Ball Lightning by Liu Cixin
-    - The Martian by Andy Weir
-    - The Fire Within by Chris d'Lacey
-    - All The Light We Cannot See by Anthony Doerr
-    - Ishmael by Daniel Quinn
-    - Brave New World by Aldous Huxley
-    - The Forever War by Joe Haldeman
+    - Altered Carbon|Richard Morgan
+    - Name of the Wind|Patrick Rothfuss
+    - The Hitchhiker's Guide to the Galexy|Douglas Adam
+    - Ball Lightning|Liu Cixin
+    - The Martian|Andy Weir
+    - The Fire Within|Chris d'Lacey
+    - All The Light We Cannot See|Anthony Doerr
+    - Ishmael|Daniel Quinn
+    - Brave New World|Aldous Huxley
+    - The Forever War|Joe Haldeman
+  finished_reading:
+    - Stories of Your Life and Others|Ted Chiang|2020-09-20
 series:
   to_read:
-    - Broken Earth Trilogy by N. K. Jemisin
-    - The Stormlight Archive by Brandon Sanderson
+    - Broken Earth Trilogy|Nora Jemisin
+    - The Stormlight Archive|Brandon Sanderson
+shows:
+  watched:
+    - The 100|season 6
+    - 13 Reasons Why|in progress
+    - 3%|season 1
+    - Altered Carbon|season 2
+    - Another Life|season 1
+    - Avatar the Last Airbender|season 1 episode 10
+    - Black Mirror|in progress
+    - Bodyguard|season 1
+    - Breaking Bad|in progress
+    - The Blacklist|season 1 episode 13
+    - Bones|in progress
+    - Chernobyl|season 1
+    - Criminal Minds|in progress
+    - Crisis|season 1
+    - Designated Survivor|season 3
+    - Doctor Who|season 8 episode 11
+    - The Expanse|season 4
+    - Game of Thrones|season 8
+    - Gossip Girl|season 1
+    - Hanna|season 2
+    - The Haunting of Hill House|season 1
+    - Lost|in progress
+    - The Mandalorian|season 1
+    - Money Heist|part 4
+    - Narcos|season 3 episode 9
+    - The Office|season 5 episode 21
+    - The Outsider|season 1
+    - Revolution|season 2
+    - Sherlock Holmes|series 4
+    - Stranger Things|season 3
+    - The Walking Dead|in progress
+    - West World|in progress
+    - The Witcher|season 1
 ---
 
 <details open>
   <summary class='h1 pink'>Books</summary>
   
-  <p>
-    A list of books that I have read and a list of them that I've been meaning to read.
-    I started this list on 2020-09-20.
-  </p>
+  <p>A list of books that I've read and a list of them that I've been meaning to read.</p>
+  <p><b>2020-09-20</b>&nbsp;Started the list.</p>
 
   <h2>To Read</h2>
   <ul>
     {%- for book in page.books.to_read -%}
-      {% assign book_data = book | split: ' by ' %}
+      {% assign book_data = book | split: '|' %}
       <li><i>{{ book_data[0] }}</i> by {{ book_data[1] }}</li>
     {%- endfor -%}
-  </ul>
-  <ul>
+  </ul><ul>
     {%- for series in page.series.to_read -%}
-      {% assign series_data = series | split: ' by ' %}
+      {% assign series_data = series | split: '|' %}
       <li><i>{{ series_data[0] }}</i> by {{ series_data[1] }}</li>
+    {%- endfor -%}
+  </ul>
+
+  <h2>Finished Reading</h2>
+  <ul>
+    {%- for book in page.books.finished_reading -%}
+      {% assign book_data = book | split: '|' %}
+      <li><s><i>{{ book_data[0] }}</i> by {{ book_data[1] }}</s> ({{ book_data[2] }})</li>
+    {%- endfor -%}
+  </ul><ul>
+    {%- for series in page.series.finished_reading -%}
+      {% assign series_data = series | split: '|' %}
+      <li><s><i>{{ series_data[0] }}</i> by {{ series_data[1] }}</s> ({{ series_data[2] }})</li>
+    {%- endfor -%}
+  </ul>
+</details>
+
+<details open>
+  <summary class='h1 purple'>TV Shows</summary>
+  
+  <p>
+    A list of shows that I've either watched or are in the middle of watching.
+    Next to each show is an indication of how many episodes I've watched.
+    No episode number indicates that I've watched the entire season.
+    The phrase <i>in progress</i> indicates that I've either forgotten how far into the show I am,
+    or I watched the episodes out of order (as is the case for Black Mirror).
+  </p>
+  <p><b>2020-09-20</b>&nbsp;Started the list.</p>
+
+  <ul>
+    {%- for show in page.shows.watched -%}
+      {% assign show_data = show | split: '|' %}
+      <li>
+        <b>{{ show_data[0] }}</b>&nbsp;–&nbsp;(<i>{{ show_data[1] }}</i>)
+      </li>
     {%- endfor -%}
   </ul>
 </details>
