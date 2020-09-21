@@ -1,0 +1,44 @@
+---
+layout: minima-default
+personal_page: True
+title: Books, Movies, & Shows
+books:
+  to_read:
+    - Stories of Your Life and Others by Ted Chiang
+    - Name of the Wind by Patrick Rothfuss
+    - The Hitchhiker's Guide to the Galexy by Douglas Adam
+    - Ball Lightning by Liu Cixin
+    - The Martian by Andy Weir
+    - The Fire Within by Chris d'Lacey
+    - All The Light We Cannot See by Anthony Doerr
+    - Ishmael by Daniel Quinn
+    - Brave New World by Aldous Huxley
+    - The Forever War by Joe Haldeman
+series:
+  to_read:
+    - Broken Earth Trilogy by N. K. Jemisin
+    - The Stormlight Archive by Brandon Sanderson
+---
+
+<details open>
+  <summary class='h1 pink'>Books</summary>
+  
+  <p>
+    A list of books that I have read and a list of them that I've been meaning to read.
+    I started this list on 2020-09-20.
+  </p>
+
+  <h2>To Read</h2>
+  <ul>
+    {%- for book in page.books.to_read -%}
+      {% assign book_data = book | split: ' by ' %}
+      <li><i>{{ book_data[0] }}</i> by {{ book_data[1] }}</li>
+    {%- endfor -%}
+  </ul>
+  <ul>
+    {%- for series in page.series.to_read -%}
+      {% assign series_data = series | split: ' by ' %}
+      <li><i>{{ series_data[0] }}</i> by {{ series_data[1] }}</li>
+    {%- endfor -%}
+  </ul>
+</details>
