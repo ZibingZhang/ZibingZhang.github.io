@@ -2,7 +2,7 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid $grey-color-dark;
+  border-top: 5px solid $brand-color;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
 
@@ -12,7 +12,7 @@
 
 .site-title {
   @include relative-font-size(1.625);
-  font-weight: 400;
+  font-weight: 300;
   line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
   margin-bottom: 0;
@@ -20,7 +20,7 @@
 
   // &,
   // &:visited {
-  //   color: $grey-color-dark;
+  //   color: $brand-color;
   // }
 }
 
@@ -74,7 +74,7 @@
       text-align: center;
 
       > svg {
-        fill: $grey-color-dark;
+        fill: $brand-color;
       }
     }
 

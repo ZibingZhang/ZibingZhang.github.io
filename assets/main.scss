@@ -23,3 +23,41 @@ summary.h1 {
   padding: 0;
   margin-bottom: $spacing-unit / 2;
 }
+
+.column-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-2, .column-3, .column-4 {
+  flex-grow: 1;
+}
+
+.column-75 {
+  width: 75%;
+}
+
+.column-66 {
+  width: 66%;
+}
+
+.column-60 {
+  width: 60%;
+}
+
+.column-50 {
+  width: 50%;
+}
+
+.column-40 {
+  width: 40%;
+}
+
+.column-33 {
+  width: 33%;
+}
+
+.column-25 {
+  width: 25%;
+}
