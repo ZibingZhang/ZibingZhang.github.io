@@ -4,6 +4,8 @@
 
 @import "minima";
 
+// 
+
 hr {
   color: #E5EAF5;
   background-color: #E5EAF5;
@@ -34,30 +36,20 @@ summary.h1 {
   flex-grow: 1;
 }
 
-.column-75 {
-  width: 75%;
-}
-
-.column-66 {
-  width: 66%;
-}
-
-.column-60 {
-  width: 60%;
-}
-
-.column-50 {
-  width: 50%;
-}
-
-.column-40 {
-  width: 40%;
-}
+// 
 
 .column-33 {
   width: 33%;
 }
 
-.column-25 {
-  width: 25%;
+// 
+
+.min-20 {
+  min-width: -webkit-calc((#{$content-width} - (#{$spacing-unit} * 2)) * 1 / 5);
+  min-width:         calc((#{$content-width} - (#{$spacing-unit} * 2)) * 1 / 5);
+}
+
+.min-25 {
+  min-width: -webkit-calc((#{$content-width} - (#{$spacing-unit} * 2)) * 1 / 4);
+  min-width:         calc((#{$content-width} - (#{$spacing-unit} * 2)) * 1 / 4);
 }
