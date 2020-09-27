@@ -5,7 +5,7 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
 
 	<!-- Favicon-->
-	<link rel='shortcut icon' href='favicon.ico'>
+	<link rel='shortcut icon' href='{{ favicon.ico | relative_url }}'>
 
 	<!-- Author Meta -->
 	<meta name='author' content='Zibing Zhang'>
@@ -23,10 +23,11 @@
 	<link href='https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap' rel='stylesheet'> 
 
 	<!-- CSS -->
-	<link rel='stylesheet' href='assets/css/dark.css'>
-	<link rel='stylesheet' href='assets/css/colors.css'>
+	<link rel='stylesheet' href='/assets/css/dark.css'>
+	<link rel='stylesheet' href='/assets/css/colors.css'>
+	<link rel='stylesheet' href='/assets/css/pages/root.css'>
   {% if page.css %}
-    {% for stylesheet in page.css %}
+		{% for stylesheet in page.css %}
       <link rel='stylesheet' href='/assets/css/{{ stylesheet }}.css'>
     {% endfor %}
   {% endif %}
@@ -34,7 +35,7 @@
   <!-- JS -->
   {% if page.js %}
     {% for script in page.js %}
-      <script type='text/javascript' src='/assets/js/{{ script }}.js'></script>
+      <script type='text/javascript' src='/assets/js/{{ script }}.js' defer></script>
     {% endfor %}
   {% endif %}
 </head>

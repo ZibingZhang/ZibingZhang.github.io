@@ -1,0 +1,56 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: auto;
+  max-width: 650px;
+  padding: 0 10px;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 44pt;
+}
+
+/** **/
+
+.text-center {
+  text-align: center;
+}
+
+.font-large {
+  font-size: 18pt;
+}
+
+/** **/
+
+.page-container {
+  height: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.page-container > h1 {
+  margin: 0;
+}
+
+.page-container > .links {
+  display: flex;
+  justify-content: space-around;
+}
+
+

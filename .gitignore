@@ -4,4 +4,5 @@ _posts
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+.vscode
 vendor

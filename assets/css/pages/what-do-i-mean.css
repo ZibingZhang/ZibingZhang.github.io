@@ -1,0 +1,9 @@
+textarea {
+  resize: none;
+  border: 5px solid #555555;
+  background-color: #333333;
+  color: #E5EAF5;
+  height: 100px;
+  padding: 5px;
+  line-height: 0.75em;
+}
