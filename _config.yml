@@ -36,7 +36,6 @@ linkedin_username: zibing-zhang-a67578194
 personal_pages:
   - personal/index.html
   - personal/food.html
-  - personal/books-movies-shows.html
 
 # Build settings
 plugins:
