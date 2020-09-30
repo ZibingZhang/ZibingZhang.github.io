@@ -26,19 +26,29 @@ summary.h1 {
   margin-bottom: $spacing-unit / 2;
 }
 
+blockquote > footer {
+  font-style: normal;
+}
+
+blockquote > footer > cite {
+  font-style: italic;
+}
+
+//
+
 .column-wrapper {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.column-2, .column-3, .column-4 {
+.column {
   flex-grow: 1;
 }
 
 // 
 
-.column-33 {
+.width-33 {
   width: 33%;
 }
 
