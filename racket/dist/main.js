@@ -25,3 +25,5 @@ document.addEventListener('keydown', e => {
 editor.focus();
 editor.navigateFileEnd();
 run();
+
+ace.run = run;
