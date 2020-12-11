@@ -1,5 +1,5 @@
 import { Environment } from './environment.js';
-import { DivByZero, StructureFunctionError } from './errors.js';
+import { DivByZero, StructureFunctionError, UnreachableCode } from './errors.js';
 import racket from './racket.js';
 import * as utils from './utils.js';
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -385,12 +385,12 @@ export class RacketComplexNumber extends RacketNumber {
         else {
             let magnitudeSquared = this.real.mul(this.real).add(this.imaginary.mul(this.imaginary));
             if (!isReal(magnitudeSquared))
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             let invertedMagnitudeSquared = magnitudeSquared.inverted();
             let real = this.real.mul(invertedMagnitudeSquared);
             let imaginary = this.imaginary.mul(invertedMagnitudeSquared).negated();
             if (!isReal(real) || !isReal(imaginary))
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             return new RacketComplexNumber(real, imaginary);
         }
     }
@@ -399,7 +399,7 @@ export class RacketComplexNumber extends RacketNumber {
             let real = this.real.add(other.real);
             let imaginary = this.imaginary.add(other.imaginary);
             if (!isReal(real) || !isReal(imaginary))
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             if (imaginary.isZero())
                 return real;
             else
@@ -408,7 +408,7 @@ export class RacketComplexNumber extends RacketNumber {
         else {
             let real = this.real.add(other);
             if (!isReal(real))
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             else
                 return new RacketComplexNumber(real, this.imaginary);
         }
@@ -418,7 +418,7 @@ export class RacketComplexNumber extends RacketNumber {
             let real = this.real.mul(other.real).sub(this.imaginary.mul(other.imaginary));
             let imaginary = this.real.mul(other.imaginary).add(this.imaginary.mul(other.real));
             if (!isReal(real) || !isReal(imaginary))
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             if (imaginary.isZero())
                 return real;
             else
@@ -427,7 +427,7 @@ export class RacketComplexNumber extends RacketNumber {
         else {
             let real = this.real.mul(other);
             if (!isReal(real))
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             else
                 return new RacketComplexNumber(real, this.imaginary);
         }
@@ -451,16 +451,19 @@ export class RacketString {
     }
 }
 export class RacketLambda {
-    constructor(params, body) {
+    constructor(params, body, closure) {
+        this.name = undefined;
         this.params = params;
         this.body = body;
+        this.closure = closure;
     }
     equals(other) {
         throw new Error('Method not implemented.');
     }
     call(args) {
         let interpreter = racket.interpreter;
-        let enclosing = interpreter.environment;
+        let current = interpreter.environment;
+        let enclosing = this.closure;
         interpreter.environment = new Environment(enclosing);
         for (let i = 0; i < args.length; i++) {
             let param = this.params[i];
@@ -468,12 +471,13 @@ export class RacketLambda {
             interpreter.environment.define(param, arg);
         }
         let result = interpreter.evaluate(this.body);
-        interpreter.environment = enclosing;
+        interpreter.environment = current;
         return result;
     }
 }
 class RacketStructureFunction {
-    constructor(func) {
+    constructor(name, func) {
+        this.name = name;
         this.function = func;
     }
     equals(other) {
@@ -501,7 +505,7 @@ export class RacketStructure {
      * Produce a function that creates an instance of this Racket structure.
      */
     makeFunction() {
-        return new RacketStructureFunction((args) => {
+        return new RacketStructureFunction('make-' + this.name, (args) => {
             let functionName = 'make-' + this.name;
             let expected = this.fields.length;
             let received = args.length;
@@ -523,7 +527,7 @@ export class RacketStructure {
      * Produce a function that determines whether some value is an instance of this structure.
      */
     isInstanceFunction() {
-        return new RacketStructureFunction((args) => {
+        return new RacketStructureFunction(this.name + '?', (args) => {
             let functionName = 'make-' + this.name;
             if (args.length === 0) {
                 this.error(`${functionName}: expects 1 argument, but found none`);
@@ -543,8 +547,8 @@ export class RacketStructure {
     getFunctions() {
         let functions = [];
         this.fields.forEach((field, i) => {
-            functions.push(new RacketStructureFunction((args) => {
-                let functionName = `${this.name}-${field}`;
+            let functionName = `${this.name}-${field}`;
+            functions.push(new RacketStructureFunction(functionName, (args) => {
                 if (args.length === 0) {
                     this.error(`${functionName}: expects 1 argument, but found none`);
                 }

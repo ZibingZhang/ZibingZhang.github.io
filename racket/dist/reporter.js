@@ -2,7 +2,7 @@ import BUILT_INS from './builtins.js';
 import { ResolverError, UnreachableCode } from './errors.js';
 import * as ir1 from './ir1.js';
 import { RacketValueType } from './symboltable.js';
-import { isBoolean, isNumber, isString, } from './values.js';
+import { isBoolean, isNumber, isString } from './values.js';
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Concrete Class
  * = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
@@ -106,6 +106,61 @@ class ResolverErrorReporter {
      * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
     missingOpenParenthesis(keyword) {
         this.error(`${keyword}: expected an open parenthesis before ${keyword}, but found none`);
+    }
+    /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+     * Group Sub-Case: And Expression
+     * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
+    andNotEnoughArguments(args) {
+        let baseMsg = 'and: expects at least 2 arguments, ';
+        if (args === 0) {
+            this.error(baseMsg + 'but found none');
+        }
+        else {
+            this.error(baseMsg + 'but found only 1');
+        }
+    }
+    /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+    * Group Sub-Case: Cond Expression
+    * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
+    missingClause() {
+        this.error("cond: expected a clause after cond, but nothing's there");
+    }
+    expectedClause(clause) {
+        let baseMsg = 'cond: expected a clause with a question and an answer, ';
+        if (clause instanceof ir1.Identifier
+            || clause instanceof ir1.Keyword) {
+            this.error(baseMsg + 'but found something else');
+        }
+        else if (clause instanceof ir1.Literal) {
+            if (isBoolean(clause)) {
+                this.error(baseMsg + 'but found something else');
+            }
+            else if (isNumber(clause)) {
+                this.error(baseMsg + 'but found a number');
+            }
+            else if (isString(clause)) {
+                this.error(baseMsg + 'but found a string');
+            }
+            else
+                throw new UnreachableCode();
+        }
+        else
+            throw new UnreachableCode();
+    }
+    clauseArityMismatch(parts) {
+        let baseMsg = 'cond: expected a clause with a question and an answer, ';
+        if (parts === 0) {
+            this.error(baseMsg + 'but found an empty part');
+        }
+        else if (parts === 1) {
+            this.error(baseMsg + 'but found a clause with only one part');
+        }
+        else {
+            this.error(baseMsg + `but found a clause with ${parts} parts`);
+        }
+    }
+    elseNotInLastClause() {
+        this.error("cond: found an else clause that isn't the last clause in its cond expression");
     }
     /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
      * Group Sub-Case: Define
@@ -274,7 +329,7 @@ class ResolverErrorReporter {
                 this.error(baseMsg + 'but found a string');
             }
             else
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
         }
         else if (identifier instanceof ir1.Keyword) {
             this.error(baseMsg + 'but found a keyword');
@@ -290,6 +345,24 @@ class ResolverErrorReporter {
     }
     expectedSingleExpressionVariableValue(name, exprs) {
         this.error(`define: expected only one expression after the variable name ${name}, but found ${exprs - 2} extra part${exprs - 2 === 1 ? '' : 's'}`);
+    }
+    /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+     * Group Sub-Case: If Expression
+     * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
+    ifArityMismatch(parts) {
+        let baseMsg = 'if: expected a question and two answers, ';
+        if (parts === 0) {
+            this.error(baseMsg + 'but found none');
+        }
+        else if (parts === 1) {
+            this.error(baseMsg + 'but found only 1 part');
+        }
+        else if (parts === 2) {
+            this.error(baseMsg + 'but found only 2 parts');
+        }
+        else {
+            this.error(baseMsg + `but found ${parts} parts`);
+        }
     }
     /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
      * Group Sub-Case: Lambda Expression
@@ -356,6 +429,18 @@ class ResolverErrorReporter {
         this.error(`lambda: expected only one expression for the function body, but found ${exprs - 2} extra part${exprs - 2 === 1 ? '' : 's'}`);
     }
     /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+     * Group Sub-Case: Or Expression
+     * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
+    orNotEnoughArguments(args) {
+        let baseMsg = 'or: expects at least 2 arguments, ';
+        if (args === 0) {
+            this.error(baseMsg + 'but found none');
+        }
+        else {
+            this.error(baseMsg + 'but found only 1');
+        }
+    }
+    /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
      * Group Sub-Case: Quoted
      * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
     quoteArityMismatch() {
@@ -392,6 +477,9 @@ class ResolverErrorReporter {
         else {
             this.error(name + ': this name was defined previously and cannot be re-defined');
         }
+    }
+    elseNotInClause() {
+        this.error('else: not allowed here, because this is not a question in a clause');
     }
     /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
      * Error Reporting

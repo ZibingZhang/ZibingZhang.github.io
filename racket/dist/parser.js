@@ -53,7 +53,7 @@ class TokenParser {
         else if (this.match(TokenType.OPEN, TokenType.OPEN_BRACE, TokenType.OPEN_BRACKET)) {
             return this.list();
         }
-        else if (this.match(TokenType.QUOTE)) {
+        else if (this.match(TokenType.SINGLE_QUOTE)) {
             return this.quoted();
         }
         else if (this.match(TokenType.CLOSE, TokenType.CLOSE_BRACE, TokenType.CLOSE_BRACKET)) {
@@ -90,7 +90,10 @@ class TokenParser {
         return new SExprLiteral(this.previous());
     }
     quoted() {
-        let elements = [new SExprSymbol(new Token(TokenType.IDENTIFIER, 'quote'))];
+        if (this.isAtEnd()) {
+            this.error('read-syntax: expected an element for quoting "\'", found end-of-file');
+        }
+        let elements = [new SExprSymbol(new Token(TokenType.QUOTE, TokenType.QUOTE.valueOf()))];
         elements.push(this.expr());
         return new SExprList(elements);
     }

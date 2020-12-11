@@ -2,6 +2,17 @@
  * Concrete Classes
  * = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 /**
+ * An and expression.
+ */
+export class AndExpression {
+    constructor(exprs) {
+        this.expressions = exprs;
+    }
+    accept(visitor) {
+        return visitor.visitAndExpression(this);
+    }
+}
+/**
  * A function call.
  */
 export class Call {
@@ -11,6 +22,17 @@ export class Call {
     }
     accept(visitor) {
         return visitor.visitCall(this);
+    }
+}
+/**
+ * A cond expression.
+ */
+export class CondExpression {
+    constructor(clauses) {
+        this.clauses = clauses;
+    }
+    accept(visitor) {
+        return visitor.visitCondExpression(this);
     }
 }
 /**
@@ -49,6 +71,19 @@ export class Identifier {
     }
 }
 /**
+ * An if expression.
+ */
+export class IfExpression {
+    constructor(predicate, ifTrue, ifFalse) {
+        this.predicate = predicate;
+        this.ifTrue = ifTrue;
+        this.ifFalse = ifFalse;
+    }
+    accept(visitor) {
+        return visitor.visitIfExpression(this);
+    }
+}
+/**
  * A lambda expression.
  */
 export class LambdaExpression {
@@ -69,6 +104,17 @@ export class Literal {
     }
     accept(visitor) {
         return visitor.visitLiteral(this);
+    }
+}
+/**
+ * An and expression.
+ */
+export class OrExpression {
+    constructor(exprs) {
+        this.expressions = exprs;
+    }
+    accept(visitor) {
+        return visitor.visitOrExpression(this);
     }
 }
 /**

@@ -8,6 +8,8 @@ function run() {
     const text = editor.getValue();
     racket.run(text);
 }
+// @ts-ignore
+ace.run = run;
 document.addEventListener('keydown', e => {
     if (!e.altKey)
         return;
@@ -25,5 +27,3 @@ document.addEventListener('keydown', e => {
 editor.focus();
 editor.navigateFileEnd();
 run();
-
-ace.run = run;

@@ -1,3 +1,4 @@
+import { UnreachableCode } from './errors.js';
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Concrete Classes
  * = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
@@ -28,7 +29,7 @@ export class SExprLiteral {
     toString() {
         let value = this.token.value;
         if (value === undefined)
-            throw new Error('Unreachable code.');
+            throw new UnreachableCode();
         return value.toString();
     }
     accept(visitor) {

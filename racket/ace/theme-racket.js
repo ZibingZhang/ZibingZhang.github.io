@@ -112,7 +112,7 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 
 exports.cssClass = "ace-racket";
 
-var dom = require("../lib/dom");
+let dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 });                (function() {
                     ace.require(["ace/theme/crimson_editor"], function(m) {

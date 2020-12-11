@@ -6,7 +6,7 @@ import racket from './racket.js';
 import { reporter } from './reporter.js';
 import { RacketValueType, SymbolTable } from './symboltable.js';
 import { KEYWORDS, TokenType } from './tokens.js';
-import { isCallable, isList, isNumber } from './values.js';
+import { isCallable, isList, isNumber, RACKET_TRUE } from './values.js';
 /**
  * Transforms Intermediate Representation Is into Intermediate Representation
  * IIs along with a lot of error checking.
@@ -27,7 +27,7 @@ export default class Resolver {
                 this.symbolTable.define(name, RacketValueType.BUILTIN_FUNCTION);
             }
             else {
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             }
         }
     }
@@ -50,7 +50,11 @@ export default class Resolver {
         let args = [...elements].splice(1);
         if (callee instanceof ir1.Keyword) {
             let type = callee.token.type;
-            if (type === TokenType.CHECK_EXPECT) {
+            if (type === TokenType.AND) {
+                let result = this.andExpression(args);
+                return result;
+            }
+            else if (type === TokenType.CHECK_EXPECT) {
                 if (!this.atTopLevel) {
                     reporter.resolver.nonTopLevelTest();
                 }
@@ -61,6 +65,12 @@ export default class Resolver {
                     this.testCases.push([args[0], args[1]]);
                     return;
                 }
+            }
+            else if (type === TokenType.COND) {
+                return this.condExpression(args);
+            }
+            else if (type === TokenType.ELSE) {
+                reporter.resolver.elseNotInClause();
             }
             else if (type === TokenType.DEFINE) {
                 let inFunctionDefinition = this.inFunctionDefinition;
@@ -79,14 +89,22 @@ export default class Resolver {
                 this.symbolTable = enclosing;
                 return result;
             }
+            else if (type === TokenType.IF) {
+                let result = this.ifExpression(args);
+                return result;
+            }
+            if (type === TokenType.OR) {
+                let result = this.orExpression(args);
+                return result;
+            }
+            else if (type === TokenType.QUOTE) {
+                return this.quoted(args);
+            }
             else
                 throw new UnreachableCode();
         }
         else if (callee instanceof ir1.Identifier) {
             let name = callee.name.lexeme;
-            if (name === 'quote') {
-                return this.quoted(args);
-            }
             let type = this.symbolTable.get(name);
             if (type === undefined) {
                 reporter.resolver.undefinedCallee(name);
@@ -129,6 +147,10 @@ export default class Resolver {
         if (expr.token.type === TokenType.CHECK_EXPECT) {
             // return statement for typechecker
             return reporter.resolver.testCaseArityMismatch(0);
+        }
+        else if (expr.token.type === TokenType.ELSE) {
+            // return statement for typechecker
+            return reporter.resolver.elseNotInClause();
         }
         else {
             // return statement for typechecker
@@ -183,6 +205,42 @@ export default class Resolver {
     /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
      * Group Sub-Cases
      * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
+    andExpression(exprs) {
+        if (exprs.length < 2) {
+            reporter.resolver.andNotEnoughArguments(exprs.length);
+        }
+        return new ir2.AndExpression(exprs.map(this.evaluate.bind(this)));
+    }
+    condExpression(exprs) {
+        if (exprs.length === 0) {
+            reporter.resolver.missingClause();
+        }
+        let clauses = [];
+        exprs.forEach((expr, idx) => {
+            if (!(expr instanceof ir1.Group)) {
+                reporter.resolver.expectedClause(expr);
+            }
+            else if (expr.elements.length != 2) {
+                reporter.resolver.clauseArityMismatch(expr.elements.length);
+            }
+            else {
+                let question = expr.elements[0];
+                let answer = expr.elements[1];
+                if (question instanceof ir1.Keyword && question.token.type === TokenType.ELSE) {
+                    if (idx !== exprs.length - 1) {
+                        reporter.resolver.elseNotInClause();
+                    }
+                    else {
+                        clauses.push([new ir2.Literal(RACKET_TRUE), this.evaluate(answer)]);
+                    }
+                }
+                else {
+                    clauses.push([this.evaluate(question), this.evaluate(answer)]);
+                }
+            }
+        });
+        return new ir2.CondExpression(clauses);
+    }
     define(exprs) {
         if (!this.atTopLevel) {
             reporter.resolver.nonTopLevelDefinition();
@@ -208,6 +266,7 @@ export default class Resolver {
             if (paramList.length === 0) {
                 reporter.resolver.noFunctionParams();
             }
+            this.symbolTable.define(identifier.name.lexeme, RacketValueType.FUNCTION, paramList.length);
             let enclosing = this.symbolTable;
             this.symbolTable = new SymbolTable(enclosing);
             let paramNames = [];
@@ -227,7 +286,6 @@ export default class Resolver {
                 let body = this.evaluate(exprs[0]);
                 this.atTopLevel = atTopLevel;
                 this.symbolTable = enclosing;
-                this.symbolTable.define(identifier.name.lexeme, RacketValueType.FUNCTION, paramNames.length);
                 return new ir2.DefineVariable(new ir2.Identifier(identifier.name), new ir2.LambdaExpression(paramNames, body));
             }
             else if (exprs.length < 1) {
@@ -335,13 +393,22 @@ export default class Resolver {
                 this.symbolTable.define(name, RacketValueType.VARIABLE);
             }
             else
-                throw new Error('Unreachable code.');
+                throw new UnreachableCode();
             return new ir2.DefineVariable(new ir2.Identifier(identifier.name), this.evaluate(exprs[1]));
         }
         else {
             // return statement for typechecker
             return reporter.resolver.badVariableNameType(identifier);
         }
+    }
+    ifExpression(exprs) {
+        if (exprs.length != 3) {
+            reporter.resolver.ifArityMismatch(exprs.length);
+        }
+        let predicate = this.evaluate(exprs[0]);
+        let ifTrue = this.evaluate(exprs[1]);
+        let ifFalse = this.evaluate(exprs[2]);
+        return new ir2.IfExpression(predicate, ifTrue, ifFalse);
     }
     lambdaExpression(exprs) {
         if (!this.inFunctionDefinition) {
@@ -383,6 +450,12 @@ export default class Resolver {
             // return statement for typechecker
             return reporter.resolver.badLambdaParamListType(paramList);
         }
+    }
+    orExpression(exprs) {
+        if (exprs.length < 2) {
+            reporter.resolver.andNotEnoughArguments(exprs.length);
+        }
+        return new ir2.OrExpression(exprs.map(this.evaluate.bind(this)));
     }
     quoted(exprs) {
         if (exprs.length !== 1) {

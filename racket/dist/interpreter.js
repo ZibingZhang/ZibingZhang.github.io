@@ -1,15 +1,17 @@
 import BUILT_INS from './builtins.js';
 import { Environment } from './environment.js';
-import { BuiltinFunctionError, DivByZero, StructureFunctionError } from './errors.js';
+import { BuiltinFunctionError, DivByZero, StackOverflow, StructureFunctionError, UnreachableCode } from './errors.js';
 import * as ir2 from './ir2.js';
 import racket from './racket.js';
-import { isCallable, isNumber, RacketLambda, RacketStructure, RacketSymbol, RACKET_EMPTY_LIST } from './values.js';
+import Stack from './stack.js';
+import { isBoolean, isCallable, RacketLambda, RacketStructure, RacketSymbol, RACKET_EMPTY_LIST, RACKET_FALSE, RACKET_TRUE } from './values.js';
 /**
  * An interpreter for executing Intermediate Representation IIs.
  */
 export default class Interpreter {
     constructor() {
         this.environment = new Environment();
+        this.stack = new Stack();
         const GLOBALS = new Environment();
         for (let [name, value] of BUILT_INS) {
             GLOBALS.define(name, value);
@@ -19,16 +21,65 @@ export default class Interpreter {
     /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
      * Visitor
      * -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - */
+    visitAndExpression(expr) {
+        for (let arg of expr.expressions) {
+            let value = this.evaluate(arg);
+            if (value === RACKET_FALSE) {
+                return RACKET_FALSE;
+            }
+            else if (value !== RACKET_TRUE) {
+                this.error('and: question result is not true or false: ' + value.toString());
+            }
+        }
+        return RACKET_TRUE;
+    }
     visitCall(expr) {
+        if (this.stack.size() > 1000) {
+            throw new StackOverflow();
+        }
         let callee = this.evaluate(expr.callee);
-        if (isNumber(callee)) {
-            this.error(`function call: expected a function after the open parenthesis, but received ${callee.toString()}`);
+        if (!isCallable(callee)) {
+            throw new UnreachableCode();
         }
-        else if (!isCallable(callee)) {
-            throw new Error('Unreachable code.');
+        let name = callee.name;
+        if (name === undefined) {
+            let args = expr.arguments.map(this.evaluate.bind(this));
+            return callee.call(args);
         }
-        let args = expr.arguments.map(this.evaluate.bind(this));
-        return callee.call(args);
+        else if (this.stack.size() > 0 && name === this.stack.peek()) {
+            let args = expr.arguments.map(this.evaluate.bind(this));
+            this.stack.set(args);
+            throw new Interpreter.TailEndRecursion();
+        }
+        else {
+            this.stack.push(name);
+            let args = expr.arguments.map(this.evaluate.bind(this));
+            this.stack.set(args);
+            while (true) {
+                try {
+                    let result = callee.call(this.stack.args());
+                    this.stack.pop();
+                    return result;
+                }
+                catch (err) {
+                    if (!(err instanceof Interpreter.TailEndRecursion)) {
+                        throw err;
+                    }
+                }
+            }
+        }
+    }
+    visitCondExpression(expr) {
+        for (let clause of expr.clauses) {
+            let question = this.evaluate(clause[0]);
+            if (!isBoolean(question)) {
+                this.error('cond: question result is not true or false:' + question.toString());
+            }
+            else if (question === RACKET_TRUE) {
+                return this.evaluate(clause[1]);
+            }
+        }
+        this.error('cond: all question results were false');
     }
     visitDefineStructure(expr) {
         let name = expr.name;
@@ -46,18 +97,45 @@ export default class Interpreter {
     visitDefineVariable(expr) {
         let name = expr.identifier.name.lexeme;
         let value = this.evaluate(expr.expression);
+        if (value instanceof RacketLambda) {
+            value.name = name;
+        }
         this.environment.define(name, value);
         return;
-    }
-    visitLambdaExpression(expr) {
-        return new RacketLambda(expr.names.map(name => name.lexeme), expr.body);
     }
     visitIdentifier(expr) {
         let value = this.environment.get(expr.name.lexeme);
         return value;
     }
+    visitIfExpression(expr) {
+        let predicate = this.evaluate(expr.predicate);
+        if (predicate === RACKET_TRUE) {
+            return this.evaluate(expr.ifTrue);
+        }
+        else if (predicate === RACKET_FALSE) {
+            return this.evaluate(expr.ifFalse);
+        }
+        else {
+            this.error('if: question result is not true or false: ' + predicate.toString());
+        }
+    }
+    visitLambdaExpression(expr) {
+        return new RacketLambda(expr.names.map(name => name.lexeme), expr.body, this.environment);
+    }
     visitLiteral(expr) {
         return expr.value;
+    }
+    visitOrExpression(expr) {
+        for (let arg of expr.expressions) {
+            let value = this.evaluate(arg);
+            if (value === RACKET_TRUE) {
+                return RACKET_TRUE;
+            }
+            else if (value !== RACKET_FALSE) {
+                this.error('or: question result is not true or false: ' + value.toString());
+            }
+        }
+        return RACKET_FALSE;
     }
     visitQuoted(expr) {
         if (expr.expression instanceof ir2.Group) {
@@ -100,6 +178,9 @@ export default class Interpreter {
             else if (err instanceof DivByZero) {
                 racket.error('/: division by zero');
             }
+            else if (err instanceof StackOverflow) {
+                racket.error('stack overflow');
+            }
             else if (err instanceof StructureFunctionError) {
                 racket.error(err.msg);
             }
@@ -127,6 +208,9 @@ export default class Interpreter {
             else if (err instanceof DivByZero) {
                 racket.error('/: division by zero');
             }
+            else if (err instanceof StackOverflow) {
+                racket.error('stack overflow');
+            }
             else if (err instanceof StructureFunctionError) {
                 racket.error(err.msg);
             }
@@ -148,4 +232,6 @@ Interpreter.InterpreterError = class extends Error {
         super();
         this.msg = msg;
     }
+};
+Interpreter.TailEndRecursion = class extends Error {
 };

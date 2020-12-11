@@ -13,10 +13,16 @@ export var TokenType;
     TokenType["DEFINE"] = "define";
     TokenType["DEFINE_STRUCT"] = "define-struct";
     TokenType["LAMBDA"] = "lambda";
+    TokenType["QUOTE"] = "quote";
+    TokenType["SINGLE_QUOTE"] = "'";
+    TokenType["AND"] = "and";
+    TokenType["COND"] = "cond";
+    TokenType["ELSE"] = "else";
+    TokenType["IF"] = "if";
+    TokenType["OR"] = "or";
     TokenType["BOOLEAN"] = "BOOLEAN";
     TokenType["IDENTIFIER"] = "IDENTIFIER";
     TokenType["NUMBER"] = "NUMBER";
-    TokenType["QUOTE"] = "QUOTE";
     TokenType["STRING"] = "STRING";
     TokenType["EOF"] = "EOF";
 })(TokenType || (TokenType = {}));
@@ -34,9 +40,15 @@ export class Token {
     }
 }
 export const KEYWORDS = new Map([
-    ['check-expect', TokenType.CHECK_EXPECT],
-    ['define', TokenType.DEFINE],
-    ['define-struct', TokenType.DEFINE_STRUCT],
-    ['lambda', TokenType.LAMBDA]
+    [TokenType.CHECK_EXPECT.valueOf(), TokenType.CHECK_EXPECT],
+    [TokenType.DEFINE.valueOf(), TokenType.DEFINE],
+    [TokenType.DEFINE_STRUCT.valueOf(), TokenType.DEFINE_STRUCT],
+    [TokenType.LAMBDA.valueOf(), TokenType.LAMBDA],
+    [TokenType.QUOTE.valueOf(), TokenType.QUOTE],
+    [TokenType.AND.valueOf(), TokenType.AND],
+    [TokenType.COND.valueOf(), TokenType.COND],
+    [TokenType.ELSE.valueOf(), TokenType.ELSE],
+    [TokenType.IF.valueOf(), TokenType.IF],
+    [TokenType.OR.valueOf(), TokenType.OR],
 ]);
 ;
