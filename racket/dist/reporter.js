@@ -228,6 +228,9 @@ class ResolverErrorReporter {
         else
             throw new UnreachableCode();
     }
+    functionDuplicateVariable(name) {
+        this.error(`define: found a variable that is used more than once: ${name}`);
+    }
     missingFunctionBody() {
         this.error("define: expected an expression for the function body, but nothing's there");
     }
@@ -421,6 +424,9 @@ class ResolverErrorReporter {
         }
         else
             throw new UnreachableCode();
+    }
+    lambdaDuplicateVariable(name) {
+        this.error(`lambda: found a variable that is used more than once: ${name}`);
     }
     missingLambdaBody() {
         this.error("lambda: expected an expression for the function body, but nothing's there");

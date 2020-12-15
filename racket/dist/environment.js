@@ -34,7 +34,7 @@ export class Environment {
         let value = this.values.get(name);
         if (value === undefined) {
             if (this.enclosing === undefined) {
-                throw new UnreachableCode();
+                return undefined;
             }
             else {
                 return this.enclosing.get(name);

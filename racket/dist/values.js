@@ -66,6 +66,10 @@ export const RACKET_EMPTY_LIST = new RacketEmptyList();
  * A Racket number.
  */
 export class RacketNumber {
+    /**
+     * Is this number equal to that one?
+     * @param other the number to compare to this one
+     */
     equals(other) {
         throw new Error('Method not implemented.');
     }
@@ -115,6 +119,12 @@ export class RacketNumber {
     div(other) {
         return this.mul(other.inverted());
     }
+    /**
+     * Return an inexact version of this number.
+     */
+    inexact() {
+        throw new Error('Method not implemented.');
+    }
 }
 /**
  * A real Racket number.
@@ -130,10 +140,59 @@ export class RacketRealNumber extends RacketNumber {
     inverted() {
         throw new Error('Method not implemented.');
     }
+    /**
+     * Is this number negative?
+     */
     isNegative() {
         throw new Error('Method not implemented.');
     }
+    /**
+     * Is this number positive?
+     */
     isPositive() {
+        throw new Error('Method not implemented.');
+    }
+    /**
+     * Is this number less than that one?
+     * @param other the number to compare to this one
+     */
+    lt(other) {
+        throw new Error('Method not implemented.');
+    }
+    /**
+     * Is this number less than or equal to that one?
+     * @param other the number to compare to this one
+     */
+    leq(other) {
+        throw new Error('Method not implemented.');
+    }
+    /**
+     * Is this number greater than that one?
+     * @param other the number to compare to this one
+     */
+    gt(other) {
+        throw new Error('Method not implemented.');
+    }
+    /**
+     * Is this number greater than or equal to that one?
+     * @param other the number to compare to this one
+     */
+    geq(other) {
+        throw new Error('Method not implemented.');
+    }
+    /**
+     * Returns a new Racket number that is the closest integer above this.
+     */
+    ceiling() {
+        throw new Error('Method not implemented.');
+    }
+    /**
+     * Returns a new Racket number that is the closest integer below this.
+     */
+    floor() {
+        throw new Error('Method not implemented.');
+    }
+    inexact() {
         throw new Error('Method not implemented.');
     }
 }
@@ -203,6 +262,53 @@ export class RacketExactNumber extends RacketRealNumber {
     }
     isPositive() {
         return this.numerator / this.denominator > 0;
+    }
+    lt(other) {
+        if (!isRational(other)) {
+            return other.geq(this);
+        }
+        else {
+            return this.numerator * other.denominator < other.numerator * this.denominator;
+        }
+    }
+    leq(other) {
+        if (!isRational(other)) {
+            return other.gt(this);
+        }
+        else {
+            return this.numerator * other.denominator <= other.numerator * this.denominator;
+        }
+    }
+    gt(other) {
+        if (!isRational(other)) {
+            return other.leq(this);
+        }
+        else {
+            return this.numerator * other.denominator > other.numerator * this.denominator;
+        }
+    }
+    geq(other) {
+        if (!isRational(other)) {
+            return other.geq(this);
+        }
+        else {
+            return this.numerator * other.denominator >= other.numerator * this.denominator;
+        }
+    }
+    ceiling() {
+        let floor = this.numerator / this.denominator;
+        if (floor * this.denominator != this.numerator) {
+            return new RacketExactNumber(floor + 1n, 1n);
+        }
+        else {
+            return new RacketExactNumber(floor, 1n);
+        }
+    }
+    floor() {
+        return new RacketExactNumber(this.numerator / this.denominator, 1n);
+    }
+    inexact() {
+        return new RacketInexactFraction(this.numerator, this.denominator);
     }
 }
 /**
@@ -281,6 +387,53 @@ export class RacketInexactFraction extends RacketInexactNumber {
     isPositive() {
         return this.numerator / this.denominator > 0;
     }
+    lt(other) {
+        if (!isRational(other)) {
+            return other.geq(this);
+        }
+        else {
+            return this.numerator * other.denominator < other.numerator * this.denominator;
+        }
+    }
+    leq(other) {
+        if (!isRational(other)) {
+            return other.gt(this);
+        }
+        else {
+            return this.numerator * other.denominator <= other.numerator * this.denominator;
+        }
+    }
+    gt(other) {
+        if (!isRational(other)) {
+            return other.leq(this);
+        }
+        else {
+            return this.numerator * other.denominator > other.numerator * this.denominator;
+        }
+    }
+    geq(other) {
+        if (!isRational(other)) {
+            return other.geq(this);
+        }
+        else {
+            return this.numerator * other.denominator >= other.numerator * this.denominator;
+        }
+    }
+    ceiling() {
+        let floor = this.numerator / this.denominator;
+        if (floor * this.denominator != this.numerator) {
+            return new RacketInexactFraction(floor + 1n, 1n);
+        }
+        else {
+            return new RacketInexactFraction(floor, 1n);
+        }
+    }
+    floor() {
+        return new RacketInexactFraction(this.numerator / this.denominator, 1n);
+    }
+    inexact() {
+        return new RacketInexactFraction(this.numerator, this.denominator);
+    }
 }
 /**
  * An inexact Racket number which is stored as a float.
@@ -353,6 +506,55 @@ export class RacketInexactFloat extends RacketInexactNumber {
     }
     isPositive() {
         return this.value > 0;
+    }
+    lt(other) {
+        if (isRational(other)) {
+            return fractionToFloat(other.numerator, other.denominator) < this.value;
+        }
+        else if (other instanceof RacketInexactFloat) {
+            return other.value < this.value;
+        }
+        else
+            throw new UnreachableCode();
+    }
+    leq(other) {
+        if (isRational(other)) {
+            return fractionToFloat(other.numerator, other.denominator) <= this.value;
+        }
+        else if (other instanceof RacketInexactFloat) {
+            return other.value <= this.value;
+        }
+        else
+            throw new UnreachableCode();
+    }
+    gt(other) {
+        if (isRational(other)) {
+            return fractionToFloat(other.numerator, other.denominator) > this.value;
+        }
+        else if (other instanceof RacketInexactFloat) {
+            return other.value > this.value;
+        }
+        else
+            throw new UnreachableCode();
+    }
+    geq(other) {
+        if (isRational(other)) {
+            return fractionToFloat(other.numerator, other.denominator) >= this.value;
+        }
+        else if (other instanceof RacketInexactFloat) {
+            return other.value >= this.value;
+        }
+        else
+            throw new UnreachableCode();
+    }
+    ceiling() {
+        return new RacketInexactFraction(BigInt(Math.ceil(this.value)), 1n);
+    }
+    floor() {
+        return new RacketInexactFraction(BigInt(Math.floor(this.value)), 1n);
+    }
+    inexact() {
+        return new RacketInexactFloat(this.value);
     }
 }
 /**
@@ -431,6 +633,9 @@ export class RacketComplexNumber extends RacketNumber {
             else
                 return new RacketComplexNumber(real, this.imaginary);
         }
+    }
+    inexact() {
+        return new RacketComplexNumber(this.real.inexact(), this.imaginary.inexact());
     }
 }
 /* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -637,18 +842,27 @@ export function isEmpty(object) {
 export function isExact(number) {
     return number instanceof RacketExactNumber;
 }
+export function isExactNonnegativeInteger(object) {
+    return object instanceof RacketExactNumber && object.denominator === 1n;
+}
 export function isInstance(object) {
     return object instanceof RacketInstance;
 }
 export function isInexact(object) {
     return object instanceof RacketInexactNumber;
 }
-function isInexactFloat(object) {
+export function isInteger(object) {
+    return isRational(object) && object.denominator == 1n;
+}
+export function isInexactFloat(object) {
     return object instanceof RacketInexactFloat;
 }
 export function isList(object) {
     return object instanceof RacketConstructedList
         || object === RACKET_EMPTY_LIST;
+}
+export function isNatural(object) {
+    return isRational(object) && object.denominator === 1n && !(object.numerator < 0);
 }
 export function isNumber(object) {
     return object instanceof RacketNumber;

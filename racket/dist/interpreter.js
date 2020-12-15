@@ -4,7 +4,7 @@ import { BuiltinFunctionError, DivByZero, StackOverflow, StructureFunctionError,
 import * as ir2 from './ir2.js';
 import racket from './racket.js';
 import Stack from './stack.js';
-import { isBoolean, isCallable, RacketLambda, RacketStructure, RacketSymbol, RACKET_EMPTY_LIST, RACKET_FALSE, RACKET_TRUE } from './values.js';
+import { isBoolean, isCallable, isInexact, RacketLambda, RacketStructure, RacketSymbol, RACKET_EMPTY_LIST, RACKET_FALSE, RACKET_TRUE } from './values.js';
 /**
  * An interpreter for executing Intermediate Representation IIs.
  */
@@ -46,7 +46,7 @@ export default class Interpreter {
             let args = expr.arguments.map(this.evaluate.bind(this));
             return callee.call(args);
         }
-        else if (this.stack.size() > 0 && name === this.stack.peek()) {
+        else if (this.stack.size() > 0 && name === this.stack.peek() && !BUILT_INS.has(name)) {
             let args = expr.arguments.map(this.evaluate.bind(this));
             this.stack.set(args);
             throw new Interpreter.TailEndRecursion();
@@ -104,7 +104,11 @@ export default class Interpreter {
         return;
     }
     visitIdentifier(expr) {
-        let value = this.environment.get(expr.name.lexeme);
+        let name = expr.name.lexeme;
+        let value = this.environment.get(name);
+        if (value === undefined) {
+            this.error(name + ' is used here before its definition');
+        }
         return value;
     }
     visitIfExpression(expr) {
@@ -148,7 +152,14 @@ export default class Interpreter {
     visitTestCase(expr) {
         let actual = this.evaluate(expr.actual);
         let expected = this.evaluate(expr.expected);
-        if (!actual.equals(expected)) {
+        if (isInexact(expected)) {
+            this.error(`check-expect cannot compare inexact numbers. Try (check-within test ${expected.toString().substr(2)} range).`);
+        }
+        else if (isInexact(actual)) {
+            // TODO: not the actual error
+            this.error(`check-expect: second argument of equality cannot be an inexact number, given ${actual.toString()}`);
+        }
+        else if (!actual.equals(expected)) {
             this.error(`Actual value ${actual.toString()} differs from ${expected.toString()}, the expected value.`);
         }
     }
