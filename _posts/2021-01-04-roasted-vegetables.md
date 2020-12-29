@@ -1,6 +1,6 @@
 ---
 title: "Roasted Vegetables"
-permalink: "/blog/hlth-5963/roasted-vegetables"
+permalink: /blog/hlth-5963/roasted-vegetables/
 sidebar:
   title: "Blog Posts"
   nav: blog

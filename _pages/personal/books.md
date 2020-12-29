@@ -1,6 +1,6 @@
 ---
 title: "Books"
-permalink: /personal/books
+permalink: /personal/books/
 layout: single
 sidebar:
   title: "Personal Pages"

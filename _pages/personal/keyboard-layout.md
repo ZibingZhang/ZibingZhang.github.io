@@ -1,6 +1,6 @@
 ---
 title: "Keyboard Layout"
-permalink: /personal/keyboard-layout
+permalink: /personal/keyboard-layout/
 layout: single
 sidebar:
   title: "Personal Pages"

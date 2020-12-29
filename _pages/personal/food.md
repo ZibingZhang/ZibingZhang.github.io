@@ -1,6 +1,6 @@
 ---
 title: "Food"
-permalink: /personal/food
+permalink: /personal/food/
 layout: single
 sidebar:
   title: "Personal Pages"

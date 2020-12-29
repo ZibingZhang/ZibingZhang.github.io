@@ -1,41 +1,41 @@
 # main links
 main:
   - title: "About"
-    url: /about
+    url: /about/
   - title: "Personal"
-    url: /personal
+    url: /personal/
   - title: "Posts"
-    url: /blog
+    url: /blog/
 
 # personal links
 personal:
   - title: "Drinks"
-    url: /personal/drinks
+    url: /personal/drinks/
   - title: "Entertainment"
     children:
       - title: "Books"
-        url: /personal/books
+        url: /personal/books/
       - title: "TV Shows"
-        url: /personal/tv-shows
+        url: /personal/tv-shows/
   - title: "Food"
-    url: /personal/food
-  - title: Keyboard Layout
-    url: /personal/keyboard-layout
+    url: /personal/food/
+  - title: "Keyboard Layout"
+    url: /personal/keyboard-layout/
   - title: "Quotes"
-    url: /personal/quotes
+    url: /personal/quotes/
   - title: "Skincare"
-    url: /personal/skincare
+    url: /personal/skincare/
 
 # blog links
 blog:
   - title: "HLTH 5963 - Intro to Culinary Medicine"
-    url: /blog/hlth-5963
+    url: /blog/hlth-5963/
     children:
       - title: Roasted Vegetables
-        url: "/blog/hlth-5963/roasted-vegetables"
+        url: /blog/hlth-5963/roasted-vegetables/
       - title: Recipe 2
-        url: "/blog/hlth-5963/recipe-2"
+        url: /blog/hlth-5963/recipe-2/
       - title: Recipe 3
-        url: "/blog/hlth-5963/recipe-3"
+        url: /blog/hlth-5963/recipe-3/
       - title: Recipe 4
-        url: "/blog/hlth-5963/recipe-4"
+        url: /blog/hlth-5963/recipe-4/

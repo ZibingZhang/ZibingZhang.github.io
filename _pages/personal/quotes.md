@@ -1,6 +1,6 @@
 ---
 title: "Quotes"
-permalink: /personal/quotes
+permalink: /personal/quotes/
 layout: single
 sidebar:
   title: "Quotes"

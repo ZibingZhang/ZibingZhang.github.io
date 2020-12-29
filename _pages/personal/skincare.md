@@ -1,6 +1,6 @@
 ---
 title: "Skincare"
-permalink: /personal/skincare
+permalink: /personal/skincare/
 layout: single
 sidebar:
   title: "Skincare"

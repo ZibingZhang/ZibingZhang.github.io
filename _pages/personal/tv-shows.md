@@ -1,6 +1,6 @@
 ---
 title: "TV Shows"
-permalink: /personal/tv-shows
+permalink: /personal/tv-shows/
 layout: single
 sidebar:
   title: "Personal Pages"
@@ -13,6 +13,7 @@ shows:
     - 3%|season 1
     - Altered Carbon|season 2
     - Another Life|season 1
+    - Arrow|season 1, in progress
     - Avatar the Last Airbender|season 1 episode 10
     - Black Mirror|in progress
     - Bodyguard|season 1
@@ -26,6 +27,7 @@ shows:
     - Designated Survivor|season 3
     - Doctor Who|season 8 episode 11
     - The Expanse|season 5
+    - Fringe|in progress
     - Game of Thrones|season 8
     - Gossip Girl|season 2, in progress
     - Hanna|season 2
@@ -37,12 +39,12 @@ shows:
     - The Office|season 5 episode 21
     - The Outsider|season 1
     - Prison Break|season 1, in progress
-    - Queen's Gambit|season 1
+    - The Queen's Gambit|season 1
     - Revolution|season 2
     - Sherlock Holmes|series 4
     - Stranger Things|season 3
     - The Walking Dead|in progress
-    - West World|in progress
+    - Westworld|season 1
     - The Witcher|season 1
 ---
 

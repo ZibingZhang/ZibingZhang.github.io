@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-permalink: /blog
+permalink: /blog/
 layout: single
 sidebar:
   title: "Blog Posts"
