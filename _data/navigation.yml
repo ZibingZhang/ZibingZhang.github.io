@@ -1,0 +1,26 @@
+# main links
+main:
+  - title: "About"
+    url: /about
+  - title: "Personal"
+    url: /personal
+
+# documentation links
+personal:
+  - 
+  - title: Drinks
+    url: /personal/drinks
+  - title: Entertainment
+    children:
+      - title: "Books"
+        url: /personal/books
+      - title: "TV Shows"
+        url: /personal/tv-shows
+  - title: Food
+    url: /personal/food
+  - title: Keyboard Layout
+    url: /personal/keyboard-layout
+  - title: Quotes
+    url: /personal/quotes
+  - title: Skincare
+    url: /personal/skincare

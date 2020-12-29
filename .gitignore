@@ -5,4 +5,5 @@ _posts
 .jekyll-cache
 .jekyll-metadata
 .vscode
+tmp
 vendor
