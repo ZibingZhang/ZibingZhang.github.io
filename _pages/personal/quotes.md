@@ -17,12 +17,12 @@ sidebar:
 > "Ain’t nothing wrong with being a woman, gancho," Lopen said. 
 > "Some of my relatives are women."
 
-― Brandon Sanderson, *Words of Radiance*
+--- Brandon Sanderson, *Words of Radiance*
 
 > The purpose of a storyteller is not to tell you how to think, but to give you questions to think upon. 
 > Too often, we forget that.
 
-― Brandon Sanderson, *The Way of Kings*
+--- Brandon Sanderson, *The Way of Kings*
 
 > Anyone can love a thing *because*.
 > That's as easy as putting a penny in your pocket.
@@ -30,8 +30,8 @@ sidebar:
 > To know the flaws and love them too.
 > That is rare and pure and perfect.
 
-― Patrick Rothfuss, *The Wise Man's Fear*
+--- Patrick Rothfuss, *The Wise Man's Fear*
 
 > The day we fret about the future is the day we leave our childhood behind.
 
-― Patrick Rothfuss, *The Name of the Wind*
+--- Patrick Rothfuss, *The Name of the Wind*
