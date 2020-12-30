@@ -4,7 +4,7 @@ main:
     url: /about/
   - title: "Personal"
     url: /personal/
-  - title: "Posts"
+  - title: "Blog"
     url: /blog/
 
 # personal links
@@ -31,8 +31,8 @@ blog:
   - title: "HLTH 5963 - Intro to Culinary Medicine"
     url: /blog/hlth-5963/
     children:
-      - title: Roasted Vegetables
-        url: /blog/hlth-5963/roasted-vegetables/
+      - title: Roasted Root Vegetables
+        url: /blog/hlth-5963/roasted-root-vegetables/
       - title: Recipe 2
         url: /blog/hlth-5963/recipe-2/
       - title: Recipe 3
