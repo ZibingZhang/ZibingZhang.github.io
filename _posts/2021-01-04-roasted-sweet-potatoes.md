@@ -36,5 +36,5 @@ It has a fairly high glycemic index (GI) of 94.[^2]
 - Canola, safflower, or sunflower oil can be substituted for olive oil.
 
 ## Sources
-[^1]:https://www.healthbenefitstimes.com/sweet-potato/
-[^2]:https://www.glycemicindex.com/foodSearch.php?num=1895&ak=detail
+[^1]:<https://www.healthbenefitstimes.com/sweet-potato/>{:target="_blank" rel="noopener"}
+[^2]:<https://www.glycemicindex.com/foodSearch.php?num=1895&ak=detail>{:target="_blank" rel="noopener"}
