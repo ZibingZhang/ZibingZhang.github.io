@@ -32,8 +32,8 @@ It has a fairly high glycemic index (GI) of 94.[^2]
 - Make sure all vegetables are cut roughly the same size to ensure even cooking.
 
 ## Substitutions
-- Cassava root, or any root vegetable, can be substituted for sweet potato.
-- Canola, safflower, or sunflower oil can be substituted for olive oil.
+- Sweet potato can be substituted with cassava root or any other root vegetable.
+- Olive oil can be substituted with canola, safflower, or sunflower oil.
 
 ## Sources
 [^1]:<https://www.healthbenefitstimes.com/sweet-potato/>{:target="_blank" rel="noopener"}
