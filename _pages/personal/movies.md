@@ -11,12 +11,13 @@ movies:
   have_watched:
     - Shoplifters|2020-12-30
   to_watch:
+    - Black Swan
     - Children of Men
     - Dark Waters
     - "Fantastic Beasts: The Crimes of Grindelwald"
     - Goodbye Christopher Robin
     - Official Secrets
-  previously_watched:
+  all_movies:
     - 不能说的·秘密
     - 流浪地球
     - 英雄
@@ -39,6 +40,7 @@ movies:
     - "Avengers: Endgame"
     - "Avengers: Infinity War"
     - Baby Driver
+    - Back to the Future
     - Bad Education
     - A Beautiful Mind
     - Beauty and the Beast (1991)
@@ -141,6 +143,8 @@ movies:
     - The Lego Movie
     - Life of Pi
     - The Lion King
+    - The Lion, the Witch and the Wardrobe
+    - Lincoln
     - Logan
     - Looper
     - "The Lord of the Rings: The Fellowship of the Ring"
@@ -187,6 +191,7 @@ movies:
     - The Prestige
     - Pride and Prejudice
     - Pride and Prejudice and Zombies
+    - Prince Caspian
     - "Prince of Persia: The Sands of Time"
     - The Princess Bride
     - Princess Mononoke
@@ -200,9 +205,11 @@ movies:
     - "The Rocket: The Legend of Rocket Richard"
     - Romeo and Juliet (1968)
     - "Rogue One: A Star Wars Story"
+    - Selma
     - The Shape of Water
     - The Shawshank Redemption
     - Sherlock Holmes (2019)
+    - Shoplifters
     - Shrek
     - Skyfall
     - Snowden
@@ -248,6 +255,7 @@ movies:
     - The Truman Show
     - Twilight
     - Up
+    - Voyage of the Dawn Treader
     - WALL-E
     - War for the Planet of the Apes
     - Whiplash
@@ -281,9 +289,9 @@ Movies with common names might be succeeded with the year it was released.
   {%- endfor -%}
 </ul>
 
-## Previously Watched
+## All Movies
 <ul>
-  {%- for movie in page.movies.previously_watched -%}
+  {%- for movie in page.movies.all_movies -%}
     <li><b>{{ movie }}</b></li>
   {%- endfor -%}
 </ul>
