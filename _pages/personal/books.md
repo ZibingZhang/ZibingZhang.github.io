@@ -5,6 +5,7 @@ layout: single
 sidebar:
   title: "Personal Pages"
   nav: personal
+toc: true
 classes: wide
 books:
   to_read:
@@ -32,7 +33,6 @@ series:
     - The Wheel of Time|Robert Jordan
 ---
 
-
 A list of books that I've read and a list of them that I've been meaning to read.
 This list includes only the books I've finished since I've started the list.
 
@@ -42,12 +42,12 @@ This list includes only the books I've finished since I've started the list.
 <ul>
   {%- for book in page.books.to_read -%}
     {% assign book_data = book | split: '|' %}
-    <li><i>{{ book_data[0] }}</i> by {{ book_data[1] }}</li>
+    <li><b>{{ book_data[0] }}</b> by {{ book_data[1] }}</li>
   {%- endfor -%}
 </ul><ul>
   {%- for series in page.series.to_read -%}
     {% assign series_data = series | split: '|' %}
-    <li><i>{{ series_data[0] }}</i> by {{ series_data[1] }}</li>
+    <li><b>{{ series_data[0] }}</b> by {{ series_data[1] }}</li>
   {%- endfor -%}
 </ul>
 
@@ -55,6 +55,6 @@ This list includes only the books I've finished since I've started the list.
 <ul>
   {%- for book in page.books.finished_reading -%}
     {% assign book_data = book | split: '|' %}
-    <li><s><i>{{ book_data[0] }}</i> by {{ book_data[1] }}</s> ({{ book_data[2] }})</li>
+    <li><s><b>{{ book_data[0] }}</b> by {{ book_data[1] }}</s> ({{ book_data[2] }})</li>
   {%- endfor -%}
 </ul>

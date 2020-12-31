@@ -15,6 +15,8 @@ personal:
     children:
       - title: "Books"
         url: /personal/books/
+      - title: "Movies"
+        url: /personal/movies/
       - title: "TV Shows"
         url: /personal/tv-shows/
   - title: "Food"
