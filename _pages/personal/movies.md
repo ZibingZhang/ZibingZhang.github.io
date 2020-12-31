@@ -9,22 +9,28 @@ toc: true
 classes: wide
 movies:
   have_watched:
+    - Shoplifters|2020-12-30
   to_watch:
+    - Children of Men
     - Dark Waters
     - "Fantastic Beasts: The Crimes of Grindelwald"
     - Goodbye Christopher Robin
-    - Logan
     - Official Secrets
   previously_watched:
     - 不能说的·秘密
+    - 流浪地球
+    - 英雄
     - 12 Years a Slave
     - "1917"
     - "2012"
     - "21"
     - 21 Jump Street
     - 22 Jump Street
+    - 3 Idiots
     - Andhadhun
     - Always Be My Maybe
+    - The Amazing Spider-Man
+    - The Amazing Spider-Man 2
     - American Factory (d)
     - Annihilation
     - Avatar
@@ -47,6 +53,7 @@ movies:
     - The Bourne Ultimatum
     - Brave
     - A Bugs Life
+    - The Cabin in the Woods
     - "Captain America: Civil War"
     - "Captain America: The First Avenger"
     - "Captain America: The Winter Soldier"
@@ -56,6 +63,8 @@ movies:
     - Dawn of the Planet of the Apes
     - Deadpool
     - Denial
+    - Despicable Me
+    - The Devil Wears Prada
     - District 9
     - Divergent
     - Doctor Strange
@@ -68,6 +77,7 @@ movies:
     - Fantastic Beasts and Where to Find Them
     - Finding Nemo
     - Forrest Gump
+    - Free Solo (d)
     - Frozen
     - "G.I. Joe: Retaliation"
     - "G.I. Joe: The Rise of Cobra"
@@ -76,9 +86,12 @@ movies:
     - The Grand Budapest Hotel
     - Green Book
     - Gravity
+    - The Great Gatsby (2013)
     - The Greatest Showman
+    - Greyhound
     - Guardians of the Galaxy Vol. 2
     - Happy Death Day
+    - Happy Feet
     - Harry Potter and the Chamber of Secrets
     - Harry Potter and the Deathly Hallows – Part 1
     - Harry Potter and the Deathly Hallows – Part 2
@@ -100,10 +113,16 @@ movies:
     - "The Hunger Games: Mockingjay – Part 1"
     - I Am Legend
     - I, Robot
+    - Ice Age
+    - The Illusionist
     - The Imitation Game
     - In Time
     - Inception
     - The Incredible Hulk
+    - The Incredibles
+    - Indiana Jones and the Temple of Doom
+    - Indiana Jones and the Last Crusade
+    - Indiana Jones and the Kingdom of the Crystal Skull
     - Inferno
     - Interstellar
     - Iron Man
@@ -113,13 +132,16 @@ movies:
     - Jason Bourne
     - The Jungle Book (2016)
     - Jurassic World
+    - The Karate Kid (2010)
     - The King's Speech
     - "Kingsman: The Golden Circle"
     - Knives Out
+    - Kung Fu Panda
     - The Last Airbender
     - The Lego Movie
     - Life of Pi
     - The Lion King
+    - Logan
     - Looper
     - "The Lord of the Rings: The Fellowship of the Ring"
     - "The Lord of the Rings: The Return of the King"
@@ -140,8 +162,10 @@ movies:
     - "Mission: Impossible - Ghost Protocol"
     - "Mission: Impossible - Rogue Nation"
     - Moneyball
+    - Monster University
     - Mulan (1998)
     - Murder on the Orient Express
+    - Night at the Museum
     - Now You See Me
     - Now You See Me 2
     - Ocean's 8
@@ -150,32 +174,41 @@ movies:
     - Ocean's Twelve
     - Olympus Has Fallen
     - One Child Nation (d)
+    - Pacific Rim
     - Parasite
+    - The Parent Trap
     - Passengers
     - "Percy Jackson & the Olympians: The Lightning Thief"
     - "Pirates of the Caribbean: Dead Man's Chest"
     - "Pirates of the Caribbean: The Curse of the Black Pearl"
     - The Platform
     - Pokémon Detective Pikachu
+    - The Polar Express
     - The Prestige
     - Pride and Prejudice
     - Pride and Prejudice and Zombies
+    - "Prince of Persia: The Sands of Time"
     - The Princess Bride
     - Princess Mononoke
     - Prometheus
+    - Raiders of the Lost Ark
     - Rain Man
     - Ratatouille
     - Ready Player One
     - The Report
     - Rise of the Planet of the Apes
+    - "The Rocket: The Legend of Rocket Richard"
     - Romeo and Juliet (1968)
     - "Rogue One: A Star Wars Story"
     - The Shape of Water
     - The Shawshank Redemption
     - Sherlock Holmes (2019)
+    - Shrek
     - Skyfall
     - Snowden
     - Snowpiercer
+    - Soul
+    - The Sound of Music
     - Spectre
     - Spider-Man
     - Spider-Man 2
@@ -183,7 +216,9 @@ movies:
     - Spirited Away
     - Spotlight
     - Stand and Deliver
+    - Star Trek
     - Star Trek Beyond
+    - Star Trek Into Darkness
     - "Star Wars: Episode I – The Phantom Menace"
     - "Star Wars: Episode II – Attack of the Clones"
     - "Star Wars: Episode III – Revenge of the Sith"
@@ -202,6 +237,9 @@ movies:
     - "Thor: The Dark World"
     - "Thor: Ragnarok"
     - Titanic
+    - Toy Story
+    - Toy Story 2
+    - Toy Story 3
     - Transformers
     - "Transformers: Age of Extinction"
     - "Transformers: Dark of the Moon"
@@ -209,6 +247,8 @@ movies:
     - "Tron: Legacy"
     - The Truman Show
     - Twilight
+    - Up
+    - WALL-E
     - War for the Planet of the Apes
     - Whiplash
     - White House Down
