@@ -27,6 +27,8 @@ personal:
     url: /personal/quotes/
   - title: "Skincare"
     url: /personal/skincare/
+  - title: "Useful Links"
+    url: /personal/
 
 # blog links
 blog:
