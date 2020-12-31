@@ -1,6 +1,6 @@
 ---
 title: "Roasted Sweet Potatoes"
-permalink: /blog/hlth-5963/roasted-root-vegetables/
+permalink: /blog/hlth-5963/roasted-sweet-potatoes/
 sidebar:
   title: "Blog Posts"
   nav: blog
