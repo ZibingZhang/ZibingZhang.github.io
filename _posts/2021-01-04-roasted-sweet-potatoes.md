@@ -1,12 +1,16 @@
 ---
-title: "Roasted Root Vegetables"
+title: "Roasted Sweet Potatoes"
 permalink: /blog/hlth-5963/roasted-root-vegetables/
 sidebar:
   title: "Blog Posts"
   nav: blog
+toc: true
 categories:
   - HLTH 5963 - Intro to Culinary Medicine
 ---
+
+Sweet potato (Ipomoea batatas) is a root vegetable with ample amounts of vitamins, minerals, and fiber.[^1]
+It has a fairly high glycemic index (GI) of 94.[^2]
 
 ## Ingredients
 - 1 sweet potato, medium, peeled, cut into chunks
@@ -30,3 +34,7 @@ categories:
 ## Substitutions
 - Cassava root, or any root vegetable, can be substituted for sweet potato.
 - Canola, safflower, or sunflower oil can be substituted for olive oil.
+
+## Sources
+[^1]:https://www.healthbenefitstimes.com/sweet-potato/
+[^2]:https://www.glycemicindex.com/foodSearch.php?num=1895&ak=detail
