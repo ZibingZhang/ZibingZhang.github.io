@@ -37,7 +37,7 @@ words_per_minute         : 200
 # Site Author
 author:
   name             : "Zibing Zhang"
-  # avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : /assets/images/annie.png # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "A student at Northeastern University."
   location         : "Boston"
   links:
@@ -110,7 +110,6 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:

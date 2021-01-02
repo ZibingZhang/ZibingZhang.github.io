@@ -23,12 +23,16 @@ personal:
     url: /personal/food/
   - title: "Keyboard Layout"
     url: /personal/keyboard-layout/
+  - title: "Meta"
+    url: /personal/meta/
   - title: "Quotes"
     url: /personal/quotes/
   - title: "Skincare"
     url: /personal/skincare/
   - title: "Useful Links"
     url: /personal/
+  - title: "Wikis"
+    url: /personal/wikis/
 
 # blog links
 blog:
