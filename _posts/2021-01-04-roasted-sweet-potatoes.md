@@ -69,10 +69,8 @@ It has a fairly high glycemic index (GI) of 94.[^2]
 - Olive oil can be substituted with canola, safflower, or sunflower oil.
 
 ## Cooking Process
-~~
-This recipe has been passed down through my mother's side of the family for generations.
-Even today, I can fondly remember my mother cooking this recipe for me after I came down with the flu in the second grade.
-~~
+~~This recipe has been passed down through my mother's side of the family for generations.
+Even today, I can fondly remember my mother cooking this recipe for me after I came down with the flu in the second grade.~~
 
 I decided to double the recipe since I had more than enough ingredients at home.
 
