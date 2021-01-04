@@ -1,0 +1,8 @@
+# User interface text and labels
+
+# English (default)
+# -----------------
+en: &DEFAULT_EN
+  follow_label               : "Follow:"
+en-US:
+  <<: *DEFAULT_EN

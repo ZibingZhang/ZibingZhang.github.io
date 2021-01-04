@@ -15,7 +15,6 @@ layout: single
 </script>
 
 <style>
-
   mjx-container {
     overflow-x: auto;
   }
