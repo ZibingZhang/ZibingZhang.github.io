@@ -40,9 +40,11 @@ end_result:
     alt: "Plating"
 ---
 
+This recipe was provided by Professor Janisch.
+
 ## Nutritional Information
 Sweet potato (Ipomoea batatas) is a root vegetable with ample amounts of vitamins, minerals, and fiber.[^1]
-Bolstering the immune system and reduce inflammation are just a couple of the many health benefits.[^1]
+Bolstering the immune system and reduce inflammation are just a couple of its many health benefits.[^1]
 It has a fairly high glycemic index (GI) of 94.[^2]
 
 ## Ingredients
@@ -63,6 +65,7 @@ It has a fairly high glycemic index (GI) of 94.[^2]
 
 ## Notes
 - Make sure all vegetables are cut roughly the same size to ensure even cooking.
+- Cooking time may vary depending on the size of the chunks.
 
 ## Substitutions
 - Sweet potato can be substituted with cassava root or any other root vegetable.
@@ -81,7 +84,6 @@ Preparing the ingredients did not take much effort at all.
 
 I had some extra carrots lying around, so I decided to add a couple of them into the mix.
 Since I was unable to find fresh rosemary, I was forced to substitute it with dried rosemary instead.
-
 
 Washing the vegetables removed more dirt than I had expected... it has been a while since I have properly cooked.
 I was pleasantly surprised to find a little *thing* at the end of the peeler, as we had previously discussed in class, used to gouge out portions of the sweet potato.

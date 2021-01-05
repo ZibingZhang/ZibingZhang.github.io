@@ -29,6 +29,7 @@ series:
     - Broken Earth Trilogy|Nora Jemisin
     - The Expanse|James Corey
     - Foundation|Issac Asimov
+    - Gentleman Bastard|Scott Lynch
     - Mistborn|Brandon Sanderson
     - The Wheel of Time|Robert Jordan
 ---

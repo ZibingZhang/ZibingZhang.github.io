@@ -1,6 +1,6 @@
 ---
-title: "Recipe 4"
-permalink: /blog/hlth-5963/recipe-4/
+title: "Guacamole"
+permalink: /blog/hlth-5963/guacamole/
 sidebar:
   title: "Blog Posts"
   nav: blog
