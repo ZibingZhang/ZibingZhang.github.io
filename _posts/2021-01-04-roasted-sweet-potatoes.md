@@ -8,35 +8,35 @@ toc: true
 categories:
   - HLTH 5963 - Intro to Culinary Medicine
 preparing_ingredients:
-  - url: /assets/images/ingredients1.jpg
-    image_path: /assets/images/ingredients1.jpg
+  - url: /assets/images/posts/2021-01-04/ingredients1.jpg
+    image_path: /assets/images/posts/2021-01-04/ingredients1.jpg
     alt: "Unprocessed Ingredients"
-  - url: /assets/images/ingredients2.jpg
-    image_path: /assets/images/ingredients2.jpg
+  - url: /assets/images/posts/2021-01-04/ingredients2.jpg
+    image_path: /assets/images/posts/2021-01-04/ingredients2.jpg
     alt: "Peeled Vegetables"
-  - url: /assets/images/ingredients3.jpg
-    image_path: /assets/images/ingredients3.jpg
+  - url: /assets/images/posts/2021-01-04/ingredients3.jpg
+    image_path: /assets/images/posts/2021-01-04/ingredients3.jpg
     alt: "Halved Vegetables"
-  - url: /assets/images/ingredients4.jpg
-    image_path: /assets/images/ingredients4.jpg
+  - url: /assets/images/posts/2021-01-04/ingredients4.jpg
+    image_path: /assets/images/posts/2021-01-04/ingredients4.jpg
     alt: "Diced Vegetables"
 combining_ingredients:
-  - url: /assets/images/ingredients5.jpg
-    image_path: /assets/images/ingredients5.jpg
+  - url: /assets/images/posts/2021-01-04/ingredients5.jpg
+    image_path: /assets/images/posts/2021-01-04/ingredients5.jpg
     alt: "Combined Ingredients"
 roasting:
-  - url: /assets/images/pan1.jpg
-    image_path: /assets/images/pan1.jpg
+  - url: /assets/images/posts/2021-01-04/pan1.jpg
+    image_path: /assets/images/posts/2021-01-04/pan1.jpg
     alt: "Ready to Roast"
-  - url: /assets/images/pan2.jpg
-    image_path: /assets/images/pan2.jpg
+  - url: /assets/images/posts/2021-01-04/pan2.jpg
+    image_path: /assets/images/posts/2021-01-04/pan2.jpg
     alt: "Roasting"
-  - url: /assets/images/pan3.jpg
-    image_path: /assets/images/pan3.jpg
+  - url: /assets/images/posts/2021-01-04/pan3.jpg
+    image_path: /assets/images/posts/2021-01-04/pan3.jpg
     alt: "Done Roasting"
 end_result:
-  - url: /assets/images/plate.jpg
-    image_path: /assets/images/plate.jpg
+  - url: /assets/images/posts/2021-01-04/plate.jpg
+    image_path: /assets/images/posts/2021-01-04/plate.jpg
     alt: "Plating"
 ---
 

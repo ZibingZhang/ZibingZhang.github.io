@@ -19,6 +19,7 @@ books:
     - Brave New World|Aldous Huxley
     - The Forever War|Joe Haldeman
   finished_reading:
+    - Oathbringer|Brandon Sanderson|2021-01-04
     - Words of Radiance|Brandon Sanderson|2020-12-25
     - The Way of Kings|Brandon Sanderson|2020-12-20
     - The Wise Man's Fear|Patrick Rothfuss|2020-10-12
