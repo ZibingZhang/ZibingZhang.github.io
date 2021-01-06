@@ -19,6 +19,8 @@ books:
     - Brave New World|Aldous Huxley
     - The Forever War|Joe Haldeman
   finished_reading:
+    - Dawnshard|Brandon Sanderson|2021-01-06
+    - Edgedancer|Brandon Sanderson|2021-01-05
     - Oathbringer|Brandon Sanderson|2021-01-04
     - Words of Radiance|Brandon Sanderson|2020-12-25
     - The Way of Kings|Brandon Sanderson|2020-12-20

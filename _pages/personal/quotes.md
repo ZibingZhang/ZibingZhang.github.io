@@ -14,6 +14,10 @@ sidebar:
 </style>
 
 ## Books
+> The world ends tomorrow, but the day after that, people are going to ask what’s for breakfast.
+
+--- Brandon Sanderson, *Edgedancer*
+
 > "Ain’t nothing wrong with being a woman, gancho," Lopen said. 
 > "Some of my relatives are women."
 

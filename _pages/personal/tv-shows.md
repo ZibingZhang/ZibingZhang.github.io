@@ -26,7 +26,7 @@ shows:
     - Counterpart|season 2
     - Designated Survivor|season 3
     - Doctor Who|season 8 episode 11
-    - The Expanse|season 5
+    - The Expanse|season 6
     - Fringe|in progress
     - Game of Thrones|season 8
     - Gossip Girl|season 2, in progress
