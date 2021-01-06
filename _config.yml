@@ -27,7 +27,7 @@ repository               : "ZibingZhang/zibingzhang.github.io"
 # teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 # logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 # masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-# breadcrumbs              : # true, false (default)
+breadcrumbs              : true # false (default)
 future                   : true # false (default)
 words_per_minute         : 200
 # atom_feed:
@@ -54,6 +54,12 @@ author:
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/zibing-zhang-a67578194/"
 
+
+# Scripts
+head_scripts:
+  - /assets/js/header.js
+
+
 # Site Footer
 footer:
   links:
@@ -71,15 +77,13 @@ include:
   - _posts
 exclude:
   - vendor
-  - .asset-cache
   - .bundle
-  - .jekyll-assets-cache
-  - .sass-cache
+  - .gitignore
+  - .jekyll-cache
   - .vscode
   - Gemfile
   - LICENSE
   - README.md
-  - tmp
 keep_files:
   - .git
 encoding: "utf-8"
@@ -92,6 +96,7 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
+
 
 # Markdown Processing
 kramdown:
