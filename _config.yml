@@ -54,6 +54,12 @@ author:
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/zibing-zhang-a67578194/"
 
+
+# Scripts
+head_scripts:
+  - /assets/js/header.js
+
+
 # Site Footer
 footer:
   links:
@@ -71,11 +77,9 @@ include:
   - _posts
 exclude:
   - vendor
-  - .asset-cache
   - .bundle
   - .gitignore
-  - .jekyll-assets-cache
-  - .sass-cache
+  - .jekyll-cache
   - .vscode
   - assets/js/plugins
   - assets/js/_main.js
