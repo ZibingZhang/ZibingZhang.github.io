@@ -1,10 +1,10 @@
 ---
 title: "Movies"
-permalink: /personal/movies/
+permalink: /personal/entertainment/movies/
 layout: single
 sidebar:
-  title: "Personal Pages"
-  nav: personal
+  title: "Entertainment"
+  nav: entertainment
 toc: true
 classes: wide
 movies:

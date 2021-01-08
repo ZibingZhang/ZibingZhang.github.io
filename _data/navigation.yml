@@ -9,16 +9,12 @@ main:
 
 # personal links
 personal:
+  - title: "Bookmarks"
+    url: /personal/bookmarks/
   - title: "Drinks"
     url: /personal/drinks/
   - title: "Entertainment"
-    children:
-      - title: "Books"
-        url: /personal/books/
-      - title: "Movies"
-        url: /personal/movies/
-      - title: "TV Shows"
-        url: /personal/tv-shows/
+    url: /personal/entertainment/
   - title: "Food"
     url: /personal/food/
   - title: "Keyboard Layout"
@@ -33,6 +29,14 @@ personal:
     url: /personal/
   - title: "Wikis"
     url: /personal/wikis/
+
+entertainment:
+  - title: "Books"
+    url: /personal/books/
+  - title: "Movies"
+    url: /personal/movies/
+  - title: "TV Shows"
+    url: /personal/tv-shows/
 
 # blog links
 blog:

@@ -1,10 +1,10 @@
 ---
 title: "TV Shows"
-permalink: /personal/tv-shows/
+permalink: /personal/entertainment/tv-shows/
 layout: single
 sidebar:
-  title: "Personal Pages"
-  nav: personal
+  title: "Entertainment"
+  nav: entertainment
 classes: wide
 shows:
   watched:

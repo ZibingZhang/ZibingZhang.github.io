@@ -83,6 +83,7 @@ exclude:
   - .vscode
   - Gemfile
   - LICENSE
+  - racket/ace/LICENSE
   - README.md
 keep_files:
   - .git

@@ -1,10 +1,10 @@
 ---
 title: "Books"
-permalink: /personal/books/
+permalink: /personal/entertainment/books/
 layout: single
 sidebar:
-  title: "Personal Pages"
-  nav: personal
+  title: "Entertainment"
+  nav: entertainment
 toc: true
 classes: wide
 books:

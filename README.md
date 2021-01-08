@@ -1,4 +1,9 @@
 ## Local Development
+To install gems use the command
+```
+$ bundle install
+```
+
 To deploy locally use the command
 ```
 $ bundle exec jekyll serve
