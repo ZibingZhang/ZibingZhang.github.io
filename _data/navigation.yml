@@ -32,11 +32,11 @@ personal:
 
 entertainment:
   - title: "Books"
-    url: /personal/books/
+    url: /personal/entertainment/books/
   - title: "Movies"
-    url: /personal/movies/
+    url: /personal/entertainment/movies/
   - title: "TV Shows"
-    url: /personal/tv-shows/
+    url: /personal/entertainment/tv-shows/
 
 # blog links
 blog:
