@@ -1,0 +1,30 @@
+name: Deploy Website
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Set up Git repository
+        uses: actions/checkout@v2
+      - 
+        name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: resume.tex
+      - 
+        name: Remove Unused Files
+        run: rm resume.aux resume.fdb_latexmk resume.fls resume.log resume.out
+      - 
+        name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "."
+          publish_branch: gh-pages
+          enable_jekyll: true
+          force_orphan: true

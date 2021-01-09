@@ -78,6 +78,7 @@ include:
 exclude:
   - vendor
   - .bundle
+  - .github
   - .gitignore
   - .jekyll-cache
   - .vscode
