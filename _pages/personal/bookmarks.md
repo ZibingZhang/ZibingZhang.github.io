@@ -11,6 +11,7 @@ classes: wide
 
 ## Opinion Pieces
 - [Am I a bad feminist?](https://www.theglobeandmail.com/opinion/am-i-a-bad-feminist/article37591823/){:target="_blank" rel="noopener"} by Margaret Atwood
+- [The real Down syndrome problem: Accepting genocide](https://www.washingtonpost.com/opinions/whats-the-real-down-syndrome-problem-the-genocide/2018/03/14/3c4f8ab8-26ee-11e8-b79d-f3d931db7f68_story.html){:target="_blank" rel="noopener"} by George Will
 - [Who Can Be 'Racist'](https://www.thecrimson.com/column/between-the-lines/article/2018/8/10/gao-who-can-be-racist/){:target="_blank" rel="noopener"} by Michelle Gao
 
 ## Tech Blog Posts
