@@ -7,6 +7,10 @@ sidebar:
   nav: entertainment
 classes: wide
 shows:
+  to_watch:
+    - Dark
+    - Dark Matter
+    - The Undoing
   watched:
     - The 100|season 7
     - 13 Reasons Why|season 1, in progress
@@ -33,7 +37,7 @@ shows:
     - Hanna|season 2
     - The Haunting of Hill House|season 1
     - Lost|in progress
-    - The Mandalorian|season 1
+    - The Mandalorian|season 2
     - Money Heist|part 4
     - Narcos|season 3 episode 10
     - The Office|season 5 episode 21
@@ -55,6 +59,17 @@ The phrase *in progress* indicates that I've either forgotten how far into the s
 or I am watching the episodes out of order (as is the case for Black Mirror).
 
 **2020-09-20** Started the list.
+
+## To Watch
+<ul>
+  {%- for show in page.shows.to_watch -%}
+    <li>
+      <b>{{ show }}</b>
+    </li>
+  {%- endfor -%}
+</ul>
+
+## Currently Watching / Have Watched
 
 <ul>
   {%- for show in page.shows.watched -%}

@@ -11,7 +11,7 @@ classes: wide
 
 [Big Talk](https://www.makebigtalk.com/){:target="_blank" rel="noopener"} topics.
 
-Everyone must answer each question.
+Everyone must answer each question asked.
 
 ## Meta
 - [The 36 Questions That Lead to Love](https://www.nytimes.com/2015/01/09/style/no-37-big-wedding-or-small.html){:target="_blank" rel="noopener"}
@@ -22,7 +22,7 @@ Everyone must answer each question.
 - [Rice Purity Test](http://ricepuritytest.com/){:target="_blank" rel="noopener"}
 
 ## Politics
-Some topics can be found [here](/personal/bookmarks/) under the **opinions** section.
+Some topics can be found [here](/personal/bookmarks/) under the **Opinion Pieces** section.
 
 ## About You
 What is your...
@@ -36,13 +36,13 @@ What is your dream...
 
 ## Either Or
 Do you prefer...
-- chocolate or vanilla
 - cities or suburbs
 - loose leaf or tea bag
 - paper or electronic books
 - pens or pencils
 - rice or mantou
 - waking early or sleeping late
+- Windows or macOS
 
 ## Favorites
 What is your favorite...
@@ -66,6 +66,7 @@ What is your go-to order at...
 
 ## Food
 - Do you like spicy food?
+- Rank the Chex Mix components.
 - What foods / flavors do you dislike?
 - What's the strangest thing you've eaten?
 - What's your favorite cuisine?
@@ -78,30 +79,46 @@ When was the last time you...
 ## Personal
 - Do you keep a journal or a diary?
 - Do you miss anyone? Who?
+- Do you rehearse what you are planning to say?
+- For what in your life do you feel most grateful?
+- If you could know the truth or see the future regarding anything, what would you want to know?
+- If you could wake up tomorrow having gained any one quality or ability, what would it be?
+- Is there something that you've dreamed of doing for a long time? Why haven't you done it?
+- What constitutes *the* "perfect" day for you?
 - What do you regret doing? Not doing?
 - What illegal things have you done?
+- What is your most terrible memory?
+- What is your most treasured memory?
 - What keeps you up at night?
-- What're you afraid of?
+- What would you change about the way you were raised?
+- What would you choose for a last meal?
+- What're you afraid of? As you get older?
 - What're you afraid people see when they look at you?
 - What're your hobbies?
 - What're your insecurities?
 - What're your pet peeves?
 - What's one thing you would've done differently?
+- What's the greatest accomplishment of your life?
 - What's the most surprising self-realization you've had?
 - When and what did you really fuck up?
 - Where do you see yourself in 5 years? 10 years?
 - Where would you like to be in 5 years? 10 years?
+- Would you like to be famous? In what way?
 
 ## Relationships
+- Do you expect your children to have your last name?
+- Do you want to have children? How many?
 - First times?
 - Have you ever been in a relationship? How many?
 - Have you ever had your heart broken?
+- Have you ever used / been called a pet name? Would you like to use / be called one?
 - What do you consider physically attractive?
-- What do you look for in a friendship?
-- What do you look for in a romantic relationship?
-- What's a deal breaker for you in a romantic relationship?
+- What do you look for in a friendship? A romantic relationship?
+- What do you value most in a friendship? A romantic relationship?
+- What's a deal breaker for you in a friendship? A romantic relationship?
 - Who is your celebrity crush?
 - Who would you consider to be your best friend? Why? How do you know them?
+- Will you keep your surname after marriage? Would you expect your partner to keep theirs?
 
 ## Travel
 - If you could move anywhere for a year, where would you choose?
@@ -117,8 +134,11 @@ What would you do if...
 
 ## Miscellaneous
 - Do you enjoy cooking?
+- Do you talk to yourself aloud?
 - If you could change your name, would you? What would it be?
-- Have you ever asked a question because in order to give a specific response?
+- Given anyone who has ever lived, whom would you choose as a dinner guest? 
+- Have you ever asked a question in order to give a specific response?
+- Which, if any, extracurricular activities did you do growing up?
 - What's a hill you are willing to die on?
 - Which historical figure would you want to meet?
 - Which states have you traveled to? Countries?

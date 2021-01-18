@@ -9,6 +9,7 @@ toc: true
 classes: wide
 movies:
   have_watched:
+    - Train To Busan|2021-01-12
     - Shoplifters|2020-12-30
   to_watch:
     - Black Swan
@@ -17,6 +18,7 @@ movies:
     - "Fantastic Beasts: The Crimes of Grindelwald"
     - Goodbye Christopher Robin
     - Official Secrets
+    - The Professor and the Madman
   all_movies:
     - 不能说的·秘密
     - 流浪地球
@@ -247,6 +249,7 @@ movies:
     - Toy Story
     - Toy Story 2
     - Toy Story 3
+    - Train To Busan
     - Transformers
     - "Transformers: Age of Extinction"
     - "Transformers: Dark of the Moon"

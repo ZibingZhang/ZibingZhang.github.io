@@ -38,6 +38,14 @@ entertainment:
   - title: "TV Shows"
     url: /personal/entertainment/tv-shows/
 
+food:
+  - title: "Drinks"
+    url: /personal/food/drinks/
+  - title: "Menus"
+    url: /personal/food/menus/
+  - title: "Recipes"
+    url: /personal/food/recipes/
+
 # blog links
 blog:
   - title: "HLTH 5963 - Intro to Culinary Medicine"

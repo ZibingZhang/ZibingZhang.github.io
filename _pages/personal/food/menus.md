@@ -1,10 +1,10 @@
 ---
 title: "Food"
-permalink: /personal/food/
+permalink: /personal/food/menus/
 layout: single
 sidebar:
-  title: "Personal Pages"
-  nav: personal
+  title: "Food"
+  nav: food
 toc: true
 ---
 

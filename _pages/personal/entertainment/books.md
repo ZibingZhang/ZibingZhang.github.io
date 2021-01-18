@@ -9,16 +9,22 @@ toc: true
 classes: wide
 books:
   to_read:
-    - Altered Carbon|Richard Morgan
-    - The Hitchhiker's Guide to the Galexy|Douglas Adam
-    - Ball Lightning|Liu Cixin
-    - The Martian|Andy Weir
-    - The Fire Within|Chris d'Lacey
     - All The Light We Cannot See|Anthony Doerr
-    - Ishmael|Daniel Quinn
+    - Altered Carbon|Richard Morgan
+    - "Arcanum Unbounded: The Cosmere Collection|Brandon Sanderson"
+    - Ball Lightning|Liu Cixin
     - Brave New World|Aldous Huxley
+    - Dune|Frank Herbert
+    - Elantris|Brandon Sanderson
+    - The Emperor's Soul|Brandon Sanderson
+    - The Fire Within|Chris d'Lacey
     - The Forever War|Joe Haldeman
+    - The Hitchhiker's Guide to the Galexy|Douglas Adam
+    - Ishmael|Daniel Quinn
+    - The Martian|Andy Weir
+    - Warbreaker|Brandon Sanderson
   finished_reading:
+    - Rhythm of War|Brandon Sanderson|2021-01-17
     - Dawnshard|Brandon Sanderson|2021-01-06
     - Edgedancer|Brandon Sanderson|2021-01-05
     - Oathbringer|Brandon Sanderson|2021-01-04

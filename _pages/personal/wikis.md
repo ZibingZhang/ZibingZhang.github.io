@@ -16,5 +16,5 @@ A list of useful wikis.
 
 ## Video Games
 
-[Old School Runescape](https://oldschool.runescape.wiki/){:target="_blank" rel="noopener"} \\
+[Old School RuneScape](https://oldschool.runescape.wiki/){:target="_blank" rel="noopener"} \\
 [Stardew Valley](https://stardewvalleywiki.com){:target="_blank" rel="noopener"}
