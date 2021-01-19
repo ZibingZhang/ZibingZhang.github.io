@@ -41,3 +41,23 @@ Taken from [here](https://damndelicious.net/2020/02/29/best-ever-beef-stew/){:ta
 9. Bring the stew to a boil and let simmer until beef is very tender, around 30 minutes.
 10. Stir in potatoes. Simmer until potatoes are just tender and stew has thickened, around 20 minutes.
 11. Remove and discard thyme and bay leaves. Stir in parsley and season with salt and pepper.
+
+## Sausage & Butter Bean Stew
+
+**Ingredients**
+- 27 oz chorizo
+- 2 onions, sliced
+- 3 carrots, sliced
+- 8 garlic cloves, sliced
+- 32 oz chicken stock
+- 2 oz unsalted butter, cubed
+- parsley, for garnish
+- olive oil
+
+**Directions**
+1. Fry the sausages until brown, then set aside.
+2. Add onions to the pot until golden and soft, 5-10 minutes.
+3. Add carrots and garlic and cook for 2 minutes.
+4. Add stock and bring to a boil; let simmer for 20 minutes.
+5. Add beans and sausage; let simmer for 5 minutes.
+6. Stir in the butter and parsley.
