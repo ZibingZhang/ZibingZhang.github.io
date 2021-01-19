@@ -86,8 +86,10 @@ exclude:
   - LICENSE
   - racket/ace/LICENSE
   - README.md
+  - resume.tex
 keep_files:
   - .git
+  - resume.pdf
 encoding: "utf-8"
 markdown_ext: "md"
 
