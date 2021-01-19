@@ -11,8 +11,6 @@ main:
 personal:
   - title: "Bookmarks"
     url: /personal/bookmarks/
-  - title: "Drinks"
-    url: /personal/drinks/
   - title: "Entertainment"
     url: /personal/entertainment/
   - title: "Food"
@@ -31,6 +29,8 @@ personal:
     url: /personal/wikis/
 
 entertainment:
+  - title: "Animes"
+    url: /personal/entertainment/animes/
   - title: "Books"
     url: /personal/entertainment/books/
   - title: "Movies"
