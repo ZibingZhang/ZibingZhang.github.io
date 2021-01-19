@@ -3,27 +3,28 @@
 % ============================================================
 
 \documentclass[11pt]{article}
-\pagestyle{empty}                  % removes page numbers
-\setlength\parindent{0pt}			   % no indents
 
 \usepackage[
 	letterpaper,
-	left=1in,
-	right=1in,
+	left=0.85in,
+	right=0.85in,
 	top=0in,
 	bottom=0in,
 	\iffalse showframe \fi
-]{geometry}									% page layout
-\usepackage{enumitem}						% enhance lists
-\usepackage{fontawesome5}				% cool symbols
+]{geometry}												% page layout
+\usepackage{enumitem}							% enhance lists
+\usepackage{fontawesome5}					% cool symbols
 \usepackage[hidelinks]{hyperref}	% hypertext
-\usepackage{mathptmx}						% times font
+\usepackage{mathptmx}							% times font
+
+\pagestyle{empty}									% removes page numbers
+\setlength\parindent{0pt}					% no indents
 
 % ============================================================
 % ====================   COMMANDS   ==========================
 % ============================================================
 
-% Section Header
+% Section Header (Section Name, Icon)
 \newcommand{\sectionheader}[2]
 	{{\large #1} \hfill \ifnum\ChooseShowSectionIcons=\TRUE #2 \else \fi \par \vspace{-0.6 \baselineskip} \rule{\textwidth}{0.08em} \par \vspace{-0.1 \baselineskip}}
 
@@ -49,13 +50,15 @@
 
 % Split Page
 % The first argument is for the left page.
-% The rest of the arguments are for the right page (and separated by a line break).
+% The rest of the arguments are for the right page (and are separated by a line break).
 \makeatletter
 \newcommand{\splitpage}[2]{
 	\hspace{0.05 \textwidth}
+	%
 	\begin{minipage}[t]{0.23 \textwidth}
 		#1:\strut
-	\end{minipage}%
+	\end{minipage}
+	%
 	\begin{minipage}[t]{0.7 \textwidth}
 		#2\splitpagechecknextarg}
 \newcommand{\splitpagechecknextarg}{\@ifnextchar\bgroup{\splitpagegobblenextarg}{\end{minipage}}}
@@ -64,6 +67,9 @@
 
 % Centered Bullet
 \def\cbullet{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% Separator
+\def\sep{~\cbullet~~}
 
 % ============================================================
 % ====================     INFO      =========================
@@ -76,9 +82,9 @@
 \def\InfoPersonalGithub{\href{https://github.com/ZibingZhang}{ZibingZhang}}
 \def\InfoPersonalLinkedIn{\href{https://www.linkedin.com/in/zibing-zhang-a67578194}{Zibing Zhang}}
 
-\def\InfoHeaderAvailability{Available January - August}
+\def\InfoHeaderAvailability{Available May - December}
 
-\def\InfoCollegeGPA{3.96}
+\def\InfoCollegeGPA{3.97}
 
 % ============================================================
 % ====================   CONSTANTS   =========================
@@ -108,12 +114,14 @@
 \def\ChooseEducationHighSchool{\FALSE}
 
 % Projects (medskip)
+\def\ChooseProjectBSLInterpreter{\TRUE}
+\def\ChooseProjectVSpacingD{\medskip}
 \def\ChooseProjectRacketInterpreter{\TRUE}
-\def\ChooseProjectVSpacingA{}
+\def\ChooseProjectVSpacingC{}
 \def\ChooseProjectCoachesWebsite{\FALSE}
 \def\ChooseProjectVSpacingB{}
 \def\ChooseProjectNumberTheoryFunctionsAndAlgorithms{\FALSE}
-\def\ChooseProjectVSpacingC{}
+\def\ChooseProjectVSpacingA{}
 \def\ChooseProjectSudokuGame{\FALSE}
 
 % Work Experience (no skip)
@@ -125,6 +133,7 @@
 % ============================================================
 % ====================   SECTIONS   ==========================
 % ============================================================
+% Section Header (Section Name, Icon)
 
 % ====================
 % Header
@@ -133,9 +142,10 @@
 \ifnum\ChooseHeader=\HeaderDefault
 
 	% ====================
-	{\centering
+	{
+		\centering
 		\textbf{\Large Zibing Zhang}
-	
+
 		\faPhone $\;$ \InfoPersonalMobile ~$|$
 		\faMapPin $\;$ \InfoPersonalLocation ~$|$
 		\faEnvelope $\;$ \InfoPersonalEmail
@@ -143,24 +153,27 @@
 		\faGithub $\;$ \InfoPersonalGithub ~$|$
 		\faLinkedin $\,$ \InfoPersonalLinkedIn
 
-		% \InfoHeaderAvailability
-	\par}
+		\InfoHeaderAvailability
+		\par
+	}
 	% ====================
 
 \else \ifnum\ChooseHeader=\HeaderAlternate
 
 	% ====================
-	{\centering
+	{
+		\centering
 		\textbf{\Large Zibing Zhang}
-	
+
 		\faPhone $\;$ \InfoPersonalMobile ~$|$
 		\faEnvelope $\;$ \InfoPersonalEmail
-	
+
 		\faGithub $\;$ \InfoPersonalGithub ~$|$
 		\faLinkedin $\,$ \InfoPersonalLinkedIn
-	
+
 		\InfoHeaderAvailability
-	\par}
+		\par
+	}
 	% ====================
 
 \else \fi \fi }
@@ -168,7 +181,6 @@
 % ====================
 % Education
 % ====================
-\def\sep{~\cbullet~~}
 % School Information (Name of Institution, City, State, Time as Student)
 \def\SectionEducation{
 \sectionheader{EDUCATION}{\faGraduationCap}
@@ -184,32 +196,40 @@
 		{Relevant Courses}
 		%
 		{Algorithms \sep Object-Oriented Design \sep Programming Languages}
-		{Linear Algebra \sep Probability and Statistics \sep Real Analysis}
-		{Differential Equations \sep Group Theory \sep Number Theory}
-		\iffalse % List of Potentially Relevant Courses Taken
-			Algorithms and Data Structures
-			Networks and Distributed Systems
-			Object-Oriented Design
-			Programming Languages
-			
-			Complex Analysis
-			Differential Equations
-			Group Theory
-			Linear Algebra
-			Multivariable Calculus
-			Number Theory
-			Probability and Statistics
-			Real Analysis
+		{Linear Algebra \sep Probability and Statistics \sep Abstract Algebra}
+		\iffalse % List of Courses Taken
+			% Computer Science (CS)
+			2500	Fundamentals of Computer Science 1
+			2510	Fundamentals of Computer Science 2
+			3000	Algorithms and Data Structures
+			3500	Object Oriented Design
+			3700	Networks and Distributed Systems
+			4400	Programming Languages
+			4410	Compilers
+			4500	Software Development
 
-			Bostonography: The City through Data, Texts, Maps, and Networks
-			Linguistics and Literature
+			% Mathematics (MATH)
+			2321	Multivariable Calculus
+			2331	Linear Algebra
+			2341	Differential Equations and Linear Algebra
+			3081	Probability and Statistics
+			3150	Real Analysis
+			3175	Group Theory
+			3527	Number Theory
+			4555	Complex Variables
+			4565	Topology
+			4576	Rings and Fields
+
+			% Miscellaneous
+			HONR 1310	Linguistics and Literature
+			INSH 2102	Bostonography: The City through Data, Texts, Maps, and Networks
 		\fi
 
 	\splitpage
 		{Honors}
 		%
 		{GPA: \InfoCollegeGPA~/~4.00 $|$ Dean's List}
-		
+
 	\splitpage
 		{Student Organizations}
 		%
@@ -234,13 +254,27 @@
 % ====================
 % Projects
 % ====================
-
-% add other project, two bullets for each
-
 % Project Header (Name, URL, Technologies, Date)
 \def\SectionProjects{
 \sectionheader{PROJECTS}{\faGit*}
 
+\ifnum\ChooseProjectBSLInterpreter=\TRUE
+
+	% ====================
+	\projectheader
+		{Basic Student Language Interpreter}
+		{https://github.com/ZibingZhang/interpreters/tree/master/racket-student-languages}
+		{TypeScript, Ace}
+		{December 2020}
+	\makelist
+		{Applied principles from the Programming Languages course in order to write an \href{https://zibingzhang.com/racket/}{online interpreter} for BSL}
+		% example principles include: closure, `and' as a form and not a function
+		{Employed four distinct intermediate representations in order to provide meaningful error messages}
+		{Implemented over 90 built-in constants, functions, and structures}
+	% ====================
+
+\else \fi
+\ChooseProjectVSpacingD
 \ifnum\ChooseProjectRacketInterpreter=\TRUE
 
 	% ====================
@@ -251,13 +285,13 @@
 		{June 2020}
 	\makelist
 		{Designed and implemented an interpreter for a substantial subset of the Racket programming language}
-		{Utilized the structure of the abstract syntax tree -- generated during the lexing and parsing processes -- to apply the visitor pattern recursively during semantic analysis and interpretation}
+		% {Utilized the structure of the abstract syntax tree -- generated during the lexing and parsing processes -- to apply the visitor pattern recursively during semantic analysis and interpretation}
 		{Integrated TravisCI and Codecov to provide continuous feedback on build status and test coverage}
-		{Documented code using the reStructuredText format to enable Sphinx to autogenerate documentation which is hosted by GitHub Pages}
+		{Documented code using the reStructuredText format to enable Sphinx to autogenerate documentation which is \href{https://zibingzhang.com/racket-interpreter/}{hosted} by GitHub Pages}
 	% ====================
 
 \else \fi
-\ChooseProjectVSpacingA
+\ChooseProjectVSpacingC
 \ifnum\ChooseProjectCoachesWebsite=\TRUE
 
 	% ====================
@@ -268,7 +302,7 @@
 		{February 2020}
 	\makelist
 		{Enabled coaches to keep track of swimmers and the lineups for the meets throughout the season}
-		{Deployed the website by using Heroku to automatically build the React frontend and host the Flask backend}		
+		{Deployed the website by using Heroku to automatically build the React frontend and host the Flask backend}
 	% ====================
 
 \else \fi
@@ -287,14 +321,14 @@
 	% ====================
 
 \else \fi
-\ChooseProjectVSpacingC
+\ChooseProjectVSpacingA
 \ifnum\ChooseProjectSudokuGame=\TRUE
 
 	% ====================
 	\projectheader
 		{Sudoku Game}
 		{https://github.com/ZibingZhang/Sudoku}
-		{Python, Pygame}
+		{Python, PyGame}
 		{October 2018}
 	\makelist
 		{Recreated Sudoku in Python with the Pygame library}
@@ -302,7 +336,6 @@
 	% ====================
 
 \else \fi }
-
 
 % ====================
 % Work Experience
@@ -327,9 +360,9 @@
 		{Delivered a presentation to the department on the infrastructure behind the analytics platform which \linebreak consists of several databases and microservices}
 		{Frequently pair-programmed and worked with team members to complete stories and features}
 		{Onboarded a group of 7 new hires and evaluated the remote onboarding process to provide feedback and to add improvements}
-		
+
 	% ====================
-	
+
 \else \fi
 \ifnum\ChooseExperienceFundiesOneTutor=\TRUE
 
@@ -345,7 +378,7 @@
 		{Critiqued students' biweekly homework assignments in a timely manner}
 		{Notified instructor of feedback regarding recent assignments during weekly staff meeting}
 	% ====================
-	
+
 \else \fi
 \ifnum\ChooseExperienceNeedhamPnR=\TRUE
 
@@ -361,10 +394,10 @@
 		{Analyzed results from swim meets each week with fellow coaches to create strong lineups for competitions}
 		{Led four classes of differing skill levels five days a week to teach younger children to swim}
 	% ====================
-	
+
 \else \fi
 \ifnum\ChooseExperienceFYELICRedShirt=\TRUE
-	
+
 	% ====================
 	\jobheader{Northeastern University}
 		{Boston}
@@ -376,7 +409,7 @@
 		{Operated heavy machinery for students while following proper safety measures}
 		{Taught students to use properly handle provided equipment, including drills, saws, and breadboards}
 	% ====================
-	
+
 \else \fi }
 
 % ====================
@@ -400,7 +433,6 @@
 	% ====================
 }
 
-
 % ====================
 % Interests and Volunteer Work
 % ====================
@@ -412,14 +444,17 @@
 	\splitpage
 		{Interests}
 		%
-		{Hard Science Fiction, Card Games, Swimming, Rock Climbing}
-		\iffalse Science Fiction I Enjoy:
-			Ender's Game series
-			Three Body Problem series (Remembrance of Earth's Past)
-			Foundation series
-			Stories of Your Life and Others
+		{Epic Fantasy, Trick-Taking Games, Swimming, Rock Climbing}
+		\iffalse % Books I've Enjoyed
+			Science Fiction:
+				Ender's Game series
+				Remembrance of Earth's Past
+				Foundation series
+				Stories of Your Life and Others
+			Epic Fantasy:
+				The Kingkiller Chronicle
+				The Stormlight Archives
 		\fi
-		
 	% ====================
 
 	% ====================
@@ -432,6 +467,7 @@
 	\fi
 	% ====================
 }
+
 % ============================================================
 % ====================   RESUME   ============================
 % ============================================================
@@ -449,7 +485,7 @@
 	\medskip
 
 	\SectionExperience
-	
+
 	\medskip
 
 	\SectionProjects
