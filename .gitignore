@@ -2,7 +2,7 @@ _site
 .bundle
 .jekyll-cache
 .vscode
-resume.*
+/resume.*
 !resume.pdf
 !resume.tex
 vendor
