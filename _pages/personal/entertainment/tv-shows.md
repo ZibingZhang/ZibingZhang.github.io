@@ -10,7 +10,6 @@ shows:
   to_watch:
     - Dark
     - Dark Matter
-    - The Undoing
   watched:
     - The 100|season 7
     - 13 Reasons Why|season 1, in progress
@@ -47,6 +46,7 @@ shows:
     - Revolution|season 2
     - Sherlock Holmes|series 4
     - Stranger Things|season 3
+    - The Undoing|season 1
     - The Walking Dead|in progress
     - Westworld|season 1
     - The Witcher|season 1
