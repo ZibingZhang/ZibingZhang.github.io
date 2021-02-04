@@ -10,6 +10,7 @@ shows:
   to_watch:
     - Dark
     - Dark Matter
+    - The Umbrella Academy
   watched:
     - The 100|season 7
     - 13 Reasons Why|season 1, in progress
@@ -36,15 +37,17 @@ shows:
     - Hanna|season 2
     - The Haunting of Hill House|season 1
     - Lost|in progress
+    - Lupin|in progress
     - The Mandalorian|season 2
     - Money Heist|part 4
     - Narcos|season 3 episode 10
     - The Office|season 5 episode 21
     - The Outsider|season 1
-    - Prison Break|season 1, in progress
+    - Prison Break|season 2, in progress
     - The Queen's Gambit|season 1
     - Revolution|season 2
     - Sherlock Holmes|series 4
+    - Silicone Valley|season 1, in progress
     - Stranger Things|season 3
     - The Undoing|season 1
     - The Walking Dead|in progress
