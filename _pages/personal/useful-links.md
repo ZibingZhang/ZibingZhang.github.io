@@ -1,6 +1,6 @@
 ---
 title: "Useful Links"
-permalink: /personal/useful-links
+permalink: /personal/useful-links/
 layout: single
 sidebar:
   title: "Personal Pages"
