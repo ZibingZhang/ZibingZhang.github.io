@@ -5,6 +5,7 @@ layout: single
 sidebar:
   title: "Entertainment"
   nav: entertainment
+toc: true
 classes: wide
 shows:
   to_watch:
