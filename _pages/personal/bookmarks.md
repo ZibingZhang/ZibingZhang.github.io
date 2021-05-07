@@ -17,6 +17,14 @@ classes: wide
 ## Java
 - [Java SE 8](https://docs.oracle.com/javase/8/docs/api/overview-summary.html){:target="_blank" rel="noopener"}
 
+## OCaml
+- [The OCaml API](https://caml.inria.fr/pub/docs/manual-ocaml/libref/){:target="_blank" rel="noopener"}
+
+# Tutorials
+## Makefiles
+- [Cryptic Makefiles automatic variables](https://dotjoeblog.wordpress.com/2015/07/27/cryptic-makefile-automatic-variables/){:target="_blank" rel="noopener"} by Joe Maller
+- [Using make and writing Makefiles](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html){:target="_blank" rel="noopener"}
+
 # Articles / Blog Posts
 
 ## Opinion Pieces
@@ -28,9 +36,12 @@ classes: wide
 - [A Brief, Incomplete, and Mostly Wrong History of Programming Languages](https://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html){:target="_blank" rel="noopener"} by James Iry
 - [A Conspiracy to Kill IE6](https://blog.chriszacharias.com/a-conspiracy-to-kill-ie6){:target="_blank" rel="noopener"} by Chris Zacharias
 - [Developing Developers](https://felleisen.org/matthias/Thoughts/Developing_Developers.html){:target="_blank" rel="noopener"} by Matthias Felleisen
+- [Making Wrong Code Look Wrong](https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look-wrong/){:target="_blank" rel="noopener"} by Joel Spolsky
+- [Strange Loops: Ken Thompson and the Self-referencing C Compiler](){:target="_blank" rel="noopener"} by Mark Chu-Carroll
 - [The Hardest Program I've Ever Written](https://journal.stuffwithstuff.com/2015/09/08/the-hardest-program-ive-ever-written/){:target="_blank" rel="noopener"} by Bob Nystrom
 - [What Color is Your Function](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/){:target="_blank" rel="noopener"} by Bob Nystrom
 - [Why I Quit Google to Work for Myself](https://mtlynch.io/why-i-quit-google/){:target="_blank" rel="noopener"} by Michael Lynch
+- [Why Object-Oriented Languages Need Tail Calls](https://eighty-twenty.org/2011/10/01/oo-tail-calls)){:target="_blank" rel="noopener"} by Guy Steele
 
 # General Resources
 ## Research Experience for Undergraduates

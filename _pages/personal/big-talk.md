@@ -106,6 +106,7 @@ When was the last time you...
 - Would you like to be famous? In what way?
 
 ## Relationships
+- Can two people of the opposite sex be friends without tension developing?
 - Do you expect your children to have your last name?
 - Do you want to have children? How many?
 - First times?

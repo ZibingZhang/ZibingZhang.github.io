@@ -15,15 +15,20 @@ books:
     - Ball Lightning|Liu Cixin
     - Brave New World|Aldous Huxley
     - Dune|Frank Herbert
-    - Elantris|Brandon Sanderson
-    - The Emperor's Soul|Brandon Sanderson
     - The Fire Within|Chris d'Lacey
     - The Forever War|Joe Haldeman
     - The Hitchhiker's Guide to the Galexy|Douglas Adam
     - Ishmael|Daniel Quinn
     - The Martian|Andy Weir
-    - Warbreaker|Brandon Sanderson
   finished_reading:
+    - The Bands of Mourning|Brandon Sanderson|2021-05-06
+    - Warbreaker|Brandon Sanderson|2021-04-20
+    - Elantris|Brandon Sanderson|2021-04-13
+    - Shadows of Self|Brandon Sanderson|2021-04-09
+    - The Alloy of Law|Brandon Sanderson|2021-03-17
+    - The Hero of Ages|Brandon Sanderson|2021-03-12
+    - The Well of Ascension|Brandon Sanderson|2021-03-08
+    - The Final Empire|Brandon Sanderson|2021-02-28
     - Rhythm of War|Brandon Sanderson|2021-01-17
     - Dawnshard|Brandon Sanderson|2021-01-06
     - Edgedancer|Brandon Sanderson|2021-01-05
@@ -36,10 +41,10 @@ books:
 series:
   to_read:
     - Broken Earth Trilogy|Nora Jemisin
+    - The Dandelion Dynasty|Ken Liu
     - The Expanse|James Corey
     - Foundation|Issac Asimov
     - Gentleman Bastard|Scott Lynch
-    - Mistborn|Brandon Sanderson
     - The Wheel of Time|Robert Jordan
 ---
 

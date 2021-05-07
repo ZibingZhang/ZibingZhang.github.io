@@ -9,12 +9,18 @@ toc: true
 classes: wide
 movies:
   have_watched:
+    - The Princess Bride|2021-04-28
+    - Friends With Benefits|2021-04-XX
+    - The Perks of Being a Wallflower|2021-03-31
+    - The Perks of Being a Wallflower|2021-03-28
+    - Okja|2021-03-26
     - Train To Busan|2021-01-12
     - Shoplifters|2020-12-30
   to_watch:
     - Black Swan
     - Children of Men
     - Dark Waters
+    - The Dawn Wall (d)
     - "Fantastic Beasts: The Crimes of Grindelwald"
     - Goodbye Christopher Robin
     - Official Secrets
@@ -82,6 +88,7 @@ movies:
     - Finding Nemo
     - Forrest Gump
     - Free Solo (d)
+    - Friends With Benefits
     - Frozen
     - "G.I. Joe: Retaliation"
     - "G.I. Joe: The Rise of Cobra"
@@ -178,6 +185,7 @@ movies:
     - Ocean's Eleven
     - Ocean's Thirteen
     - Ocean's Twelve
+    - Okja
     - Olympus Has Fallen
     - One Child Nation (d)
     - Pacific Rim
@@ -185,6 +193,7 @@ movies:
     - The Parent Trap
     - Passengers
     - "Percy Jackson & the Olympians: The Lightning Thief"
+    - The Perks of Being a Wallflower
     - "Pirates of the Caribbean: Dead Man's Chest"
     - "Pirates of the Caribbean: The Curse of the Black Pearl"
     - The Platform

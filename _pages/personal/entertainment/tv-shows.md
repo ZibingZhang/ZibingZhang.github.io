@@ -10,6 +10,7 @@ shows:
   to_watch:
     - Dark
     - Dark Matter
+    - The Stranger
     - The Umbrella Academy
   watched:
     - The 100|season 7
@@ -49,6 +50,7 @@ shows:
     - Sherlock Holmes|series 4
     - Silicone Valley|season 1, in progress
     - Stranger Things|season 3
+    - Suits|season 2, in progress
     - The Undoing|season 1
     - The Walking Dead|in progress
     - Westworld|season 1
