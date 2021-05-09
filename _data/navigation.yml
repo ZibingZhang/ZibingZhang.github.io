@@ -37,8 +37,6 @@ entertainment:
     url: /personal/entertainment/movies/
   - title: "TV Shows"
     url: /personal/entertainment/tv-shows/
-  - title: "Youtube"
-    url: /personal/entertainment/youtube/
 
 food:
   - title: "Drinks"
