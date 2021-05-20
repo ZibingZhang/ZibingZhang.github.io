@@ -9,6 +9,8 @@ toc: true
 classes: wide
 movies:
   have_watched:
+    - Tenet|2021-05-15
+    - Minari|2021-05-09
     - The Princess Bride|2021-04-28
     - Friends With Benefits|2021-04-XX
     - The Perks of Being a Wallflower|2021-03-31
@@ -171,6 +173,7 @@ movies:
     - Men in Black
     - Men in Black II
     - Men in Black 3
+    - Minari
     - Minority Report
     - "Mission: Impossible - Ghost Protocol"
     - "Mission: Impossible - Rogue Nation"
@@ -248,6 +251,7 @@ movies:
     - "Star Wars: Episode VIII – The Last Jedi"
     - Steve Jobs
     - Tangled
+    - Tenet
     - Terminator
     - The Theory of Everything
     - This Is the End

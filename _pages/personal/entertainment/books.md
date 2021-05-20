@@ -11,16 +11,16 @@ books:
   to_read:
     - All The Light We Cannot See|Anthony Doerr
     - Altered Carbon|Richard Morgan
-    - "Arcanum Unbounded: The Cosmere Collection|Brandon Sanderson"
     - Ball Lightning|Liu Cixin
     - Brave New World|Aldous Huxley
     - Dune|Frank Herbert
-    - The Fire Within|Chris d'Lacey
     - The Forever War|Joe Haldeman
     - The Hitchhiker's Guide to the Galexy|Douglas Adam
     - Ishmael|Daniel Quinn
     - The Martian|Andy Weir
+    - The Wandering Earth|Liu Cixin
   finished_reading:
+    - "Arcanum Unbounded: The Cosmere Collection|Brandon Sanderson|2021-05-10"
     - The Bands of Mourning|Brandon Sanderson|2021-05-06
     - Warbreaker|Brandon Sanderson|2021-04-20
     - Elantris|Brandon Sanderson|2021-04-13

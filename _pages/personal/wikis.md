@@ -15,6 +15,5 @@ A list of useful wikis.
 [The Stormlight Archives](https://coppermind.net/wiki/Category:Stormlight_Archive){:target="_blank" rel="noopener"}
 
 ## Video Games
-
 [Old School RuneScape](https://oldschool.runescape.wiki/){:target="_blank" rel="noopener"} \\
 [Stardew Valley](https://stardewvalleywiki.com){:target="_blank" rel="noopener"}

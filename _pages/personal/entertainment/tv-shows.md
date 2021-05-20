@@ -42,7 +42,7 @@ shows:
     - Lupin|in progress
     - The Mandalorian|season 2
     - Money Heist|part 4
-    - Narcos|season 3 episode 10
+    - Narcos|season 3
     - The Office|season 5 episode 21
     - The Outsider|season 1
     - Prison Break|season 2, in progress
@@ -51,7 +51,7 @@ shows:
     - Sherlock Holmes|series 4
     - Silicone Valley|season 1, in progress
     - Stranger Things|season 3
-    - Suits|season 2, in progress
+    - Suits|season 4, in progress
     - The Undoing|season 1
     - The Walking Dead|in progress
     - Westworld|season 1
