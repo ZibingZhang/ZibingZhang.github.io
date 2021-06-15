@@ -7,6 +7,7 @@ sidebar:
   nav: entertainment
 classes: wide
 animes:
+  - "Violet Evergarden|2021-06-17|TBD"
   - "Fullmetal Alchemist: Brotherhood|2020-01-17|TBD"
 ---
 

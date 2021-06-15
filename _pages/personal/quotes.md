@@ -14,7 +14,36 @@ sidebar:
 </style>
 
 ## Books
-> It will get wore again.
+> In the face of madness, rationality was powerless.
+-- Liu Cixin, <cite>The Three-Body Problem</cite>
+
+> I will hate the man you choose because he isn't me, and love him if he makes you smile.
+
+-- Robert Jordan, <cite>The Eye of the World</cite>
+
+>  Mocking a woman is like drinking too much wine.
+> It may be fun for a short time, but the hangover is hell.
+
+-- Brandon Sanderson, <cite>Warbreaker</cite>
+
+> You will find that hate can unify people more quickly and more fervently than devotion ever could.
+
+-- Brandon Sanderson, <cite>Elantris</cite>
+
+> I am, unfortunately, the Hero of Ages.
+
+-- Brandon Sanderson, <cite>The Hero of Ages</cite>
+
+> It's easy to believe in something when you win all the time...
+> The losses are what define a man's faith.
+
+-- Brandon Sanderson, <cite>The Well of Ascension</cite>
+
+> Men rarely see their own actions as unjustified.
+
+-- Brandon Sanderson, <cite>The Final Empire</cite>
+
+> It will get worse again.
 > Then better.
 > This is life, and I will not lie by saying every day will be sunshine.
 > But there will be sunshine again, and that is a very different thing to say.
