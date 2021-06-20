@@ -35,7 +35,7 @@ movies:
 
 A list of movies that I've watched and a list of them that I've been meaning to watch.
 Documentaries are included but will be labeled with a `(d)`.
-Movies with common names may be succeeded with the year it was released.
+Movies with common names may be succeeded with the year trey were released in.
 
 **2020-12-30** Started the list.
 

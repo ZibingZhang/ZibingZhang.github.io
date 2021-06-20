@@ -21,12 +21,14 @@ to_read:
   series:
     - Broken Earth Trilogy|Nora Jemisin
     - A Court of Thorns and Roses|Sarah Maas
+    - Culture|Iain Banks
     - The Dandelion Dynasty|Ken Liu
     - Dune|Frank Herbert
     - The Expanse|James Corey
     - Foundation|Issac Asimov
     - Gentleman Bastard|Scott Lynch
     - Malazan Book of the Fallen|Steven Erikson
+    - Patternist|Octavia Butler
 finished_reading:
   - The Three-Body Problem|Liu Cixin|2021-06-02
   - The Eye of the World|Robert Jordan|2021-05-31

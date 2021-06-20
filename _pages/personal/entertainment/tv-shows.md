@@ -9,9 +9,12 @@ toc: true
 classes: wide
 shows:
   to_watch:
+    - The Boys
     - Dark
     - Dark Matter
+    - His Dark Materials
     - The Stranger
+    - Sweet Tooth
     - The Umbrella Academy
   watched:
     - The 100|season 7
