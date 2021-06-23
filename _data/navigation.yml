@@ -59,3 +59,14 @@ blog:
         url: /blog/hlth-5963/chia-seed-pudding/
       - title: "Stir Fry"
         url: /blog/hlth-5963/stir-fry/
+
+# sharks links
+sharks:
+  - title: "Home"
+    url: /sharks/
+  - title: "Schedule"
+    url: /sharks/schedule/
+  - title: "Practices"
+    url: /sharks/practices/
+  - title: "Results"
+    url: /sharks/results/

@@ -3,8 +3,8 @@ title: "Recpies"
 permalink: /personal/food/recipes/
 layout: single
 sidebar:
-  title: "Personal Pages"
-  nav: personal
+  title: "Food"
+  nav: food
 toc: true
 classes: wide
 ---

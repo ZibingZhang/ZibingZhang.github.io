@@ -5,4 +5,4 @@ layout: single
 author_profile: true
 ---
 
-Just a 'lil site for myself.
+Just a 'lil site for myself :)

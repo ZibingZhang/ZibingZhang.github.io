@@ -3,7 +3,7 @@ title: "Quotes"
 permalink: /personal/quotes/
 layout: single
 sidebar:
-  title: "Quotes"
+  title: "Personal Pages"
   nav: personal
 ---
 

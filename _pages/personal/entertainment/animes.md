@@ -11,7 +11,7 @@ animes:
   - "Fullmetal Alchemist: Brotherhood|2020-01-17|TBD"
 ---
 
-A list of animes I've watched or are currently in the process of watching.
+A list of anime series I've watched or are currently in the process of watching.
 
 **2021-01-17** Started the list.
 
