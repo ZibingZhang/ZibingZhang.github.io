@@ -5,14 +5,12 @@ layout: single
 sidebar:
   title: "Navigation"
   nav: sharks
-sitenav: false
-breadcrumbs: false
 datatable: true
 ---
 
 <div class="datatable-begin"></div>
 
-First | Last | Sex | Age Group  | Event | Time | Meet
+First | Last | Sex | Age Group | Event | Time | Meet
 :- | :- | :-: | :-: | :- | -: | :-
 Audrey | Adam |  F  |  13 & 14  |  50 Free  |  30.53  |  Tryouts
 Audrey | Adam |  F  |  13 & 14  |  50 Back  |  36.74  |  Tryouts

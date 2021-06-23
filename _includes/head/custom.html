@@ -20,11 +20,11 @@
   </style>
 {% endif %}
 
-{% if page.fullwidthtable == true %}
+{% if page.fullwidthtable != false %}
   <style>
     /* full width table */
     table {
-      width:100%;
+      width: 100%;
     }
   
     table th {
@@ -96,6 +96,26 @@
     // https://stackoverflow.com/questions/32905183/how-do-you-get-elements-from-a-javascript-htmlcollection
     window.addEventListener('load', function () {
       for (className of ['visible-links', 'hidden-links', 'greedy-nav__toggle']) {
+        // https://stackoverflow.com/questions/21436550/javascript-how-to-get-only-one-element-by-class-name
+        let elements = document.getElementsByClassName(className);
+        let requiredElement = elements[0];
+        // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
+        requiredElement.parentNode.removeChild(requiredElement);
+      }
+    });
+  </script>
+{% endif %}
+
+{% if page.footerfollow == false %}
+  <style>
+    .page__footer-follow {
+      display: none;
+    }
+  </style>
+  <script>
+    // https://stackoverflow.com/questions/32905183/how-do-you-get-elements-from-a-javascript-htmlcollection
+    window.addEventListener('load', function () {
+      for (className of ['page__footer-follow']) {
         // https://stackoverflow.com/questions/21436550/javascript-how-to-get-only-one-element-by-class-name
         let elements = document.getElementsByClassName(className);
         let requiredElement = elements[0];

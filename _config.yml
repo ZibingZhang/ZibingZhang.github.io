@@ -184,7 +184,6 @@ compress_html:
 
 # Defaults
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
@@ -195,3 +194,9 @@ defaults:
       comments: false
       share: false
       related: false
+  - scope:
+      path: "_pages/sharks"
+    values:
+      sitenav: false
+      breadcrumbs: false
+      footerfollow: false

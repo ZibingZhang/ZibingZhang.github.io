@@ -6,7 +6,7 @@ sidebar:
   title: "Food"
   nav: food
 toc: true
-# fullwidthtable: true
+fullwidthtable: false
 ---
 
 ## Long Island Iced Tea
