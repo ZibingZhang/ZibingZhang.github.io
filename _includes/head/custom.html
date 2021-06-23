@@ -83,15 +83,25 @@
     .visible-links {
       visibility: hidden;
     }
+
+    .hidden-links {
+      visibility: hidden;
+    }
+
+    .greedy-nav__toggle {
+      visibility: hidden;
+    }
   </style>
   <script>
     // https://stackoverflow.com/questions/32905183/how-do-you-get-elements-from-a-javascript-htmlcollection
     window.addEventListener('load', function () {
-      // https://stackoverflow.com/questions/21436550/javascript-how-to-get-only-one-element-by-class-name
-      let elements = document.getElementsByClassName('visible-links');
-      let requiredElement = elements[0];
-      // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
-      requiredElement.parentNode.removeChild(requiredElement);
+      for (className of ['visible-links', 'hidden-links', 'greedy-nav__toggle']) {
+        // https://stackoverflow.com/questions/21436550/javascript-how-to-get-only-one-element-by-class-name
+        let elements = document.getElementsByClassName(className);
+        let requiredElement = elements[0];
+        // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
+        requiredElement.parentNode.removeChild(requiredElement);
+      }
     });
   </script>
 {% endif %}
