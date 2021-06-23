@@ -13,7 +13,7 @@ datatable: true
 <div class="datatable-begin"></div>
 
 Name | Sex | Age Group  | Event | Time | Meet
-- | - | - | - | - | -
+:- | :-: | :-: | :- | -: | :-
 Alex Bold | F | 15 - 18 | 50 Free | 29.87 | Tryouts
 Alex Bold | F | 15 - 18 | 50 Back | 37.61 | Tryouts
 Alex Bold | F | 15 - 18 | 50 Breast | 43.58 | Tryouts
