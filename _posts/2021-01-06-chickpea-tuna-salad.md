@@ -15,10 +15,10 @@ gallery:
     alt: "Finished Salad"
 ---
 
-This recipe was heavily inspired by [this](https://www.wellplated.com/chickpea-tuna-salad/){:target="_blank" rel="noopener"} one.
+This recipe was heavily inspired by [this](https://www.wellplated.com/chickpea-tuna-salad/){:target="_blank" rel="noopener noreferrer"} one.
 
 ## Nutritional Information
-Quinoa is a [complete protein](https://en.wikipedia.org/wiki/Complete_protein){:target="_blank" rel="noopener"}, meaning that it contains all nine essential amino acids.[^1]
+Quinoa is a [complete protein](https://en.wikipedia.org/wiki/Complete_protein){:target="_blank" rel="noopener noreferrer"}, meaning that it contains all nine essential amino acids.[^1]
 It is a good source of protein and fiber.[^1]
 
 Chickpeas are "an excellent source of carbohydrates, protein, fiber, B vitamins, and some minerals."[^2]
@@ -60,7 +60,7 @@ I did cheat a little and bought precooked quinoa.
 I am personally not a huge fan of salads, but it turned out a lot better than I expected.
 
 ## Sources
-[^1]:<https://www.hsph.harvard.edu/nutritionsource/food-features/quinoa/>{:target="_blank" rel="noopener"}
-[^2]:<https://www.hsph.harvard.edu/nutritionsource/food-features/chickpeas-garbanzo-beans/>{:target="_blank" rel="noopener"}
-[^3]:<https://time.com/3735402/canned-tuna-mercury/>{:target="_blank" rel="noopener"}
-[^4]:<https://en.wikipedia.org/wiki/Omega-3_fatty_acid#Health_effects>{:target="_blank" rel="noopener"}
+[^1]:<https://www.hsph.harvard.edu/nutritionsource/food-features/quinoa/>{:target="_blank" rel="noopener noreferrer"}
+[^2]:<https://www.hsph.harvard.edu/nutritionsource/food-features/chickpeas-garbanzo-beans/>{:target="_blank" rel="noopener noreferrer"}
+[^3]:<https://time.com/3735402/canned-tuna-mercury/>{:target="_blank" rel="noopener noreferrer"}
+[^4]:<https://en.wikipedia.org/wiki/Omega-3_fatty_acid#Health_effects>{:target="_blank" rel="noopener noreferrer"}

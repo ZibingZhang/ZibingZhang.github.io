@@ -53,4 +53,4 @@ The texture did change a lot though.
 It changed from a very liquid texture to a more gelatinous one.
 
 ## Sources
-[^1]:<https://www.hsph.harvard.edu/nutritionsource/food-features/chia-seeds/>{:target="_blank" rel="noopener"}
+[^1]:<https://www.hsph.harvard.edu/nutritionsource/food-features/chia-seeds/>{:target="_blank" rel="noopener noreferrer"}

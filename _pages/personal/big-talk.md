@@ -9,17 +9,17 @@ toc: true
 classes: wide
 ---
 
-[Big Talk](https://www.makebigtalk.com/){:target="_blank" rel="noopener"} topics.
+[Big Talk](https://www.makebigtalk.com/){:target="_blank" rel="noopener noreferrer"} topics.
 
 Everyone must answer each question asked.
 
 ## Meta
-- [The 36 Questions That Lead to Love](https://www.nytimes.com/2015/01/09/style/no-37-big-wedding-or-small.html){:target="_blank" rel="noopener"}
+- [The 36 Questions That Lead to Love](https://www.nytimes.com/2015/01/09/style/no-37-big-wedding-or-small.html){:target="_blank" rel="noopener noreferrer"}
 
 ## Online Tests
-- [The 5 Love Languages](https://www.5lovelanguages.com/quizzes/){:target="_blank" rel="noopener"}
-- [Myers–Briggs Type Indicator](https://www.16personalities.com/free-personality-test){:target="_blank" rel="noopener"}
-- [Rice Purity Test](http://ricepuritytest.com/){:target="_blank" rel="noopener"}
+- [The 5 Love Languages](https://www.5lovelanguages.com/quizzes/){:target="_blank" rel="noopener noreferrer"}
+- [Myers–Briggs Type Indicator](https://www.16personalities.com/free-personality-test){:target="_blank" rel="noopener noreferrer"}
+- [Rice Purity Test](http://ricepuritytest.com/){:target="_blank" rel="noopener noreferrer"}
 
 ## Politics
 Some topics can be found [here](/personal/bookmarks/) under the **Opinion Pieces** section.

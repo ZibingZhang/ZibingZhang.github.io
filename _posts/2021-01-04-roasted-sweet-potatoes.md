@@ -106,11 +106,11 @@ In the end, however, I combined both pans onto a single plate... so I am not sur
 ### End Result
 {% include gallery id="end_result" %}
 
-~~I was able to apply some of the techniques I learned from [this](http://academic-catalog.massart.edu/preview_course_nopop.php?catoid=10&coid=9246){:target="_blank" rel="noopener"} illustration course to my plating.~~
+~~I was able to apply some of the techniques I learned from [this](http://academic-catalog.massart.edu/preview_course_nopop.php?catoid=10&coid=9246){:target="_blank" rel="noopener noreferrer"} illustration course to my plating.~~
 
 I think my first attempt at this recipe turned out alright.
 In the future, I will try to keep a closer eye on the progress so that I will be better able to judge when it is done cooking.
 
 ## Sources
-[^1]:<https://www.healthbenefitstimes.com/sweet-potato/>{:target="_blank" rel="noopener"}
-[^2]:<https://www.glycemicindex.com/foodSearch.php?num=1895&ak=detail>{:target="_blank" rel="noopener"}
+[^1]:<https://www.healthbenefitstimes.com/sweet-potato/>{:target="_blank" rel="noopener noreferrer"}
+[^2]:<https://www.glycemicindex.com/foodSearch.php?num=1895&ak=detail>{:target="_blank" rel="noopener noreferrer"}

@@ -10,7 +10,7 @@ classes: wide
 ---
 
 ## Beef Stew
-Taken from [here](https://damndelicious.net/2020/02/29/best-ever-beef-stew/){:target="_blank" rel="noopener"}.
+Taken from [here](https://damndelicious.net/2020/02/29/best-ever-beef-stew/){:target="_blank" rel="noopener noreferrer"}.
 
 **Ingredients**
 - 2 tbsp olive oil

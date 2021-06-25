@@ -8,6 +8,6 @@ sidebar:
 ---
 
 ## Workman Keyboard Layout
-You can try the [layout](https://workmanlayout.org){:target="_blank" rel="noopener"} [here](https://www.keybr.com){:target="_blank" rel="noopener"}.
+You can try the [layout](https://workmanlayout.org){:target="_blank" rel="noopener noreferrer"} [here](https://www.keybr.com){:target="_blank" rel="noopener noreferrer"}.
 
-[This](https://www.keyhero.com/free-typing-test){:target="_blank" rel="noopener"} is my favorite resource for practicing typing.
+[This](https://www.keyhero.com/free-typing-test){:target="_blank" rel="noopener noreferrer"} is my favorite resource for practicing typing.
