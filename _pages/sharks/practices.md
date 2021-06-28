@@ -15,6 +15,38 @@ sidebar:
   }
 </style>
 
+### 2021-06-28
+```text
+LANES 1-4
+Warmup: 300 yard 
+  (mix free, stroke, drill, pull)
+MAIN SET
+  6 x 50 free kick @ 1:15
+  6 x 75 build @ 1:45
+    #1 moderate (free)
+    #2 build (free)
+    #3 sprint (free)
+    #4-6 repeat (IM order no free)
+  4 x 100 match @ 2:00
+    #1+2 free
+    #3+4 stroke
+  6 x 25 sprint choice @ :30
+
+LANES 5-8
+Warmup: 300 yard 
+  (mix free, stroke, drill, pull)
+MAIN SET
+  6 x 50 free kick @ 1:15
+  6 x 75 build @ 1:45
+    #1 moderate (free)
+    #2 build (free)
+    #3 sprint (free)
+    #4-6 repeat (IM order no free)
+  3 x 100 match choice @ 2:30
+  6 x 25 sprint choice @ :30
+```
+
+
 ### 2021-06-24
 
 ```text
