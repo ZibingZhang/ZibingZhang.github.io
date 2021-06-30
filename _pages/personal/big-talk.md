@@ -103,6 +103,7 @@ When was the last time you...
 - When and what did you really fuck up?
 - Where do you see yourself in 5 years? 10 years?
 - Where would you like to be in 5 years? 10 years?
+- Would you force your kid to do anything, e.g. sports, second language, music?
 - Would you like to be famous? In what way?
 
 ## Relationships
