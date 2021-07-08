@@ -1,0 +1,34 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+// https://www.cross-validated.com/Personal-website-with-Minimal-Mistakes-Jekyll-Theme-HOWTO-Part-II/
+
+html {
+  @include breakpoint($medium) {
+    font-size: 13px;
+  }
+
+  @include breakpoint($large) {
+    font-size: 15px;
+  }
+
+  @include breakpoint($x-large) {
+    font-size: 18px;
+  }
+}
+
+.author__bio {
+  font-style: italic;
+}
+
+.sidebar {
+  opacity: 1;
+  -webkit-transition: none;
+  transition: none;
+}

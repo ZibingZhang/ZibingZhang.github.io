@@ -1,0 +1,1046 @@
+---
+permalink: /misc/family-tree/
+---
+
+<!DOCTYPE html>
+<!-- Credit to http://thecodeplayer.com/experiments/css3-family-tree-multiple-parents.html for the starter code. -->
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' >
+<head>
+	<title>Family Tree</title>
+
+	<style type='text/css' media='screen'>
+		* { margin: 0; padding: 0; white-space: nowrap; }
+
+		.tree ul {
+			padding-top: 20px; position: relative;
+	
+			/* -webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s; */
+		}
+
+		.tree li {
+			display: inline-block; text-align: center;
+			vertical-align: top;
+			list-style-type: none;
+			position: relative;
+			padding: 20px 5px 0 5px;
+	
+			/* -webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s; */
+		}
+
+		/* Connectors between generations. */
+		.tree li::before, .tree li::after{
+			content: '';
+			position: absolute; top: 0; right: 50%;
+			border-top: 1px solid #ccc;
+			width: 50%; height: 35px;
+			z-index: -1;
+		}
+
+		.tree li::after{
+			right: auto; left: 50%;
+			border-left: 1px solid #ccc;
+		}
+
+		/* Remove left-right connectors from elements without any siblings. */
+		.tree li:only-child::after, .tree li:only-child::before {
+			display: none;
+		}
+
+		/* Remove left connector from first child and right connector from last child. */
+		.tree li:first-child::before, .tree li:last-child::after{
+			border: 0 none;
+		}
+
+		/* Adding back the vertical connector to the last nodes. */
+		.tree li:last-child::before{
+			border-right: 1px solid #ccc;
+			border-radius: 0 5px 0 0;
+			
+			-webkit-transform: translateX(1px);
+			-moz-transform: translateX(1px);
+			transform: translateX(1px);
+			
+			-webkit-border-radius: 0 5px 0 0;
+			-moz-border-radius: 0 5px 0 0;
+			border-radius: 0 5px 0 0;
+		}
+
+		.tree li:first-child::after{
+			border-radius: 5px 0 0 0;
+			-webkit-border-radius: 5px 0 0 0;
+			-moz-border-radius: 5px 0 0 0;
+		}
+
+		/* Downward connectors from parents. */
+		.tree ul ul::before{
+			content: '';
+			position: absolute; top: -13px; left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0; height: 33px;
+			z-index: -1;
+		}
+
+		.tree ul ul.extended::before{
+			content: '';
+			position: absolute; top: -13px; left: 50%;
+			border-left: 1px solid #ccc;
+			width: 0; height: 68px;
+			z-index: -1;
+		}
+
+		/* Formatting for cell. */
+		.tree li div {
+			position: relative;
+			vertical-align: top;
+			border: 1px solid #ccc;
+			padding: 5px 10px;
+			text-decoration: none;
+			color: #666;
+			font-family: arial, verdana, tahoma;
+			font-size: 14px;
+			display: inline-block;
+			background: white;
+			width: 75px;
+	
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+	
+			/* -webkit-transition: all 0.5s;
+			-moz-transition: all 0.5s;
+			transition: all 0.5s; */
+		}
+
+		/* Married parents. */
+		.tree li div+div {
+			margin-left: 20px;
+			position: relative;
+		}
+
+		/* Connector between married parents. */
+		.tree li div+div::before {
+			content: '';
+			position: absolute;
+			border-top: 1px solid #ccc;
+			top: 14px; left: -25px; 
+			width: 24px;
+		}
+
+		/* Hover Effects */
+		/* Darken text. */
+		/* .tree li a:hover, .tree li a:hover~ul a */
+		.tree li div, .tree li div~ul div {
+			color: #000; border: 1px solid #94a0b4;
+		}
+
+		/* Male background color. */
+		/* .tree li a.male:hover, .tree li a:hover~ul a.male */
+		.tree li div.male, .tree li a~ul a.male {
+			background: #c8e4f8; 
+		}
+
+		/* Female background color. */
+		/* .tree li a.female:hover, .tree li a:hover~ul a.female */
+		.tree li div.female, .tree li a~ul div.female {
+			background: #ffc7ce; 
+		}
+
+		/* Deceased background colors. */
+		/* .tree li a.male.deceased:hover, .tree li a:hover~ul a.male.deceased */
+		.tree li div.male.deceased, .tree li a~ul div.male.deceased {
+			background: #a4b4be;
+		}
+
+		/* .tree li a.female.deceased:hover, .tree li a:hover~ul a.female.deceased */
+		.tree li div.female.deceased, .tree li a~ul div.female.deceased {
+			background: #b1979a;
+		}
+
+		/* Popup */
+		button.popup-toggle-background {
+			all: unset;
+			position: absolute;
+			top: 0px; left: 0px;
+			height: 26px; width: 20px;
+		}
+
+		.tree li div.popup-toggle {
+			all: unset;
+			position: absolute;
+			pointer-events: none;
+			top: 11px; left: 5px;
+			height: 6px; width: 6px;
+			background-color: rgba(0, 0, 0, 0.3);
+			border-radius: 3px;
+		}
+
+		.tree li div .popup {
+			padding: unset;
+			z-index: 100;
+			visibility: hidden;
+			position: absolute;
+			top: 30px; left: 0px;
+			height: min-content; width: min-content;
+			min-height: 10px; min-width: 85px;
+			padding: 5px;
+			text-align: left;
+			background-color: #ececec;
+		}
+
+		.tree li div .popup[data-show='true'] {
+			visibility: unset;
+		}
+
+		/* Generate Family Tree */
+		a.generate-family-tree {
+			position: absolute;
+			top: 0px; left: 20px;
+			height: 26px; width: 75px;
+		}
+	</style>
+
+	<script>
+		const people = [
+			{
+				id: 0,
+				sex: 'male',
+				name: '章守道',
+				deceased: true,
+				spousesId: 1,
+				childrenIds: [2]
+			},
+			{
+				id: 1,
+				sex: 'female',
+				name: '叶菊花',
+				deceased: true,
+				spousesId: 0
+			},
+			{
+				id: 2,
+				sex: 'male',
+				name: '章绥忠',
+				deceased: true,
+				spousesId: 3,
+				fathersId: 0,
+				childrenIds: [5, 13, 22, 27, 32]
+			},
+			{
+				id: 3,
+				sex: 'female',
+				name: '徐瑞香',
+				deceased: true,
+				spousesId: 2
+			},
+			{
+				id: 4,
+				sex: 'male',
+				name: '朱家隽',
+				spousesId: 5,
+				childrenIds: [7, 10],
+				display: false
+			},
+			{
+				id: 5,
+				sex: 'female',
+				name: '章芸芝',
+				spousesId: 4,
+				fathersId: 2
+			},
+			{
+				id: 6,
+				sex: 'male',
+				name: '张涌展',
+				spousesId: 7,
+				childrenIds: [8]
+			},
+			{
+				id: 7,
+				sex: 'female',
+				name: '朱萍',
+				spousesId: 6,
+				fathersId: 4
+			},
+			{
+				id: 8,
+				sex: 'female',
+				name: '张婧琼',
+				fathersId: 6
+			},
+			{
+				id: 9,
+				sex: 'male',
+				name: '范在博',
+				spousesId: 10,
+				childrenIds: [11]
+			},
+			{
+				id: 10,
+				sex: 'female',
+				name: '朱娟',
+				spousesId: 9,
+				fathersId: 4
+			},
+			{
+				id: 11,
+				sex: 'male',
+				name: '范立舜',
+				spousesId: 12,
+				fathersId: 9
+			},
+			{
+				id: 12,
+				sex: 'female',
+				name: '王文思',
+				spousesId: 11
+			},
+			{
+				id: 13,
+				sex: 'male',
+				name: '章成德',
+				spousesId: 14,
+				fathersId: 2,
+				childrenIds: [16, 18],
+				yob: 1940,
+				lob: '浙江上虞'
+			},
+			{
+				id: 14,
+				sex: 'female',
+				name: '陈殿夷',
+				spousesId: 13,
+				fathersId: 69,
+				yob: 1939,
+				lob: '江苏海门'
+			},
+			{
+				id: 15,
+				sex: 'male',
+				name: '马海文',
+				spousesId: 16,
+				childrenIds: [17]
+			},
+			{
+				id: 16,
+				sex: 'female',
+				name: '章音',
+				spousesId: 15,
+				fathersId: 13,
+				yob: 1966,
+				lob: '上海'
+			},
+			{
+				id: 17,
+				sex: 'male',
+				name: '马竟骁',
+				fathersId: 15,
+				lob: '山东青岛'
+			},
+			{
+				id: 18,
+				sex: 'male',
+				name: '章宁',
+				spousesId: 19,
+				fathersId: 13,
+				childrenIds: [20, 21],
+				yob: 1970,
+				lob: '上海'
+			},
+			{
+				id: 19,
+				sex: 'female',
+				name: '李玫',
+				spousesId: 18,
+				fathersId: 37,
+				yob: 1971,
+				lob: '山东青岛'
+			},
+			{
+				id: 20,
+				sex: 'male',
+				name: '章子冰',
+				fathersId: 18,
+				yob: 1999,
+				lob: '山东青岛'
+			},
+			{
+				id: 21,
+				sex: 'female',
+				name: '章子凌',
+				fathersId: 18,
+				yob: 2002,
+				lob: '美国麻州'
+			},
+			{
+				id: 22,
+				sex: 'male',
+				name: '章燧德',
+				spousesId: 23,
+				fathersId: 2,
+				childrenIds: [25]
+			},
+			{
+				id: 23,
+				sex: 'female',
+				name: '陈万灵',
+				deceased: true,
+				spousesId: 22
+			},
+			{
+				id: 24,
+				sex: 'male',
+				name: '王炜',
+				spousesId: 25,
+				childrenIds: [26]
+			},
+			{
+				id: 25,
+				sex: 'female',
+				name: '章蔚',
+				spousesId: 24,
+				fathersId: 22,
+				yob: 1971,
+				lob: '上海',
+				funFact: ''
+			},
+			{
+				id: 26,
+				sex: 'female',
+				name: '王蕴博',
+				fathersId: 24,
+				lob: '上海'
+			},
+			{
+				id: 27,
+				sex: 'male',
+				name: '章厚德',
+				spousesId: 28,
+				fathersId: 2,
+				childrenIds: [29]
+			},
+			{
+				id: 28,
+				sex: 'female',
+				name: '刘梅',
+				spousesId: 27
+			},
+			{
+				id: 29,
+				sex: 'male',
+				name: '章震',
+				spousesId: 30,
+				fathersId: 27,
+				childrenIds: [31]
+			},
+			{
+				id: 30,
+				sex: 'female',
+				name: '罗晴',
+				spousesId: 29
+			},
+			{
+				id: 31,
+				sex: 'female',
+				name: '章子怡',
+				fathersId: 29,
+				lob: '上海'
+			},
+			{
+				id: 32,
+				sex: 'male',
+				name: '章骏德',
+				spousesId: 33,
+				fathersId: 2,
+				childrenIds: [34]
+			},
+			{
+				id: 33,
+				sex: 'female',
+				name: '刘玲珍',
+				spousesId: 32
+			},
+			{
+				id: 34,
+				sex: 'male',
+				name: '章欣',
+				spousesId: 35,
+				fathersId: 32,
+				childrenIds: [36]
+			},
+			{
+				id: 35,
+				sex: 'female',
+				name: '黄海云',
+				spousesId: 34
+			},
+			{
+				id: 36,
+				sex: 'female',
+				name: '章子楠',
+				fathersId: 34,
+				lob: '上海'
+			},
+			{
+				id: 37,
+				sex: 'male',
+				name: '赵培勋',
+				spousesId: 38, // second marriage
+				fathersId: 63,
+				childrenIds: [40, 42, 19],
+				yob: 1937,
+				lob: '山东莱阳'
+			},
+			{
+				id: 38,
+				sex: 'female',
+				name: '李玉兰',
+				spousesId: 37, // second marriage
+				fathersId: 45,
+				yob: 1944,
+				lob: '山东诸城'
+			},
+			{
+				id: 39,
+				sex: 'male',
+				name: '孙纯国',
+				spousesId: 40,
+				childrenIds: [41],
+				yob: 1966,
+				lob: '山东寿光'
+			},
+			{
+				id: 40,
+				sex: 'female',
+				name: '李娟',
+				spousesId: 39,
+				fathersId: 37,
+				yob: 1969,
+				lob: '山东青岛'
+			},
+			{
+				id: 41,
+				sex: 'female',
+				name: '孙文馨',
+				fathersId: 39,
+				yob: 1993,
+				lob: '山东青岛'
+			},
+			{
+				id: 42,
+				sex: 'male',
+				name: '赵希同',
+				spousesId: 43,
+				fathersId: 37,
+				childrenIds: [44],
+				yob: 1970,
+				lob: '山东青岛'
+			},
+			{
+				id: 43,
+				sex: 'female',
+				name: '董滔',
+				spousesId: 42,
+				lob: '山东青岛'
+			},
+			{
+				id: 44,
+				sex: 'male',
+				name: '赵洵平',
+				fathersId: 42,
+				yob: 1998,
+				lob: '山东青岛'
+			},
+			{
+				id: 45,
+				sex: 'male',
+				name: '李美鋆',
+				deceased: true,
+				spousesId: 46,
+				childrenIds: [38, 48, 54],
+				yob: 1924,
+				shuxiang: '鼠',
+				lob: '山东诸城'
+			},
+			{
+				id: 46,
+				sex: 'female',
+				deceased: true,
+				name: '李瑞英',
+				spousesId: 45,
+				yob: 1916,
+				shuxiang: '龙',
+				lob: '山东诸城'
+			},
+			{
+				id: 47,
+				sex: 'male',
+				name: '张培智',
+				spousesId: 48,
+				childrenIds: [49],
+				yob: 1946,
+				lob: '山东文登'
+			},
+			{
+				id: 48,
+				sex: 'female',
+				name: '李波',
+				spousesId: 47,
+				fathersId: 45,
+				yob: 1952,
+				lob: '山东青岛'
+			},
+			{
+				id: 49,
+				sex: 'male',
+				name: '张金宁',
+				spousesId: 50,
+				fathersId: 47,
+				childrenIds: [51, 52],
+				yob: 1979,
+				lob: '宁夏石炭井'
+			},
+			{
+				id: 50,
+				sex: 'female',
+				name: '赵燕',
+				spousesId: 49,
+				yob: 1985,
+				lob: '山东齐河'
+			},
+			{
+				id: 51,
+				sex: 'female',
+				name: '张可欣',
+				fathersId: 49,
+				yob: 2009,
+				lob: '山东齐河'
+			},
+			{
+				id: 52,
+				sex: 'female',
+				name: '张子萱',
+				fathersId: 49,
+				yob: 2015,
+				lob: '山东齐河'
+			},
+			{
+				id: 53,
+				sex: 'male',
+				name: '张洪亮',
+				spousesId: 54,
+				childrenIds: [56, 59],
+				yob: 1954,
+				lob: '山东诸城'
+			},
+			{
+				id: 54,
+				sex: 'female',
+				name: '李玉芬',
+				spousesId: 53,
+				fathersId: 45,
+				yob: 1955,
+				lob: '山东青岛'
+			},
+			{
+				id: 55,
+				sex: 'male',
+				name: '？？？',
+				spousesId: 56,
+				childrenIds: [57, 58],
+				display: false
+			},
+			{
+				id: 56,
+				sex: 'female',
+				name: '张卫华',
+				spousesId: 55,
+				fathersId: 53,
+				yob: 1977,
+				lob: '山东诸城'
+			},
+			{
+				id: 57,
+				sex: '',
+				name: '？？？',
+				fathersId: 55,
+				display: false
+			},
+			{
+				id: 58,
+				sex: 'male',
+				name: '刘忠锐',
+				fathersId: 55,
+				yob: 2002,
+				lob: '江苏连云港'
+			},
+			{
+				id: 59,
+				sex: 'male',
+				name: '张卫东',
+				spousesId: 60,
+				fathersId: 53,
+				childrenIds: [61, 62],
+				yob: 1980,
+				lob: '山东诸城'
+			},
+			{
+				id: 60,
+				sex: 'female',
+				name: '王新霞',
+				spousesId: 59,
+				yob: 1984,
+				lob: '山东沂南'
+			},
+			{
+				id: 61,
+				sex: 'female',
+				name: '张佳倩',
+				nickname: '倩倩',
+				fathersId: 59,
+				yob: 2006,
+				lob: '山东诸城'
+			},
+			{
+				id: 62,
+				sex: 'male',
+				name: '张俊博',
+				nickname: '俊博',
+				fathersId: 59,
+				yob: 2017,
+				lob: '山东青岛'
+			},
+			{
+				id: 63,
+				sex: 'male',
+				name: '赵焕章',
+				deceased: true,
+				spousesId: 64,
+				childrenIds: [65, 66, 67, 37, 68],
+				yob: 1908,
+				lob: '山东莱阳'
+			},
+			{
+				id: 64,
+				sex: 'female',
+				name: '赵韩氏', // second character questionable
+				deceased: true,
+				spousesId: 63,
+				yob: 1911,
+				lob: '山东莱阳'
+			},
+			{
+				id: 65,
+				sex: 'male',
+				name: '赵培耀',
+				deceased: true,
+				fathersId: 63,
+				yob: 1928,
+				lob: '山东莱阳'
+			},
+			{
+				id: 66,
+				sex: 'male',
+				name: '赵培才',
+				deceased: true,
+				fathersId: 63,
+				yob: 1931,
+				lob: '山东莱阳'
+			},
+			{
+				id: 67,
+				sex: 'female',
+				name: '赵瑞芝',
+				fathersId: 63,
+				yob: 1934,
+				lob: '山东莱阳'
+			},
+			{
+				id: 68,
+				sex: 'female',
+				name: '赵瑞华',
+				deceased: true,
+				fathersId: 63,
+				yob: 1940,
+				lob: '山东莱阳'
+			},
+			{
+				id: 69,
+				sex: 'male',
+				deceased: true,
+				name: '陈在德',
+				spousesId: 70,
+				childrenIds: [14, 72],
+				yob: 1917, // 九月十二号
+				lob: '江苏海门'
+			},
+			{
+				id: 70,
+				sex: 'female',
+				deceased: true,
+				name: '施哲英',
+				spousesId: 69,
+				yob: 1909, // 二月八号
+				lob: '江苏海门'
+			},
+			{
+				id: 71,
+				sex: 'male',
+				name: '钟立信',
+				spousesId: 72,
+				childrenIds: [73, 76],
+				yob: 1936, // 十一月十号
+				lob: '江西萍乡' // 宣风
+			},
+			{
+				id: 72,
+				sex: 'female',
+				name: '陈肃夷',
+				spousesId: 71,
+				fathersId: 69,
+				yob: 1942,  // 一月九号
+				lob: '江苏海门'
+			},
+			{
+				id: 73,
+				sex: 'male',
+				name: '钟明海',
+				spousesId: 74,
+				fathersId: 71,
+				childrenIds: [75],
+				yob: 1971, // 七月三十号
+				lob: '江西宜春'
+			},
+			{
+				id: 74,
+				sex: 'female',
+				name: '管奕煊',
+				spousesId: 73,
+				yob: 1972,
+				lob: '山东青岛'
+			},
+			{
+				id: 75,
+				sex: 'male',
+				name: '钟瑞起',
+				fathersId: 73,
+				yob: 2001, // 二月二十号
+				lob: '山东青岛'
+			},
+			{
+				id: 76,
+				sex: 'male',
+				name: '钟明波',
+				spousesId: 77,
+				fathersId: 71,
+				childrenIds: [78],
+				yob: 1973, // 四月十九号
+				lob: '江西宜春'
+			},
+			{
+				id: 77,
+				sex: 'female',
+				name: '谢曙英',
+				spousesId: 76,
+				yob: 1973, // 七月二十五号
+				lob: '江西南昌'
+			},
+			{
+				id: 78,
+				sex: 'male',
+				name: '钟睿哲',
+				fathersId: 76,
+				yob: 2003, // 九月二十三
+				lob: '江西南昌'
+			},
+		];
+
+		function getPerson(id) {
+			for (const person of people) {
+				if (person.id === id) {
+					return person;
+				}
+			}
+		}
+
+		function getRoot(id) {
+			const person = getPerson(id);
+			const fathersId = person.fathersId;
+			if (fathersId === undefined) {
+				if (person.sex === 'female') {
+					const spouse = getPerson(person.spousesId);
+					return spouse;
+				} else {
+					return person;
+				}
+			} else {
+				return getRoot(fathersId)
+			}
+		}
+
+		function generateTree(root) {
+			const spousesId = root.spousesId;
+			let childrenIds;
+
+			const node = { people: [], children: [] };
+			
+			if (!spousesId) {
+				node.people.push(root);
+			} else {
+				const spouse = getPerson(spousesId);
+
+				if (root.sex === 'male') {
+					node.people.push(root);
+					node.people.push(getPerson(spousesId));
+					childrenIds = root.childrenIds;
+				} else {
+					node.people.push(getPerson(spousesId));
+					node.people.push(root);
+					childrenIds = spouse.childrenIds;
+				}
+			}
+
+			if (childrenIds) {
+				for (const childId of childrenIds) {
+					const child = getPerson(childId);
+					const childNode = generateTree(child);
+					node.children.push(childNode);
+				}
+			}
+
+			return node;
+		}
+
+		const textNode = text => document.createTextNode(text);
+		const newlineTextNode = () => textNode('\n');
+		const brElement = () => document.createElement('br');
+
+		let visiblePopup;
+
+		function generateElements(parentElement, node) {
+			let listElement;
+			let generatedListElement = false;
+
+			for (const person of node.people) {
+				if (person.display === false) continue;
+
+				if (!generatedListElement) {
+					listElement = document.createElement('li');
+					parentElement.appendChild(listElement);
+					generatedListElement = true;
+				}
+
+				const node = document.createElement('div');
+				
+				/* =================================================== */
+				const popup = document.createElement('div');
+				popup.classList.add('popup');
+				let shownFirstLine = false;
+				if (person.yob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生年：${person.yob}`)); }
+				if (person.lob !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`出生地：${person.lob}`)); }
+				if (person.funFact !== undefined) { if (shownFirstLine) popup.appendChild(brElement()); else shownFirstLine = true; popup.appendChild(textNode(`趣事：${person.funFact}`)); }
+				node.appendChild(popup);
+
+				const popupToggleBackground = document.createElement('button');
+				popupToggleBackground.classList.add('popup-toggle-background');
+				popupToggleBackground.onclick = () => {
+					console.log(person.id);
+
+					if (popup.dataset.show === 'true') {
+						popup.dataset.show = 'false';
+					} else {
+						if (visiblePopup) visiblePopup.dataset.show = 'false';
+						popup.dataset.show = 'true';
+						visiblePopup = popup;
+					}
+				};
+				node.appendChild(popupToggleBackground);
+				
+				if (shownFirstLine) {
+					const popupToggle = document.createElement('div');
+					popupToggle.classList.add('popup-toggle');
+					node.appendChild(popupToggle);
+				}
+
+				const generateFamilyTree = document.createElement('a');
+				generateFamilyTree.classList.add('generate-family-tree');
+				generateFamilyTree.setAttribute('href', '#');
+				generateFamilyTree.onclick = () => updatePage(person.id);
+				node.appendChild(generateFamilyTree)
+				/* =================================================== */
+
+				if (person.sex) node.classList.add(person.sex);
+				if (person.deceased) node.classList.add('deceased');
+				
+				node.appendChild(textNode(person.name));
+
+				listElement.appendChild(newlineTextNode());
+				listElement.appendChild(node);
+			}
+
+			displayedChildNodesCount = node.children.filter(child => { 
+				return child.people.filter(person => { 
+					return person.display !== false 
+					}).length > 0 
+				}).length;
+
+			if (node.children.length > 0) {
+				listElement.appendChild(newlineTextNode());
+				const childrenListElement = document.createElement('ul');
+
+				if (displayedChildNodesCount === 1) {
+					childrenListElement.classList.add('extended');
+				}
+
+				listElement.appendChild(childrenListElement);
+				for (const child of node.children) {
+					generateElements(childrenListElement, child);
+				}
+				listElement.appendChild(newlineTextNode());
+			}
+		}
+
+		function updatePage(id) {
+			const root = getRoot(id);
+			const tree = generateTree(root);
+			
+			const treeElement = document.getElementsByClassName('tree')[0];
+			while (treeElement.childNodes.length > 0) {
+				treeElement.removeChild(treeElement.firstChild);
+			}
+
+			const parentElement = document.createElement('ul');
+
+			treeElement.appendChild(newlineTextNode());
+			treeElement.appendChild(parentElement);
+			treeElement.appendChild(newlineTextNode());
+
+			generateElements(parentElement, tree);
+
+			window.history.replaceState(null, null, `?id=${id}`);
+		}
+
+		window.addEventListener('DOMContentLoaded', () => {
+			const url = window.location.href;
+
+			try {
+				const args = url.split(/\?(.*)/)[1];
+				const match = args.match(/^id\=(?<id>\d+)[#]?$/);
+				const groups = match.groups;
+				const id = parseInt(groups.id);
+				const initialPerson = getPerson(id);
+				if (!initialPerson) throw 'Person with ID not found.';
+				updatePage(initialPerson.id)
+			} catch (e) {
+				updatePage(20);
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class='tree'></div>
+</body>
+</html>

@@ -1,0 +1,505 @@
+% ============================================================
+% ====================     META     ==========================
+% ============================================================
+
+\documentclass[11pt]{article}
+
+\usepackage[
+	letterpaper,
+	left=0.85in,
+	right=0.85in,
+	top=0in,
+	bottom=0in,
+	\iffalse showframe \fi
+]{geometry}												% page layout
+\usepackage{enumitem}							% enhance lists
+\usepackage{fontawesome5}					% cool symbols
+\usepackage[hidelinks]{hyperref}	% hypertext
+\usepackage{mathptmx}							% times font
+
+\pagestyle{empty}									% removes page numbers
+\setlength\parindent{0pt}					% no indents
+
+% ============================================================
+% ====================   COMMANDS   ==========================
+% ============================================================
+
+% Section Header (Section Name, Icon)
+\newcommand{\sectionheader}[2]
+	{{\large #1} \hfill \ifnum\ChooseShowSectionIcons=\TRUE #2 \else \fi \par \vspace{-0.6 \baselineskip} \rule{\textwidth}{0.08em} \par \vspace{-0.1 \baselineskip}}
+
+% School Information (Name of Institution, City, State, Time as Student)
+\newcommand{\school}[4]
+	{\textbf{#1}, #2, #3 \hfill #4}
+
+% Project Header (Name, URL, Technologies, Date)
+\newcommand{\projectheader}[4]
+	{\href{#2}{\textbf{#1}} \hfill #4 \\ \textit{#3}}
+
+% Job Header: (Company, City, State, Time of Employment, Position Title)
+\newcommand{\jobheader}[5]
+	{\textbf{#1}, #2, #3 \hfill #4 \par \textit{#5} \par}
+
+% Bulleted List
+\makeatletter
+\newcommand{\makelist}[1]{
+	\begin{itemize}[noitemsep, topsep=-0.2em, label=\raisebox{0.45ex}{\tiny$\bullet$}] \item#1\makelistchecknextarg}
+\newcommand{\makelistchecknextarg}{\@ifnextchar\bgroup{\makelistgobblenextarg}{\end{itemize}}}
+\newcommand{\makelistgobblenextarg}[1]{\item#1 \@ifnextchar\bgroup{\makelistgobblenextarg}{\end{itemize}}}
+\makeatother
+
+% Split Page
+% The first argument is for the left page.
+% The rest of the arguments are for the right page (and are separated by a line break).
+\makeatletter
+\newcommand{\splitpage}[2]{
+	\hspace{0.05 \textwidth}
+	%
+	\begin{minipage}[t]{0.23 \textwidth}
+		#1:\strut
+	\end{minipage}
+	%
+	\begin{minipage}[t]{0.7 \textwidth}
+		#2\splitpagechecknextarg}
+\newcommand{\splitpagechecknextarg}{\@ifnextchar\bgroup{\splitpagegobblenextarg}{\end{minipage}}}
+\newcommand{\splitpagegobblenextarg}[1]{\par#1 \@ifnextchar\bgroup{\splitpagegobblenextarg}{\strut\end{minipage}}}
+\makeatother
+
+% Centered Bullet
+\def\cbullet{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% Separator
+\def\sep{~\cbullet~~}
+
+% ============================================================
+% ====================     INFO      =========================
+% ============================================================
+
+% Header
+\def\InfoPersonalMobile{(781) 366~-\,7775}
+\def\InfoPersonalLocation{Needham, MA}
+\def\InfoPersonalEmail{\href{mailto:zibing.zha@gmail.com}{zibing.zha@gmail.com}}
+\def\InfoPersonalGithub{\href{https://github.com/ZibingZhang}{ZibingZhang}}
+\def\InfoPersonalLinkedIn{\href{https://www.linkedin.com/in/zibing-zhang-a67578194}{Zibing Zhang}}
+
+\def\InfoHeaderAvailability{Available May - December}
+
+\def\InfoCollegeGPA{3.97}
+
+% ============================================================
+% ====================   CONSTANTS   =========================
+% ============================================================
+
+% General
+\def\TRUE{1}
+\def\FALSE{0}
+
+% Header
+\def\HeaderDefault{1}
+\def\HeaderAlternate{2}
+
+% ============================================================
+% ====================   CHOICES   ===========================
+% ============================================================
+
+% General
+\def\ChooseShowSectionIcons{\FALSE}
+
+% Header
+\def\ChooseHeader{\HeaderDefault}
+
+% Education (medskip)
+\def\ChooseEducationCollege{\TRUE}
+\def\ChooseEducationVSpacingA{}
+\def\ChooseEducationHighSchool{\FALSE}
+
+% Projects (medskip)
+\def\ChooseProjectBSLInterpreter{\TRUE}
+\def\ChooseProjectVSpacingD{\medskip}
+\def\ChooseProjectRacketInterpreter{\TRUE}
+\def\ChooseProjectVSpacingC{}
+\def\ChooseProjectCoachesWebsite{\FALSE}
+\def\ChooseProjectVSpacingB{}
+\def\ChooseProjectNumberTheoryFunctionsAndAlgorithms{\FALSE}
+\def\ChooseProjectVSpacingA{}
+\def\ChooseProjectSudokuGame{\FALSE}
+
+% Work Experience (no skip)
+\def\ChooseExperiencePowerAdvocate{\TRUE}
+\def\ChooseExperienceFundiesOneTutor{\TRUE}
+\def\ChooseExperienceNeedhamPnR{\FALSE}
+\def\ChooseExperienceFYELICRedShirt{\FALSE}
+
+% ============================================================
+% ====================   SECTIONS   ==========================
+% ============================================================
+% Section Header (Section Name, Icon)
+
+% ====================
+% Header
+% ====================
+\def\SectionHeader{
+\ifnum\ChooseHeader=\HeaderDefault
+
+	% ====================
+	{
+		\centering
+		\textbf{\Large Zibing Zhang}
+
+		\faPhone $\;$ \InfoPersonalMobile ~$|$
+		\faMapPin $\;$ \InfoPersonalLocation ~$|$
+		\faEnvelope $\;$ \InfoPersonalEmail
+
+		\faGithub $\;$ \InfoPersonalGithub ~$|$
+		\faLinkedin $\,$ \InfoPersonalLinkedIn
+
+		\InfoHeaderAvailability
+		\par
+	}
+	% ====================
+
+\else \ifnum\ChooseHeader=\HeaderAlternate
+
+	% ====================
+	{
+		\centering
+		\textbf{\Large Zibing Zhang}
+
+		\faPhone $\;$ \InfoPersonalMobile ~$|$
+		\faEnvelope $\;$ \InfoPersonalEmail
+
+		\faGithub $\;$ \InfoPersonalGithub ~$|$
+		\faLinkedin $\,$ \InfoPersonalLinkedIn
+
+		\InfoHeaderAvailability
+		\par
+	}
+	% ====================
+
+\else \fi \fi }
+
+% ====================
+% Education
+% ====================
+% School Information (Name of Institution, City, State, Time as Student)
+\def\SectionEducation{
+\sectionheader{EDUCATION}{\faGraduationCap}
+
+\ifnum\ChooseEducationCollege=\TRUE
+
+	% ====================
+	\school{Northeastern University}{Boston}{MA}{2023} \par
+	\textbf{Khoury College of Computer Science}, \textit{Candidate for Bachelor of Science in Computer Science} \par
+	\textbf{College of Science}, \textit{Candidate for Bachelor of Science in Mathematics}
+
+	\splitpage
+		{Relevant Courses}
+		%
+		{Algorithms \sep Object-Oriented Design \sep Programming Languages}
+		{Linear Algebra \sep Probability and Statistics \sep Abstract Algebra}
+		\iffalse % List of Courses Taken
+			% Computer Science (CS)
+			2500	Fundamentals of Computer Science 1
+			2510	Fundamentals of Computer Science 2
+			3000	Algorithms and Data Structures
+			3500	Object Oriented Design
+			3700	Networks and Distributed Systems
+			4400	Programming Languages
+			4410	Compilers
+			4500	Software Development
+
+			% Mathematics (MATH)
+			2321	Multivariable Calculus
+			2331	Linear Algebra
+			2341	Differential Equations and Linear Algebra
+			3081	Probability and Statistics
+			3150	Real Analysis
+			3175	Group Theory
+			3527	Number Theory
+			4555	Complex Variables
+			4565	Topology
+			4576	Rings and Fields
+
+			% Miscellaneous
+			HONR 1310	Linguistics and Literature
+			INSH 2102	Bostonography: The City through Data, Texts, Maps, and Networks
+		\fi
+
+	\splitpage
+		{Honors}
+		%
+		{GPA: \InfoCollegeGPA~/~4.00 $|$ Dean's List}
+
+	\splitpage
+		{Student Organizations}
+		%
+		{Member of Club Swim Team, Peer Mentor for Incoming Freshman}
+	% ====================
+
+\else \fi
+\ChooseEducationVSpacingA
+\ifnum\ChooseEducationHighSchool=\TRUE
+
+	% ====================
+	\school{Needham High School}{Needham}{MA}{2014 -- 2018}
+
+	\splitpage
+		{Honors}
+		%
+		{GPA: 4.8 / 5.0 $|$ National Honor Society 2017-18 $|$ Academic All-American}
+	% ====================
+
+\else \fi }
+
+% ====================
+% Projects
+% ====================
+% Project Header (Name, URL, Technologies, Date)
+\def\SectionProjects{
+\sectionheader{PROJECTS}{\faGit*}
+
+\ifnum\ChooseProjectBSLInterpreter=\TRUE
+
+	% ====================
+	\projectheader
+		{Basic Student Language Interpreter}
+		{https://github.com/ZibingZhang/interpreters/tree/master/racket-student-languages}
+		{TypeScript, Ace}
+		{December 2020}
+	\makelist
+		{Applied principles from the Programming Languages course in order to write an \href{https://zibingzhang.com/racket/}{online interpreter} for BSL}
+		% example principles include: closure, `and' as a form and not a function
+		{Employed four distinct intermediate representations in order to provide meaningful error messages}
+		{Implemented over 90 built-in constants, functions, and structures}
+	% ====================
+
+\else \fi
+\ChooseProjectVSpacingD
+\ifnum\ChooseProjectRacketInterpreter=\TRUE
+
+	% ====================
+	\projectheader
+		{Racket Interpreter}
+		{https://github.com/ZibingZhang/racket-interpreter}
+		{Python, TravisCI, Codecov, Sphinx}
+		{June 2020}
+	\makelist
+		{Designed and implemented an interpreter for a substantial subset of the Racket programming language}
+		% {Utilized the structure of the abstract syntax tree -- generated during the lexing and parsing processes -- to apply the visitor pattern recursively during semantic analysis and interpretation}
+		{Integrated TravisCI and Codecov to provide continuous feedback on build status and test coverage}
+		{Documented code using the reStructuredText format to enable Sphinx to autogenerate documentation which is \href{https://zibingzhang.com/racket-interpreter/}{hosted} by GitHub Pages}
+	% ====================
+
+\else \fi
+\ChooseProjectVSpacingC
+\ifnum\ChooseProjectCoachesWebsite=\TRUE
+
+	% ====================
+	\projectheader
+		{Coaches Website}
+		{}
+		{Python, Flask, JavaScript, React, Heroku}
+		{February 2020}
+	\makelist
+		{Enabled coaches to keep track of swimmers and the lineups for the meets throughout the season}
+		{Deployed the website by using Heroku to automatically build the React frontend and host the Flask backend}
+	% ====================
+
+\else \fi
+\ChooseProjectVSpacingB
+\ifnum\ChooseProjectNumberTheoryFunctionsAndAlgorithms=\TRUE
+
+	% ====================
+	\projectheader
+		{Number Theory Functions and Algorithms}
+		{https://github.com/ZibingZhang/numbertheory}
+		{Python}
+		{July 2019}
+	\makelist
+		{Implemented algorithms and special functions in Python for deeper understanding of the class material}
+		{Includes Euler's totient function, Miller-Rabin primality test, and the Legendre symbol}
+	% ====================
+
+\else \fi
+\ChooseProjectVSpacingA
+\ifnum\ChooseProjectSudokuGame=\TRUE
+
+	% ====================
+	\projectheader
+		{Sudoku Game}
+		{https://github.com/ZibingZhang/Sudoku}
+		{Python, PyGame}
+		{October 2018}
+	\makelist
+		{Recreated Sudoku in Python with the Pygame library}
+		{Learned more about event-driven programming}
+	% ====================
+
+\else \fi }
+
+% ====================
+% Work Experience
+% ====================
+% Job Header: (Company, City, State, Time of Employment, Position Title)
+\def\SectionExperience{
+\sectionheader{WORK EXPERIENCE}{\faBuilding}
+
+\ifnum\ChooseExperiencePowerAdvocate=\TRUE
+
+	% ====================
+	\jobheader
+		{PowerAdvocate}
+		{Boston}
+		{MA}
+		{January -- August 2020}
+		{Software Developer}
+	\makelist
+		{Rebuilt and released Spend Intelligence, a web-based, analytics platform that enables clients to perform in-depth analysis regarding how they spend their money}
+		{Led the effort to perform a data migration prior to the release which required a deep understanding of the old and new database designs}
+		{Initiated cross-team collaboration to design and implement new endpoints in Kotlin and JavaScript based microservices}
+		{Delivered a presentation to the department on the infrastructure behind the analytics platform which \linebreak consists of several databases and microservices}
+		{Frequently pair-programmed and worked with team members to complete stories and features}
+		{Onboarded a group of 7 new hires and evaluated the remote onboarding process to provide feedback and to add improvements}
+
+	% ====================
+
+\else \fi
+\ifnum\ChooseExperienceFundiesOneTutor=\TRUE
+
+	% ====================
+	\jobheader
+		{Northeastern University}
+		{Boston}
+		{MA}
+		{September -- December 2019}
+		{Fundamentals of Computer Science 1 Tutor}
+	\makelist
+		{Guided students with homework and understanding of lectures during weekly office hours}
+		{Critiqued students' biweekly homework assignments in a timely manner}
+		{Notified instructor of feedback regarding recent assignments during weekly staff meeting}
+	% ====================
+
+\else \fi
+\ifnum\ChooseExperienceNeedhamPnR=\TRUE
+
+	% ====================
+	\jobheader
+		{Needham Park \& Recreation}
+		{Needham}
+		{MA}
+		{June 2018 -- August 2019}
+		{Swim Coach and Swim Instructor}
+	\makelist
+		{Designed practices twice times a week and gave feedback tailored to individual swimmers}
+		{Analyzed results from swim meets each week with fellow coaches to create strong lineups for competitions}
+		{Led four classes of differing skill levels five days a week to teach younger children to swim}
+	% ====================
+
+\else \fi
+\ifnum\ChooseExperienceFYELICRedShirt=\TRUE
+
+	% ====================
+	\jobheader{Northeastern University}
+		{Boston}
+		{MA}
+		{January -- April 2019}
+		{First Year Engineering Learning Center Assistant}
+	\makelist
+		{Guided students on homework incorporating different pieces of software and C++}
+		{Operated heavy machinery for students while following proper safety measures}
+		{Taught students to use properly handle provided equipment, including drills, saws, and breadboards}
+	% ====================
+
+\else \fi }
+
+% ====================
+% Technical Knowledge
+% ====================
+\def\SectionTechKnowledge{
+\sectionheader{TECHNICAL KNOWLEDGE}{\faLaptop}
+
+	% ====================
+	\splitpage
+		{Languages}
+		%
+		{Python, JavaScript, TypeScript, Java, Racket, SQL, HTML, CSS}
+	% ====================
+
+	% ====================
+	\splitpage
+		{Other}
+		%
+		{React, Git, Subversion, Microsoft Suite}
+	% ====================
+}
+
+% ====================
+% Interests and Volunteer Work
+% ====================
+\newcommand{\SectionInterests}{
+\sectionheader{INTERESTS}{\faBook}
+
+	% ====================
+	% Interests
+	\splitpage
+		{Interests}
+		%
+		{Epic Fantasy, Trick-Taking Games, Swimming, Rock Climbing}
+		\iffalse % Books I've Enjoyed
+			Science Fiction:
+				Ender's Game series
+				Remembrance of Earth's Past
+				Foundation series
+				Stories of Your Life and Others
+			Epic Fantasy:
+				The Kingkiller Chronicle
+				The Stormlight Archives
+		\fi
+	% ====================
+
+	% ====================
+	\iffalse
+	Volunteering @ NHS
+	\splitpage
+		{Needham High School}
+		%
+		{Established Tutoring Program for Elementary Schools $|$ Peer Tutor}
+	\fi
+	% ====================
+}
+
+% ============================================================
+% ====================   RESUME   ============================
+% ============================================================
+
+\begin{document}
+\pagebreak
+\hspace{0pt}
+\vfill
+
+	% ====================
+	\SectionHeader
+
+	\SectionEducation
+
+	\medskip
+
+	\SectionExperience
+
+	\medskip
+
+	\SectionProjects
+
+	\vspace{0.9em}
+
+	\SectionTechKnowledge
+
+	\medskip
+
+	\SectionInterests
+	% ====================
+
+\vfill
+\hspace{0pt}
+\pagebreak
+\end{document}

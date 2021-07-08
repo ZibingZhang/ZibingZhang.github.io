@@ -1,0 +1,127 @@
+<meta name="robots" content="noindex, nofollow">
+
+{% if page.latex == true %}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']]
+      }
+    };
+  </script>
+
+  <style>
+    mjx-container {
+      overflow-x: auto;
+    }
+  </style>
+{% endif %}
+
+{% if page.fullwidthtable != false %}
+  <style>
+    /* full width table */
+    table {
+      width: 100%;
+    }
+  
+    table th {
+      width: 1%;
+    }
+  </style>
+{% endif %}
+
+{% if page.datatable == true %}
+  <style>
+    .dataTables_wrapper th {
+      width: 1% !important;
+    }
+
+    .dataTables_wrapper label {
+      display: flex;
+    }
+
+    .dataTables_wrapper label select {
+      margin: 0 5px;
+    }
+    
+    .dataTables_wrapper .dataTables_filter {
+      display: flex;
+    }
+  </style>
+
+  <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+
+  <!-- https://github.com/tomjoht/documentation-theme-jekyll/blob/8b03d709e6149150329dbd76c8084aaeb195e22e/_layouts/default.html -->
+  <!-- Include the standard DataTables bits -->
+  <link rel='stylesheet' type='text/css' href='//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'>
+  <script type='text/javascript' charset='utf8' src='//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js' defer></script>
+  <!-- First, this walks through the tables that occur between ...-begin
+      and ...-end and add the 'datatable' class to them.
+      Then it invokes DataTable's standard initializer
+      Credit here: http://www.beardedhacker.com/blog/2015/08/28/add-class-attribute-to-markdown-table/
+    -->
+  <script defer>
+    $(document).ready(function(){
+        $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('display');
+        $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('stripe');
+        $('table.display').DataTable( {
+            paging: true,
+            stateSave: true,
+            searching: true,
+            pageLength: 10,
+            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        });
+    });
+  </script>
+{% endif %}
+
+{% if page.sitenav == false %}
+  <style>
+    .visible-links {
+      visibility: hidden;
+    }
+
+    .hidden-links {
+      visibility: hidden;
+    }
+
+    .greedy-nav__toggle {
+      visibility: hidden;
+    }
+  </style>
+  <script>
+    // https://stackoverflow.com/questions/32905183/how-do-you-get-elements-from-a-javascript-htmlcollection
+    window.addEventListener('load', function () {
+      for (className of ['visible-links', 'hidden-links', 'greedy-nav__toggle']) {
+        // https://stackoverflow.com/questions/21436550/javascript-how-to-get-only-one-element-by-class-name
+        let elements = document.getElementsByClassName(className);
+        let requiredElement = elements[0];
+        // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
+        requiredElement.parentNode.removeChild(requiredElement);
+      }
+    });
+  </script>
+{% endif %}
+
+{% if page.footerfollow == false %}
+  <style>
+    .page__footer-follow {
+      display: none;
+    }
+  </style>
+  <script>
+    // https://stackoverflow.com/questions/32905183/how-do-you-get-elements-from-a-javascript-htmlcollection
+    window.addEventListener('load', function () {
+      for (className of ['page__footer-follow']) {
+        // https://stackoverflow.com/questions/21436550/javascript-how-to-get-only-one-element-by-class-name
+        let elements = document.getElementsByClassName(className);
+        let requiredElement = elements[0];
+        // https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
+        requiredElement.parentNode.removeChild(requiredElement);
+      }
+    });
+  </script>
+{% endif %}

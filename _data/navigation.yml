@@ -1,0 +1,72 @@
+# main links
+main:
+  - title: "About"
+    url: /about/
+  - title: "Personal"
+    url: /personal/
+  - title: "Blog"
+    url: /blog/
+
+# personal links
+personal:
+  - title: "Bookmarks"
+    url: /personal/bookmarks/
+  - title: "Entertainment"
+    url: /personal/entertainment/
+  - title: "Food"
+    url: /personal/food/
+  - title: "Keyboard Layout"
+    url: /personal/keyboard-layout/
+  - title: "Meta"
+    url: /personal/meta/
+  - title: "Quotes"
+    url: /personal/quotes/
+  - title: "Skincare"
+    url: /personal/skincare/
+  - title: "Useful Links"
+    url: /personal/useful-links/
+  - title: "Wikis"
+    url: /personal/wikis/
+
+entertainment:
+  - title: "Animes"
+    url: /personal/entertainment/animes/
+  - title: "Books"
+    url: /personal/entertainment/books/
+  - title: "Movies"
+    url: /personal/entertainment/movies/
+  - title: "TV Shows"
+    url: /personal/entertainment/tv-shows/
+
+food:
+  - title: "Drinks"
+    url: /personal/food/drinks/
+  - title: "Menus"
+    url: /personal/food/menus/
+  - title: "Recipes"
+    url: /personal/food/recipes/
+
+# blog links
+blog:
+  - title: "HLTH 5963 - Intro to Culinary Medicine"
+    url: /blog/hlth-5963/
+    children:
+      - title: "Roasted Sweet Potatoes"
+        url: /blog/hlth-5963/roasted-sweet-potatoes/
+      - title: "Chickpea Tuna Salad"
+        url: /blog/hlth-5963/chickpea-tuna-salad/
+      - title: "Chia Seed Pudding"
+        url: /blog/hlth-5963/chia-seed-pudding/
+      - title: "Stir Fry"
+        url: /blog/hlth-5963/stir-fry/
+
+# sharks links
+sharks:
+  - title: "Home"
+    url: /sharks/
+  - title: "Schedule"
+    url: /sharks/schedule/
+  - title: "Practices"
+    url: /sharks/practices/
+  - title: "Results"
+    url: /sharks/results/
