@@ -13,6 +13,7 @@ shows:
     - Dark
     - Dark Matter
     - His Dark Materials
+    - Shadow and Bones
     - The Stranger
     - Sweet Tooth
     - The Umbrella Academy
